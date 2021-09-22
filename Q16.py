@@ -75,7 +75,7 @@ def BreakCypher(KEYSIZEestimated,cypherText):
             block = b''
             for j in range(i, len(cypherText), KEYSIZEcurrent):
                 block += bytes([cypherText[j]])
-            key += BruteForceSingleByteXorCipher(block)[1]
+            key += bytes([BruteForceSingleByteXorCipher(block)[1]])
         keys.append(key)
         decypheredtext.append(repeatingKeyXOR(cypherText,key))
     englishScores = []; 
@@ -106,22 +106,7 @@ if __name__ == '__main__':
         KEYSIZEscores.append(ScoreKeySize(KEYSIZE,cypherText))
     KEYSIZEestimated = KEYSIZES[np.argsort(KEYSIZEscores)][:5]
     # 5 + 6 + 7 + 8 
-    decypheredtext = []
-    keys = []
-    for KEYSIZEcurrent in tqdm(KEYSIZEestimated):
-        key = b''
-        for i in range(KEYSIZEcurrent):
-            block = b''
-            for j in range(i, len(cypherText), KEYSIZEcurrent):
-                block += bytes([cypherText[j]])
-            key += bytes([BruteForceSingleByteXorCipher(block)[1]])
-        keys.append(key)
-        decypheredtext.append(repeatingKeyXOR(cypherText,key))
-    englishScores = []; 
-    for decypher in decypheredtext:
-        englishScores.append(get_english_score(decypher))
-    best = np.argmax(englishScores)
-    key,decypheredtext,KEYSIZEestimated = keys[best],decypheredtext[best],KEYSIZEestimated[best]
+    key,decypheredtext,KEYSIZEestimated = BreakCypher(KEYSIZEestimated,cypherText)
     print('\n')
     print('Key: ' + str(key) + ' \n')
     print('Key size: ' + str(KEYSIZEestimated) + ' \n')
