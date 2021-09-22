@@ -28,7 +28,7 @@ CHARACTER_FREQ = {
 
 if __name__ == '__main__':
     lines = []
-    with open('4.txt') as f:
+    with open('14.txt') as f:
         lines = f.readlines()
     bestScore = 0; bestKey = 0; bestDecypher = 0; bestLine = 0;
     for i in range(len(lines)):
