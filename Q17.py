@@ -27,6 +27,6 @@ def aes_ecb_decrypt(cypherText,Key):
 if __name__ == '__main__':
     with open('17.txt') as f:
         cypherText = b64decode(f.read())
-    Key = "YELLOW SUBMARINE"
+    Key = "YELLOW SUBMARINE".encode("utf8")
     plaintext = aes_ecb_decrypt(cypherText,Key).decode()
     print(plaintext)
