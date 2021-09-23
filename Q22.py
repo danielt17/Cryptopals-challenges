@@ -40,7 +40,7 @@ def aes_cbc_encrypt(plainText, Key, Iv):
         cipherText = cipherText + Ci
     return cipherText
 
-def aes_cbc_decrypt(cipherText, Key, Iv):
+def aes_cbc_decrypt(cipherText, Key, Iv, unpad=True):
     plaintext = b''
     Ci = Iv
     for i in range(len(cipherText)//AES.block_size):
