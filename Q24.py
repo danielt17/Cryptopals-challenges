@@ -73,7 +73,7 @@ def byte_at_a_time_ecb(unknown_string,blockSize):
     decryptedText = b""
     for i in range(cipherTextLen):
         decryptedText = decryptedText + crack_one_byte_ecb(unknown_string,blockSize,decryptedText)
-        print('Iteration: ' + str(i) + ' . ' + str(decryptedText) + ' \n')
+        print('Iteration: ' + str(i+1) + ' . ' + str(decryptedText) + ' \n')
     return decryptedText
     
 
