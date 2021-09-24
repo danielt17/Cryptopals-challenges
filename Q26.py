@@ -5,7 +5,7 @@ Created on Fri Sep 24 21:17:37 2021
 @author: danie
 """
 
-# https://cryptopals.com/sets/2/challenges/12
+# https://cryptopals.com/sets/2/challenges/14
 
 # %% Imports
 
