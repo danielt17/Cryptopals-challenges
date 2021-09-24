@@ -67,15 +67,29 @@ def crack_one_byte_ecb(unknown_string,blockSize,decryptedText):
             return bytes([i])
     return b'' # to make sure we dont return a non type, could be empty due to padding
 
+def cheackValidPadding(textpadded):
+    padding_value = textpadded[-1]
+    if (len(textpadded[:-textpadded[-1]]) + padding_value) == len(textpadded):
+        return True
+    else:
+        False
+
+def unpadding_without_blocksize(textpadded):
+    if cheackValidPadding(textpadded):
+        return textpadded[:-textpadded[-1]]
+    else:
+        print('Invalid padding')
+
 def byte_at_a_time_ecb(unknown_string,blockSize):
     # one byte at a time attack on aes-ecb oracle
     cipherTextLen = len(encryption_oracle_ecb(b"",unknown_string))
     decryptedText = b""
     for i in range(cipherTextLen):
         decryptedText = decryptedText + crack_one_byte_ecb(unknown_string,blockSize,decryptedText)
-        print('Iteration: ' + str(i+1) + ' . ' + str(decryptedText) + ' \n')
-    return decryptedText
+        print('Iteration: ' + str(i+1) + '. ' + str(decryptedText) + ' \n')
+    return unpadding_without_blocksize(decryptedText)
     
+
 
 # %% Main
 
@@ -90,4 +104,4 @@ if __name__ == '__main__':
     print('Detected mode of operation: ' + modeOfOperation + '\n')
     print('Build dictionary')
     decryptedText = byte_at_a_time_ecb(unknown_string,blockSize)
-    print('Decrypted text: ' + str(decryptedText.decode())[:-1])
+    print('Decrypted text: ' + str(decryptedText.decode()))
