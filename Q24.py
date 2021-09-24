@@ -102,6 +102,5 @@ if __name__ == '__main__':
     print('Detected block size of: ' + str(blockSize) + '\n')
     modeOfOperation = detect_mode_of_operation(unknown_string)
     print('Detected mode of operation: ' + modeOfOperation + '\n')
-    print('Build dictionary')
     decryptedText = byte_at_a_time_ecb(unknown_string,blockSize)
     print('Decrypted text: ' + str(decryptedText.decode()))
