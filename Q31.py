@@ -44,14 +44,13 @@ class AESCBCPaddingOracle:
         except ValueError:
             return False
 
-
-def create_forced_previous_block(iv, guessedByte, paddingLen, found_plaintext):
+def create_forced_previous_block(iv, guessedByte, paddingLen, plainTextBlock):
     indexOfForcedChar = len(iv) - paddingLen
     forcedCharacter = iv[indexOfForcedChar] ^ guessedByte ^ paddingLen
     output = iv[:indexOfForcedChar] + bytes([forcedCharacter])
     m = 0
     for k in range(block_size - paddingLen + 1, block_size):
-        forcedCharacter = iv[k] ^ found_plaintext[m] ^ paddingLen
+        forcedCharacter = iv[k] ^ plainTextBlock[m] ^ paddingLen
         output += bytes([forcedCharacter])
         m += 1
     return output
