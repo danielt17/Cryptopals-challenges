@@ -23,8 +23,8 @@ def aes_cbc_encrypt(plainText,key,iv):
 
 def aes_cbc_decrypt(cipherText,key,iv):
     cipher = AES.new(key,AES.MODE_CBC,iv = iv)
-    cipherText = unpad(cipher.decrypt(cipherText),AES.block_size)
-    return cipherText
+    plainText = unpad(cipher.decrypt(cipherText),AES.block_size)
+    return plainText
 
 class AESCBCOracle:
     def __init__(self):
