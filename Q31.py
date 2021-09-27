@@ -44,41 +44,27 @@ class AESCBCPaddingOracle:
         except ValueError:
             return False
 
-def create_forced_previous_block(iv, guessedByte, paddingLen, plainTextBlock):
-    indexOfForcedChar = len(iv) - paddingLen
-    forcedCharacter = iv[indexOfForcedChar] ^ guessedByte ^ paddingLen
-    output = iv[:indexOfForcedChar] + bytes([forcedCharacter])
-    m = 0
-    for k in range(block_size - paddingLen + 1, block_size):
-        forcedCharacter = iv[k] ^ plainTextBlock[m] ^ paddingLen
-        output += bytes([forcedCharacter])
-        m += 1
-    return output
-
 def cbc_padding_oracle_attack(Oracle,cipherText,iv):
     plainText = b''
-    cipherTextBlocks = [iv] + [cipherText[i:i + block_size] for i in range(0, len(cipherText), block_size)]
-    for c in range(1, len(cipherTextBlocks)):
-        plainTextBlock = b''   
-        for i in range(block_size - 1, -1, -1):
-            paddingLen = len(plainTextBlock) + 1
-            possibleLastBytes = []
-            for j in range(256):
-                forcedIv = create_forced_previous_block(cipherTextBlocks[c - 1], j, paddingLen, plainTextBlock)
-                if Oracle.decrypt_oracle(cipherTextBlocks[c], forcedIv) is True:
-                    possibleLastBytes += bytes([j])
-            # in case something random happens (false positive with regard to padding)
-            if len(possibleLastBytes) != 1:
-                for byte in possibleLastBytes:
-                    for j in range(256):
-                        forcedIv = create_forced_previous_block(cipherTextBlocks[c - 1], j, paddingLen + 1,bytes([byte]) + plainTextBlock)
-                        if Oracle.decrypt_oracle(cipherTextBlocks[c], forcedIv) is True:
-                            possibleLastBytes = [byte]
-                            break
-            plainTextBlock = bytes([possibleLastBytes[0]]) + plainTextBlock
-            print('Current progress: ' + str(plainText + plainTextBlock))
-        plainText += plainTextBlock
-    return unpad(plainText,block_size)
+    blocks = [iv]
+    for i in range(len(cipherText)//block_size):
+        blocks.append(cipherText[i*block_size:(i+1)*block_size])
+    for i in range(len(blocks)-1):
+        fakeIV = [0]*16
+        blockPlainText = b''
+        for padding in range(1,block_size + 1):
+            for candidate in range(256):
+                fakeIV[-padding] = candidate
+                if Oracle.decrypt_oracle(blocks[i+1],bytes(fakeIV)):
+                    blockPlainText = bytes([candidate ^ padding ^ blocks[i][-padding]]) + blockPlainText # get plainText from the bit by zeroing than xoring
+            for j in range(1,padding + 1):
+                fakeIV[-j] = blockPlainText[-j] ^ (padding + 1) ^ blocks[i][-j] # switch value corresponding to next element in padding
+        plainText = plainText + blockPlainText
+    return unpad(plainText,block_size)                
+                
+    
+    
+    
 
 # %% Main
 
@@ -91,8 +77,11 @@ if __name__ == '__main__':
     print('Cracking starts: ')
     print('\n')
     plainText = cbc_padding_oracle_attack(Oracle,cipherText,iv)
-    print('\n')
-    print('Decrypted cipher text: ' + str(Oracle.decrypt(cipherText)) + ' . Padding oracle attack decryption: ' + str(plainText))
+    if Oracle.decrypt(cipherText) == plainText:
+        print('Successful attack !!!')
+        print('Decrypted cipher text: ' + str(Oracle.decrypt(cipherText)) + ' . Padding oracle attack decryption: ' + str(plainText))
+    else:
+        print('Padding oracle attack failed')
     print('\n')
         
     
