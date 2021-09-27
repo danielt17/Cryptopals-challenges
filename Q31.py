@@ -76,7 +76,8 @@ if __name__ == '__main__':
     plainText = cbc_padding_oracle_attack(Oracle,cipherText,iv)
     if Oracle.decrypt(cipherText) == plainText:
         print('Successful attack !!!')
-        print('Decrypted cipher text: ' + str(b64decode(Oracle.decrypt(cipherText))) + ' . Padding oracle attack decryption: ' + str(b64decode(plainText)))
+        print('Decrypted cipher text: ' + str(b64decode(Oracle.decrypt(cipherText)))[8:] + ' .')
+        print('Padding oracle attack decryption: ' + str(b64decode(plainText))[8:] + ' .')
     else:
         print('Padding oracle attack failed')
     print('\n')
