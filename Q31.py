@@ -62,10 +62,6 @@ def cbc_padding_oracle_attack(Oracle,cipherText,iv):
         plainText = plainText + blockPlainText
     return unpad(plainText,block_size)                
                 
-    
-    
-    
-
 # %% Main
 
 if __name__ == '__main__':
