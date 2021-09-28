@@ -77,8 +77,11 @@ def attack_ctr_using_substitutions(cipherTexts):
             streamCipherRecovered[curByte] = curKeyByteValue
             for ind,curCipherText in enumerate(cipherTexts):
                 maxIndex = min(curByte+1,lenCipherTexts[ind])
-                curXor = xor(curCipherText[:maxIndex],bytes(streamCipherRecovered[:maxIndex]))
-                score[curKeyByteValue] = score[curKeyByteValue] + get_english_score(curXor)
+                if maxIndex < curByte+1:
+                    continue
+                else:
+                    curXor = xor(curCipherText[:maxIndex],bytes(streamCipherRecovered[:maxIndex]))
+                    score[curKeyByteValue] = score[curKeyByteValue] + get_english_score(curXor)
         streamCipherRecovered[curByte] = np.argmax(np.array(score))
         print(xor(curCipherText[:curByte+1],bytes(streamCipherRecovered[:curByte+1])))
     return bytes(streamCipherRecovered)
