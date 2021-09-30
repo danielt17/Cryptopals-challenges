@@ -53,7 +53,7 @@ class MT19937MersenneTwisterRNG:
         y = y ^ ((y >> self.u) & self.d)
         y = y ^ ((y << self.s) & self.b)
         y = y ^ ((y << self.t) & self.c)
-        y = y ^ (y >> 1)
+        y = y ^ (y >> self.L)
         self.index = self.index + 1
         return get_lowest_w_bits(y,self.w)
     
