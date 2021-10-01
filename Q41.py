@@ -42,7 +42,9 @@ class AESCTREditOracle:
         return self.encrypt(plainText[:offset] + newText + plainText[offset:])
         
 def break_aes_ctr_random_access_read_write(cipherText,Oracle):
-    plainText = Oracle.edit(cipherText,0,cipherText) # works because encryption and decryption are the same in CTR mode, therefore the start is the same up to where start the previues text
+    # works because encryption and decryption are the same in CTR mode, 
+    # therefore the start is the same up to where the original text starts
+    plainText = Oracle.edit(cipherText,0,cipherText) 
     return plainText[:len(cipherText)]
 
 # %% Main
