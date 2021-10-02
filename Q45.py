@@ -5,6 +5,8 @@ Created on Sat Oct  2 14:38:35 2021
 @author: danie
 """
 
+# https://cryptopals.com/sets/4/challenges/29
+
 # %% Imports
 
 from Q44 import SHA1_MAC, SHA1
