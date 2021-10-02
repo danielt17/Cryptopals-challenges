@@ -49,10 +49,10 @@ def length_extension_attack(Oracle,originalMessage,originalHash,additionalMessag
     
     raise Exception('Length extension attack failed :( please cheak your implementation.')
         
-
 # %% Main
 
 if __name__ == '__main__':
+    print('Length extension attack against SHA1 hash function')
     originalMessage = b"comment1=cooking%20MCs;userdata=foo;comment2=%20like%20a%20pound%20of%20bacon"
     additionalMessage = b";admin=true"
     Oracle = SHA1MACOracle()
