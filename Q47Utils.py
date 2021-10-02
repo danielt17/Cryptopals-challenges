@@ -41,6 +41,8 @@ def insecure_compare(seq1,seq2,sleepTime):
         if bit1 != bit2:
             return False
         sleep(sleepTime)
+    if len(seq1) != len(seq2):
+        return False
     return True
 
 def insecure_compare_test_time():
