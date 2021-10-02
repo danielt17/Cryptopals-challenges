@@ -5,15 +5,11 @@ Created on Sat Oct  2 19:39:28 2021
 @author: danie
 """
 
-
 # https://cryptopals.com/sets/4/challenges/31
 
 # %% Imports
 
 from Q44 import SHA1
-import struct
-from Crypto.Random import get_random_bytes
-import numpy as np
 from binascii import unhexlify
 from Q22 import xor
 from time import sleep,time
