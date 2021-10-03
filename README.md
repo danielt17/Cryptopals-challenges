@@ -79,6 +79,8 @@ Converting <a href="https://en.wikipedia.org/wiki/Hexadecimal">Hex</a> to <a hre
 
 ### [Challenge 2](#challenge-2)
 
+Implementation of fixed <a href="https://en.wikipedia.org/wiki/Exclusive_or">xor</a> between two buffers.
+
 ### [Challenge 3](#challenge-3)
 
 ### [Challenge 4](#challenge-4)
