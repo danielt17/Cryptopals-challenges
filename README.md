@@ -142,9 +142,16 @@ Plain text: b"I'm back and I'm ringin' the bell \nA rockin' on the mike while th
 ### [Challenge 7](#challenge-7)
 
 Using <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-128</a> in <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)">ECB mode</a> to decrypt the cipher text. AES-128 is a block cipher, meaning it works on blocks of size 128 bits. ECB mode is a mode of operation of a block cipher, a 128 bit block from the plain text is encrypted in the same way no matter where it is in text. 
-![image](https://user-images.githubusercontent.com/60748408/135771098-83f02ef7-218a-44ef-afd6-8e5503e4a36b.png)
+
+<p align="center">
+![image](https://user-images.githubusercontent.com/60748408/135771177-229ff8fa-581e-4052-a905-35249ecfd9eb.png)
+</p>
+
 This mode operation should not be used for encryption as we will see later, an image descrbing the problematic ECB mode operation can be seen below.
+
+<p align="center">
 ![image](https://user-images.githubusercontent.com/60748408/135771122-5163eac1-ce9d-4e47-8b13-c286a906c729.png)
+</p>
 
 Expected output: 
 ```python
