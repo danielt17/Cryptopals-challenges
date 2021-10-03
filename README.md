@@ -91,6 +91,78 @@ Explanations to all solutions.
 
 ### [Challenge 8](#challenge-8)
 
+## Set 2: Block crypto
+
+### [Challenge 9](#challenge-9)
+
+### [Challenge 10](#challenge-10)
+
+### [Challenge 11](#challenge-11)
+
+### [Challenge 12](#challenge-12)
+
+### [Challenge 13](#challenge-13)
+
+### [Challenge 14](#challenge-14)
+
+### [Challenge 15](#challenge-15)
+
+### [Challenge 16](#challenge-16)
+
+## Set 3: Block & stream crypto
+
+### [Challenge 17](#challenge-17)
+
+### [Challenge 18](#challenge-18)
+
+### [Challenge 19](#challenge-19)
+
+### [Challenge 20](#challenge-20)
+
+### [Challenge 21](#challenge-21)
+
+### [Challenge 22](#challenge-22)
+
+### [Challenge 23](#challenge-23)
+
+### [Challenge 24](#challenge-24)
+
+## Set 4: Stream crypto and randomness
+
+### [Challenge 25](#challenge-25)
+
+### [Challenge 26](#challenge-26)
+
+### [Challenge 27](#challenge-27)
+
+### [Challenge 28](#challenge-28)
+
+### [Challenge 29](#challenge-29)
+
+### [Challenge 30](#challenge-30)
+
+### [Challenge 31](#challenge-31)
+
+### [Challenge 32](#challenge-32)
+
+## Set 5: Diffie-Hellman and friends
+
+### [Challenge 33](#challenge-33)
+
+### [Challenge 34](#challenge-34)
+
+### [Challenge 35](#challenge-35)
+
+### [Challenge 36](#challenge-36)
+
+### [Challenge 37](#challenge-37)
+
+### [Challenge 38](#challenge-38)
+
+### [Challenge 39](#challenge-39)
+
+### [Challenge 40](#challenge-40)
+
 
 
 # License
