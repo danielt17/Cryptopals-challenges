@@ -75,7 +75,7 @@ Explanations to all solutions.
 
 ### [Challenge 1](#challenge-1)
 
-Converting Hex to base64, by first transforming the hex string to a bytes object, afterward transforming it into base64. 
+Converting <a href="https://en.wikipedia.org/wiki/Hexadecimal">Hex</a> to <a href="https://en.wikipedia.org/wiki/Base64">base64</a>, by first transforming the hex string to a bytes object, afterward transforming it into base64. 
 
 ### [Challenge 2](#challenge-2)
 
