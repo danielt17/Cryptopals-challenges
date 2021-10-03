@@ -117,6 +117,13 @@ b'Now that the party is jumping\n'
 
 ### [Challenge 5](#challenge-5)
 
+Implemenating a simple repeating-key <a href="https://en.wikipedia.org/wiki/XOR_cipher">XOR cipher</a>, the implementation is very straight forward using a cyclic loop over the key characters.
+
+Expected output: 
+```python
+sucess
+```
+
 ### [Challenge 6](#challenge-6)
 
 ### [Challenge 7](#challenge-7)
