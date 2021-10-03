@@ -9,7 +9,7 @@ This is a write up of my solutions (and POCs) to cryptopals crypto challenges. T
 
 Each set has about 8 challenges, one can find in each table a link to the challenge, code solving the challenge and an explanation of the solution.
 
-## Set 1
+## Set 1: Basics
 
 | Challenge | Solution | Explanation |
 | --- | --- | --- |
@@ -22,7 +22,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 7</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q17.py">code</a> | [Explanation 7](#challenge-7) |
 | <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 8</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q18.py">code</a> | [Explanation 8](#challenge-8) |
 
-## Set 2
+## Set 2: Block crypto
 
 | Challenge | Solution | Explanation |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | <a href="https://cryptopals.com/sets/2/challenges/15">Challenge 15</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q27.py">code</a> | |
 | <a href="https://cryptopals.com/sets/2/challenges/16">Challenge 16</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q28.py">code</a> | |
 
-## Set 3
+## Set 3: Block & stream crypto
 
 | Challenge | Solution | Explanation |
 | --- | --- | --- |
@@ -48,7 +48,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | <a href="https://cryptopals.com/sets/3/challenges/23">Challenge 23</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q37.py">code</a> | |
 | <a href="https://cryptopals.com/sets/3/challenges/24">Challenge 24</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q38.py">code</a> | |
 
-## Set 4
+## Set 4: Stream crypto and randomness
 
 | Challenge | Solution | Explanation |
 | --- | --- | --- |
@@ -63,7 +63,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 
 A <a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a> demonstrating a HMAC recovery attack using a timing side channel. 
 
-## Set 5
+## Set 5: Diffie-Hellman and friends
 
 | Challenge | Solution | Explanation |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ A <a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a> demonstrating 
 
 Explanations to all solutions.
 
-## Set 1
+## Set 1: Basics
 
 ### [Challenge 1](#challenge-1)
 
