@@ -87,6 +87,9 @@ Expected output: Success
 
 ### [Challenge 3](#challenge-3)
 
+The solution uses a brute force approach, trying every possible single byte key, choosing the one which results in the highest english score.
+Inorder to calculate the english score we use the <a href="https://www3.nd.edu/~busiforc/handouts/cryptography/letterfrequencies.html">distribution</a>  of letters in the english language.
+
 ### [Challenge 4](#challenge-4)
 
 ### [Challenge 5](#challenge-5)
