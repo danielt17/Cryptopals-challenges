@@ -102,6 +102,8 @@ b"Cooking MC's like a pound of bacon"
 
 ### [Challenge 4](#challenge-4)
 
+Using the same approach used in [challenge 3](#challenge-3), where now we use the english score to find the most likely sequence to be encrypted by a single byte xor cipher, therefore both detecting and decrypting using the english score metric.
+
 ### [Challenge 5](#challenge-5)
 
 ### [Challenge 6](#challenge-6)
