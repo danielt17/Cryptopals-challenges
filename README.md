@@ -77,9 +77,11 @@ Explanations to all solutions.
 
 Converting <a href="https://en.wikipedia.org/wiki/Hexadecimal">Hex</a> to <a href="https://en.wikipedia.org/wiki/Base64">base64</a>, by first transforming the hex string to a bytes object, afterward transforming it into base64. 
 
+```python
 Expected output: 
 
 solved
+```
 
 ### [Challenge 2](#challenge-2)
 
