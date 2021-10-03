@@ -77,9 +77,9 @@ Explanations to all solutions.
 
 Converting <a href="https://en.wikipedia.org/wiki/Hexadecimal">Hex</a> to <a href="https://en.wikipedia.org/wiki/Base64">base64</a>, by first transforming the hex string to a bytes object, afterward transforming it into base64. 
 
-```python
-Expected output: 
 
+Expected output: 
+```python
 solved
 ```
 
@@ -88,8 +88,9 @@ solved
 Implementation of fixed <a href="https://en.wikipedia.org/wiki/Exclusive_or">xor</a> between two buffers.
 
 Expected output: 
-
+```python
 Success
+```
 
 ### [Challenge 3](#challenge-3)
 
@@ -97,20 +98,22 @@ The solution uses a brute force approach, trying every possible single byte key,
 Inorder to calculate the english score we use the <a href="https://www3.nd.edu/~busiforc/handouts/cryptography/letterfrequencies.html">distribution</a>  of letters in the english language.
 
 Expected output: 
-
+```python
 Decyphered text with key: 88 and score: 2.2641049 
 
 b"Cooking MC's like a pound of bacon"
+```
 
 ### [Challenge 4](#challenge-4)
 
 Using the same approach used in [challenge 3](#challenge-3), where now we use the english score to find the most likely sequence to be encrypted by a single byte xor cipher, therefore both detecting and decrypting using the english score metric.
 
 Expected output: 
-
+```python
 Decyphered text with key: 53 and score: 2.0881317999999998 Cur line: 170 
 
 b'Now that the party is jumping\n'
+```
 
 ### [Challenge 5](#challenge-5)
 
