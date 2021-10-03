@@ -150,7 +150,7 @@ Using <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-1
 This mode operation should not be used for encryption as we will see later, an image descrbing the problematic ECB mode operation can be seen below.
 
 <p align="center">
-![image](https://user-images.githubusercontent.com/60748408/135771122-5163eac1-ce9d-4e47-8b13-c286a906c729.png)
+  <img src="https://user-images.githubusercontent.com/60748408/135771122-5163eac1-ce9d-4e47-8b13-c286a906c729.png" />
 </p>
 
 Expected output: 
