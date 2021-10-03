@@ -25,7 +25,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 ## Set 2: Block crypto
 
 | Challenge | Solution | Explanation |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | <a href="https://cryptopals.com/sets/2/challenges/9">Challenge 9</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q21.py">code</a> | [Explanation 9](#challenge-9) |
 | <a href="https://cryptopals.com/sets/2/challenges/10">Challenge 10</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q22.py">code</a> | [Explanation 10](#challenge-10) |
 | <a href="https://cryptopals.com/sets/2/challenges/11">Challenge 11</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q23.py">code</a> | [Explanation 11](#challenge-11) |
@@ -38,7 +38,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 ## Set 3: Block & stream crypto
 
 | Challenge | Solution | Explanation |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | <a href="https://cryptopals.com/sets/3/challenges/17">Challenge 17</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q31.py">code</a> | [Explanation 17](#challenge-17) |
 | <a href="https://cryptopals.com/sets/3/challenges/18">Challenge 18</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q32.py">code</a> | [Explanation 18](#challenge-18) |
 | <a href="https://cryptopals.com/sets/3/challenges/19">Challenge 19</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q33.py">code</a> | [Explanation 19](#challenge-19) |
@@ -51,7 +51,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 ## Set 4: Stream crypto and randomness
 
 | Challenge | Solution | Explanation |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | <a href="https://cryptopals.com/sets/4/challenges/25">Challenge 25</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q41.py">code</a> | [Explanation 25](#challenge-25) |
 | <a href="https://cryptopals.com/sets/4/challenges/26">Challenge 26</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q42.py">code</a> | [Explanation 26](#challenge-26) |
 | <a href="https://cryptopals.com/sets/4/challenges/27">Challenge 27</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q43.py">code</a> | [Explanation 27](#challenge-27) |
@@ -64,7 +64,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 ## Set 5: Diffie-Hellman and friends
 
 | Challenge | Solution | Explanation |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | <a href="https://cryptopals.com/sets/5/challenges/33">Challenge 33</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q51.py">code</a> | [Explanation 33](#challenge-33) |
 
 # Write up
