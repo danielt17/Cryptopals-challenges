@@ -55,14 +55,16 @@ Solving cryptopals crypo challenges https://cryptopals.com/.
 | <a href="https://cryptopals.com/sets/4/challenges/31">Challenge 31</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q47Utils.py">Utils</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q47Server.py">Server</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q47attacker.py">Attacker</a>|
 | <a href="https://cryptopals.com/sets/4/challenges/32">Challenge 32</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q48Server.py">Server</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q48attacker.py">Attacker</a> |
 
+A <a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a> demonstrating a HMAC recovery attack using a timing side channel. 
+
 ## Set 5
 
 | Challenge | Solution |
 | --- | --- |
-| <a href="https://cryptopals.com/sets/5/challenges/33">Challenge 33</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
+| <a href="https://cryptopals.com/sets/5/challenges/33">Challenge 33</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q51.py">code</a> |
 
 
-<a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a>
+
 
 # License
 
