@@ -104,6 +104,12 @@ b"Cooking MC's like a pound of bacon"
 
 Using the same approach used in [challenge 3](#challenge-3), where now we use the english score to find the most likely sequence to be encrypted by a single byte xor cipher, therefore both detecting and decrypting using the english score metric.
 
+Expected output: 
+
+Decyphered text with key: 53 and score: 2.0881317999999998 Cur line: 170 
+
+b'Now that the party is jumping\n'
+
 ### [Challenge 5](#challenge-5)
 
 ### [Challenge 6](#challenge-6)
