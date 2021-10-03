@@ -3,7 +3,7 @@ Solving cryptopals crypo challenges https://cryptopals.com/.
 
 # What is this ?
 
-This is a write up of my solutions (and POCs) to cryptopals crypto challenges. The challanges are composed of 8 sets, where each set is dedicated to a certain type of skills. The challanges main topics are: symmetric encryption using block ciphers and steam ciphers, hash functions, authentication (MAC - HMAC), public key cryptography and more. 
+This is a write up of my solutions (and POCs) to cryptopals crypto challenges. The challanges are composed of 8 sets, where each set is dedicated to a certain type of skills. The challanges main topics are: symmetric encryption using block ciphers and steam ciphers, hash functions, authentication (MAC - HMAC), public key cryptography, abstract algebra and more. 
 
 # Table of contents
 
