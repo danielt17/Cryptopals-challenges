@@ -239,6 +239,13 @@ Play that funky music
 
 ### [Challenge 8](#challenge-8)
 
+Inorder to detect which file has been encrypted by AES in ECB mode, we need to search for repeating 16 bytes blocks, as its very unlikely (2^-64 unlikely) that a repeating block will happeen for any other mode operation of AES.
+
+Expected output: 
+```python
+AES ECB encrypted file: 165
+```
+
 ## Set 2: Block crypto
 
 ### [Challenge 9](#challenge-9)
