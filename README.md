@@ -7,6 +7,8 @@ This is a write up of my solutions (and POCs) to cryptopals crypto challenges. T
 
 # Table of contents
 
+Each set has about 8 challenges, one can find in each table a link to the challenge, code solving the challenge and an explanation of the solution.
+
 ## Set 1
 
 | Challenge | Solution | Explanation |
