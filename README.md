@@ -77,9 +77,13 @@ Explanations to all solutions.
 
 Converting <a href="https://en.wikipedia.org/wiki/Hexadecimal">Hex</a> to <a href="https://en.wikipedia.org/wiki/Base64">base64</a>, by first transforming the hex string to a bytes object, afterward transforming it into base64. 
 
+Expected output: solved
+
 ### [Challenge 2](#challenge-2)
 
 Implementation of fixed <a href="https://en.wikipedia.org/wiki/Exclusive_or">xor</a> between two buffers.
+
+Expected output: Success
 
 ### [Challenge 3](#challenge-3)
 
