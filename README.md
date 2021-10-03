@@ -75,7 +75,7 @@ Explanations to all solutions.
 
 ## Set 1
 
-### [Challenge 1](#Challenge 1)
+### Challenge 1
 
 
 # License
