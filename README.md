@@ -3,9 +3,10 @@ Solving cryptopals crypo challenges https://cryptopals.com/.
 
 # Table of contents
 
+## Set 1
+
 | Challenge | Solution |
 | --- | --- |
-| Set 1 |  |
 | <a href="https://cryptopals.com/sets/1/challenges/1">Challenge 1</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
 |  |  |
 
