@@ -68,7 +68,7 @@ A <a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a> demonstrating 
 | Challenge | Solution | Explanation |
 | --- | --- | --- |
 | <a href="https://cryptopals.com/sets/5/challenges/33">Challenge 33</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q51.py">code</a> | |
-
+https://www.youtube.com/watch?v=ra_6jVZ5y1A
 
 
 
