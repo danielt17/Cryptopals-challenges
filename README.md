@@ -77,18 +77,28 @@ Explanations to all solutions.
 
 Converting <a href="https://en.wikipedia.org/wiki/Hexadecimal">Hex</a> to <a href="https://en.wikipedia.org/wiki/Base64">base64</a>, by first transforming the hex string to a bytes object, afterward transforming it into base64. 
 
-Expected output: solved
+Expected output: 
+
+solved
 
 ### [Challenge 2](#challenge-2)
 
 Implementation of fixed <a href="https://en.wikipedia.org/wiki/Exclusive_or">xor</a> between two buffers.
 
-Expected output: Success
+Expected output: 
+
+Success
 
 ### [Challenge 3](#challenge-3)
 
 The solution uses a brute force approach, trying every possible single byte key, choosing the one which results in the highest english score.
 Inorder to calculate the english score we use the <a href="https://www3.nd.edu/~busiforc/handouts/cryptography/letterfrequencies.html">distribution</a>  of letters in the english language.
+
+Expected output: 
+
+Decyphered text with key: 88 and score: 2.2641049 
+
+b"Cooking MC's like a pound of bacon"
 
 ### [Challenge 4](#challenge-4)
 
