@@ -33,33 +33,33 @@ Solving cryptopals crypo challenges https://cryptopals.com/.
 
 | Challenge | Solution |
 | --- | --- |
-| <a href="https://cryptopals.com/sets/1/challenges/1">Challenge 1</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 2</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q12.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 3</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q13.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 4</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q14.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 5</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q15.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 6</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q16.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 7</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q17.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 8</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q18.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/17">Challenge 17</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/18">Challenge 18</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q12.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/19">Challenge 19</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q13.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/20">Challenge 20</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q14.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/21">Challenge 21</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q15.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/22">Challenge 22</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q16.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/23">Challenge 23</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q17.py">code</a> |
+| <a href="https://cryptopals.com/sets/3/challenges/24">Challenge 24</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q18.py">code</a> |
 
 ## Set 4
 
 | Challenge | Solution |
 | --- | --- |
-| <a href="https://cryptopals.com/sets/1/challenges/1">Challenge 1</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 2</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q12.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 3</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q13.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 4</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q14.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 5</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q15.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 6</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q16.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 7</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q17.py">code</a> |
-| <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 8</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q18.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/25">Challenge 25</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/26">Challenge 26</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q12.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/27">Challenge 27</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q13.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/28">Challenge 28</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q14.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/29">Challenge 29</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q15.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/30">Challenge 30</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q16.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/31">Challenge 31</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q17.py">code</a> |
+| <a href="https://cryptopals.com/sets/4/challenges/32">Challenge 32</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q18.py">code</a> |
 
 ## Set 5
 
 | Challenge | Solution |
 | --- | --- |
-| <a href="https://cryptopals.com/sets/1/challenges/1">Challenge 1</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
+| <a href="https://cryptopals.com/sets/5/challenges/33">Challenge 33</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> |
 
 
 <a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a>
