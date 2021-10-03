@@ -12,7 +12,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 ## Set 1: Basics
 
 | Challenge | Solution | Explanation |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | <a href="https://cryptopals.com/sets/1/challenges/1">Challenge 1</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q11.py">code</a> | [Explanation 1](#challenge-1) |
 | <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 2</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q12.py">code</a> | [Explanation 2](#challenge-2) |
 | <a href="https://cryptopals.com/sets/1/challenges/2">Challenge 3</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q13.py">code</a> | [Explanation 3](#challenge-3) |
