@@ -59,9 +59,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | <a href="https://cryptopals.com/sets/4/challenges/29">Challenge 29</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q45.py">code</a> | [Explanation 29](#challenge-29) |
 | <a href="https://cryptopals.com/sets/4/challenges/30">Challenge 30</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q46.py">MD4 version</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q46MD5.py">MD5 version</a>| [Explanation 30](#challenge-30) |
 | <a href="https://cryptopals.com/sets/4/challenges/31">Challenge 31</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q47Utils.py">Utils</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q47Server.py">Server</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q47attacker.py">Attacker</a>| [Explanation 31](#challenge-31) |
-| <a href="https://cryptopals.com/sets/4/challenges/32">Challenge 32</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q48Server.py">Server</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q48attacker.py">Attacker</a> | [Explanation 32](#challenge-32) |
-
-A <a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a> demonstrating a HMAC recovery attack using a timing side channel. 
+| <a href="https://cryptopals.com/sets/4/challenges/32">Challenge 32</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q48Server.py">Server</a> , <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q48attacker.py">Attacker</a> | [Explanation 32](#challenge-32), <a href="https://www.youtube.com/watch?v=ra_6jVZ5y1A">video</a> demonstration of the HMAC recovery attack using a timing side channel |
 
 ## Set 5: Diffie-Hellman and friends
 
