@@ -1,5 +1,5 @@
 # Cryptopals-challenges
-Solving cryptopals crypo challenges https://cryptopals.com/.
+Solving cryptopals crypo challenges https://cryptopals.com/ in python.
 
 # What is this ?
 
