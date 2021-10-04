@@ -21,7 +21,6 @@ from Q28 import aes_cbc_encrypt,aes_cbc_decrypt
 
 IP = '127.0.0.1'
 PORT = 8820
-
 BUFFER_SIZE = 1024
 
 # %% Functions
