@@ -111,6 +111,7 @@ class CLIENT:
 def main():
     # open socket with the server.
     print('\n')
+    print('Alice \n')
     client = CLIENT()
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     my_socket.connect((IP, PORT))

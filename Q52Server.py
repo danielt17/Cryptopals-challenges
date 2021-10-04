@@ -133,6 +133,7 @@ class SERVER:
 def main():
     # open socket with client
     print('\n')
+    print('Bob \n')
     server = SERVER()
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((IP, PORT))
