@@ -21,7 +21,11 @@ from Q28 import aes_cbc_encrypt,aes_cbc_decrypt
 # %% Global variables
 
 IP = '0.0.0.0'
-PORT = 8820
+PORT = 8821
+
+# IP = '0.0.0.0'
+# PORT = 8820
+
 BUFFER_SIZE = 1024
 
 # %% Functions
