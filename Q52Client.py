@@ -71,6 +71,7 @@ class CLIENT:
             data = '0'*(4-len(str(len(data)))) + str(len(data)) + data
         elif len(str(len(data))) == 4:
             data = str(len(data)) + data
+        print('Sent command to server: ' + data + '\n')
         my_socket.send(data.encode())
         pass
     
@@ -78,6 +79,7 @@ class CLIENT:
         """Receive the response from the server and handle it, according to the request"""
         if request == 'GET_CIPHER_SUIT' or request == 'AGREED_CIPHER_SUIT' or request == 'SEND_PUBLIC_KEY' or 'SEND_ENCRYPTED':
             gotData = my_socket.recv(BUFFER_SIZE).decode()
+            print('Received command from server: ' + gotData + '\n')
             if request == 'GET_CIPHER_SUIT':
                 availableSuits = gotData.split('&')
                 if self.cipherSuit in availableSuits:

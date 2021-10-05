@@ -32,8 +32,10 @@ class MITM:
     def __init__(self):
         self.p = None
         self.g = None
-        self.A = None
-        self.B = None
+        self.Aoriginal = None
+        self.Acrafted = None
+        self.Boriginal = None
+        self.Bcrafted = None
         self.deffieHellman = None
         self.s = None
         self.cipherSuit = 'DH_AES_CBC'
@@ -82,11 +84,26 @@ class MITM:
                 raise Exception('Cant preform man in the middle, no matching cipher suit')
             data = self.request + ' ' + params
         elif command == 'SEND_PUBLIC_KEY':
-            data = ''
+            blocks = params.split('&')
+            self.p = int(blocks[0].split('=')[1])
+            self.g = int(blocks[1].split('=')[1])
+            self.Aoriginal = int(blocks[2].split('=')[1])
+            self.deffieHellman = DiffieHellman(self.p,self.g)
+            self.Acrafted = self.p
+            self.Bcrafted = self.p
+            # for A = p one expects s = 0 because of A^b mod p = p^b mod p = 0
+            self.s = self.deffieHellman.shared_secret(self.Bcrafted)
+            self.key = unhexlify(SHA1(long_to_bytes(self.s)))[:16]
+            data = 'SEND_PUBLIC_KEY' + ' ' + 'p=' + str(self.p) + '&' + 'g=' + str(self.g) + '&' + 'A=' + str(self.Acrafted)
         elif command == 'SEND_ENCRYPTED':
-            data = ''
+            blocks = params.split('&')
+            cipherText = unhexlify(blocks[0][len('cipherText='):])
+            self.ivAlice = unhexlify(blocks[1][len('iv='):])
+            self.sendMessage = aes_cbc_decrypt(cipherText,self.key,self.ivAlice).decode()
+            print('Decrypted text from Alice: ' + self.sendMessage + '\n')
+            data = command + ' ' + params
         elif command == 'EXIT':
-            data = ''
+            data = 'Stopping the connection'
         if len(str(len(data))) < 4:
             data = '0'*(4-len(str(len(data)))) + str(len(data)) + data
         elif len(str(len(data))) == 4:
@@ -104,8 +121,13 @@ class MITM:
         elif self.request == 'AGREED_CIPHER_SUIT':
             data = gotData
         elif self.request == 'SEND_PUBLIC_KEY':
-            data = gotData
+            self.Boriginal = int(gotData)
+            data = str(self.Bcrafted)
         elif self.request == 'SEND_ENCRYPTED':
+            blocks = gotData.split('&')
+            cipherText = unhexlify(blocks[0]); self.ivBob = unhexlify(blocks[1])
+            self.recivedMessage = aes_cbc_decrypt(cipherText,self.key,self.ivBob).decode()
+            print('Decrypted text from Bob: ' + self.recivedMessage + '\n')
             data = gotData
         return data
     
@@ -139,6 +161,11 @@ def main():
     print('Receiving cipher suit request from alice, getting anwser from bob, forcing our choice of cipher suit: ' + ManInTheMiddle.cipherSuit + '\n')
     ManInTheMiddle.receive_from_alice_send_to_bob_and_receive_send_back_to_alice(alice_socket, bob_socket)
     print('Agreed cipher suit communication \n')
+    ManInTheMiddle.receive_from_alice_send_to_bob_and_receive_send_back_to_alice(alice_socket, bob_socket)
+    print('Man in the middle with respect to A,B parameters of Deffie-Hellman key exchange')
+    ManInTheMiddle.receive_from_alice_send_to_bob_and_receive_send_back_to_alice(alice_socket, bob_socket)
+    print('Generated shared secret: ' + str(ManInTheMiddle.s) + '\n')
+    print('Decrypting communication between Alice and Bob \n')
     ManInTheMiddle.receive_from_alice_send_to_bob_and_receive_send_back_to_alice(alice_socket, bob_socket)
     print('Closing connection with Bob\n')
     bob_socket.close()

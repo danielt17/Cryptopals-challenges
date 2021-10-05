@@ -59,6 +59,7 @@ class SERVER:
         """
         
         data = client_socket.recv(BUFFER_SIZE).decode();
+        print('Received command from client: ' + data + '\n')
         if int(data[:4]) == len(data[4:]):
             try:
                 data_split = data[4:].split(' ')
@@ -130,6 +131,7 @@ class SERVER:
         valid, error_msg = self.check_client_request(command, params)
         if valid:
             response = self.handle_client_request(command, params)
+            print('Sent response to client: ' + response + '\n')
             self.send_response_to_client(response, client_socket)
         else:
             self.send_response_to_client(error_msg, client_socket)
