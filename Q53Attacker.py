@@ -95,7 +95,7 @@ class MITM:
             elif self.g == self.p:
                 self.s = [0] 
             elif self.g == (self.p - 1): # s = (p-1)^ab mod p = (-1)^ab mod p
-                self.s = [1,-1]
+                self.s = [1,self.p-1] # p-1 mod p = -1
             self.key = []
             for sCur in self.s:
                 self.key.append(unhexlify(SHA1(long_to_bytes(sCur)))[:16])

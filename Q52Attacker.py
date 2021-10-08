@@ -12,10 +12,9 @@ Created on Tue Oct  5 16:41:58 2021
 from Q44 import SHA1
 from Crypto.Util.number import long_to_bytes
 from Q51 import DiffieHellman
-from Crypto.Random import get_random_bytes
 import socket
 from binascii import unhexlify
-from Q28 import aes_cbc_encrypt,aes_cbc_decrypt
+from Q28 import aes_cbc_decrypt
 
 # %% Global variables
 
