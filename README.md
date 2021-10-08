@@ -320,6 +320,63 @@ AES ECB encrypted file: 165
 
 ### [Challenge 40](#challenge-40)
 
+## Set 6: RSA and DSA
+
+### [Challenge 41](#challenge-41)
+
+### [Challenge 42](#challenge-42)
+
+### [Challenge 43](#challenge-43)
+
+### [Challenge 44](#challenge-44)
+
+### [Challenge 45](#challenge-45)
+
+### [Challenge 46](#challenge-46)
+
+### [Challenge 47](#challenge-47)
+
+### [Challenge 48](#challenge-48)
+
+## Set 7: Hashes
+
+### [Challenge 49](#challenge-49)
+
+### [Challenge 50](#challenge-50)
+
+### [Challenge 51](#challenge-51)
+
+### [Challenge 52](#challenge-52)
+
+### [Challenge 53](#challenge-53)
+
+### [Challenge 54](#challenge-54)
+
+### [Challenge 55](#challenge-55)
+
+### [Challenge 56](#challenge-56)
+
+## Set 8: Abstract Algebra
+
+### [Challenge 57](#challenge-57)
+
+### [Challenge 58](#challenge-58)
+
+### [Challenge 59](#challenge-59)
+
+### [Challenge 60](#challenge-60)
+
+### [Challenge 61](#challenge-61)
+
+### [Challenge 62](#challenge-62)
+
+### [Challenge 63](#challenge-63)
+
+### [Challenge 64](#challenge-64)
+
+### [Challenge 65](#challenge-65)
+
+### [Challenge 66](#challenge-66)
 
 
 # License
