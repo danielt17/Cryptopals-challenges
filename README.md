@@ -74,6 +74,47 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | <a href="https://cryptopals.com/sets/5/challenges/39">Challenge 39</a> | | [Explanation 39](#challenge-39) |
 | <a href="https://cryptopals.com/sets/5/challenges/40">Challenge 40</a> | | [Explanation 40](#challenge-40) |
 
+## Set 6: RSA and DSA
+
+| Challenge | Solution | Explanation |
+| :---: | :---: | :---: |
+| <a href="https://cryptopals.com/sets/6/challenges/41">Challenge 41</a> | | [Explanation 41](#challenge-41) |
+| <a href="https://cryptopals.com/sets/6/challenges/42">Challenge 42</a> | | [Explanation 42](#challenge-42) |
+| <a href="https://cryptopals.com/sets/6/challenges/43">Challenge 43</a> | | [Explanation 43](#challenge-43) |
+| <a href="https://cryptopals.com/sets/6/challenges/44">Challenge 44</a> | | [Explanation 44](#challenge-44) |
+| <a href="https://cryptopals.com/sets/6/challenges/45">Challenge 45</a> | | [Explanation 45](#challenge-45) |
+| <a href="https://cryptopals.com/sets/6/challenges/46">Challenge 46</a> | | [Explanation 46](#challenge-46) |
+| <a href="https://cryptopals.com/sets/6/challenges/47">Challenge 47</a> | | [Explanation 47](#challenge-47) |
+| <a href="https://cryptopals.com/sets/6/challenges/48">Challenge 48</a> | | [Explanation 48](#challenge-48) |
+
+## Set 7: Hashes
+
+| Challenge | Solution | Explanation |
+| :---: | :---: | :---: |
+| <a href="https://cryptopals.com/sets/7/challenges/49">Challenge 49</a> | | [Explanation 49](#challenge-49) |
+| <a href="https://cryptopals.com/sets/7/challenges/50">Challenge 50</a> | | [Explanation 50](#challenge-50) |
+| <a href="https://cryptopals.com/sets/7/challenges/51">Challenge 51</a> | | [Explanation 51](#challenge-51) |
+| <a href="https://cryptopals.com/sets/7/challenges/52">Challenge 52</a> | | [Explanation 52](#challenge-52) |
+| <a href="https://cryptopals.com/sets/7/challenges/53">Challenge 53</a> | | [Explanation 53](#challenge-53) |
+| <a href="https://cryptopals.com/sets/7/challenges/54">Challenge 54</a> | | [Explanation 54](#challenge-54) |
+| <a href="https://cryptopals.com/sets/7/challenges/55">Challenge 55</a> | | [Explanation 55](#challenge-55) |
+| <a href="https://cryptopals.com/sets/7/challenges/56">Challenge 56</a> | | [Explanation 56](#challenge-56) |
+
+## Set 8: Abstract Algebra
+
+| Challenge | Solution | Explanation |
+| :---: | :---: | :---: |
+| <a href="https://toadstyle.org/cryptopals/513b590b41d19eff3a0aa028023349fd.txt">Challenge 57</a> | | [Explanation 57](#challenge-57) |
+| <a href="https://toadstyle.org/cryptopals/3e17c7b35fcf491d08c989081ed18c9a.txt">Challenge 58</a> | | [Explanation 58](#challenge-58) |
+| <a href="https://toadstyle.org/cryptopals/a0833e607878a80fdc0808f889c721b1.txt">Challenge 59</a> | | [Explanation 59](#challenge-59) |
+| <a href="https://toadstyle.org/cryptopals/c53b90a3e9e753ddad56edbbd33838aa.txt">Challenge 60</a> | | [Explanation 60](#challenge-60) |
+| <a href="https://toadstyle.org/cryptopals/809dccecda0e94ea588d66c12a1cf593.txt">Challenge 61</a> | | [Explanation 61](#challenge-61) |
+| <a href="https://toadstyle.org/cryptopals/76f2e314809b2a34ce9ff0d2a08f7a7f.txt">Challenge 62</a> | | [Explanation 62](#challenge-62) |
+| <a href="https://toadstyle.org/cryptopals/2dfbf7e58fd43c140b62485f8d90bebe.txt">Challenge 63</a> | | [Explanation 63](#challenge-63) |
+| <a href="https://toadstyle.org/cryptopals/1d79ee513b73e1e0367eae2297e9f234.txt">Challenge 64</a> | | [Explanation 64](#challenge-64) |
+| <a href="https://toadstyle.org/cryptopals/a1a2e7311ec5f2535ec46eaebd4588f0.txt">Challenge 65</a> | | [Explanation 65](#challenge-65) |
+| <a href="https://toadstyle.org/cryptopals/66.txt">Challenge 66</a> | | [Explanation 66](#challenge-66) |
+
 # Write up
 
 Explanations to all solutions.
