@@ -66,6 +66,8 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | Challenge | Solution | Explanation |
 | :---: | :---: | :---: |
 | <a href="https://cryptopals.com/sets/5/challenges/33">Challenge 33</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q51.py">code</a> | [Explanation 33](#challenge-33) |
+| <a href="https://cryptopals.com/sets/5/challenges/34">Challenge 34</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q52Client.py">Client</a>, <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q52Server.py">Server</a>, <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q52Attacker.py">Attacker</a> | [Explanation 34](#challenge-34) |
+| <a href="https://cryptopals.com/sets/5/challenges/35">Challenge 35</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q53Client.py">Client</a>, <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q53Server.py">Server</a>, <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q53Attacker.py">Attacker</a> | [Explanation 35](#challenge-35) |
 
 # Write up
 
