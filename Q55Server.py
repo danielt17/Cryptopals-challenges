@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Oct  8 18:00:49 2021
+Created on Sat Oct  9 15:51:29 2021
 
 @author: danie
 """
 
-# https://cryptopals.com/sets/5/challenges/36
+
+# https://cryptopals.com/sets/5/challenges/37
 
 # %% Imports
 
@@ -111,6 +112,7 @@ class SERVER:
                 data = 'Stop hacking!'
         elif command == 'SEND_HMAC':
             S = modexp(self.A *modexp(self.v,self.u,self.N),self.b,self.N)
+            print('Generated S: ' + str(S) + '\n')
             K = sha256(str(S).encode()).digest()
             if params == HMAC_SHA256(K, str(self.salt).encode()):
                 data = 'OK'
@@ -146,11 +148,14 @@ def main():
     print('First time login parameters acknowledged\n')
     server.receive_and_send_response(client_socket)
     print('User name: ' + str(server.I) + ', salt: ' + str(server.salt) + ', password verifier: ' + str(server.v) + '.\n')
-    print('Sequential logins:')
-    server.receive_and_send_response(client_socket)
-    server.receive_and_send_response(client_socket)
-    print('Close connection\n')
     client_socket.close()
+    for i in range(3):
+        client_socket, address = server_socket.accept()
+        print('Sequential logins:')
+        server.receive_and_send_response(client_socket)
+        server.receive_and_send_response(client_socket)
+        print('Close connection\n')
+        client_socket.close()
     server_socket.close()
 
 # %% Main
