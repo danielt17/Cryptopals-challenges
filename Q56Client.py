@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Oct  9 15:38:28 2021
+Created on Sat Oct  9 17:22:53 2021
 
 @author: danie
 """
 
-
-# https://cryptopals.com/sets/5/challenges/37
+# https://cryptopals.com/sets/5/challenges/38
 
 # %% Imports
 
@@ -15,6 +14,7 @@ from random import randint
 from Q51 import modexp
 from hashlib import sha256
 from Q54Utils import HMAC_SHA256
+
 
 # %% Global variables
 
@@ -28,7 +28,7 @@ class CLIENT:
     
     # Secure Remote Password (SRP) Protocol for TLS Authentication
     # https://datatracker.ietf.org/doc/html/rfc5054
-    def __init__(self,I,P,A=None):
+    def __init__(self,I,P):
         self.N =    int('AC6BDB41 324A9A9B F166DE5E 1389582F AF72B665 1987EE07 FC319294\
                     3DB56050 A37329CB B4A099ED 8193E075 7767A13D D52312AB 4B03310D\
                     CD7F48A9 DA04FD50 E8083969 EDB767B0 CF609517 9A163AB3 661A05FB\
@@ -45,7 +45,7 @@ class CLIENT:
         self.P = P
         self.commands = ['SET_FIRST_CONTACT','SEND_PUBLIC_KEY','SEND_HMAC']
         self.a = None
-        self.A = A
+        self.A = None
         self.salt = None
         self.B = None
         
@@ -69,17 +69,14 @@ class CLIENT:
             data = data + ' ' + 'N=' + str(self.N) + '&g=' + str(self.g) + '&k=' + str(self.k) + '&I=' + str(self.I) + '&P=' + str(self.P)
         elif request == 'SEND_PUBLIC_KEY':
             self.a = randint(0,self.N)
-            if None is self.A:
-                self.A = modexp(self.g,self.a,self.N)
+            self.A = modexp(self.g,self.a,self.N)
             data = data + ' ' + 'I=' + str(self.I) + '&A=' + str(self.A)
         elif request == 'SEND_HMAC':
             xH = sha256(str(self.salt).encode() + self.P.encode()).hexdigest()
             x = int(xH,16)
-            S = modexp((self.B - self.k * modexp(self.g,x,self.N)),self.a + self.u * x,self.N)
-            print('Generated S: ' + str(S) + '\n')
-            S = 0 # the otherside will generate zero always for inputs modoulo N
-            print('Forced hacked S: ' + str(S) + '\n')
+            S = modexp(self.B,self.a + self.u * x,self.N)
             K = sha256(str(S).encode()).digest()
+            print('secret: ' + str(S))
             data = data + ' ' + HMAC_SHA256(K,str(self.salt).encode())
             del x,xH,S,K
         if len(str(len(data))) < 4:
@@ -101,8 +98,8 @@ class CLIENT:
                 blocks = gotData.split('&')
                 self.salt = int(blocks[0].split('=')[1])
                 self.B = int(blocks[1].split('=')[1])
-                self.u = int(sha256(str(self.A).encode()+str(self.B).encode()).hexdigest(),16)
-                data = 'Generated u: ' + str(self.u) + '\n'
+                self.u = int(blocks[2].split('=')[1])
+                data = 'Recieved u: ' + str(self.u) + '\n'
             elif request == 'SEND_HMAC':
                 data = gotData
         return data
@@ -118,33 +115,30 @@ class CLIENT:
 
 def main():
     print('\n')
-    print('Welcome to breaking secure remote password (SRP) protocol with a zero key:\n')
+    print('Welcome to offline dictionary attack against simplified secure remote password (SRP) protocol:\n')
     print('\n')
     print('Alice \n')
     print('Please enter your credentials below\n')
-    I = input('Please enter your mail:\n')
-    P = input('Please enter your password:\n')
+    I = 'Alice@gmail.com'
+    P = str(randint(0,2**12))
+    print('Password: ' + P)
     client = CLIENT(I,P)
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     my_socket.connect((IP, PORT))
     print('Setting up login parameters for the first time:\n')
     client.send_and_recive(my_socket, 'SET_FIRST_CONTACT')
     my_socket.close()
-    As = [0,client.N,client.N**2]
-    for A in As:
-        print('Hacked public key A: ' + str(A)  + '\n')
-        my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        my_socket.connect((IP, PORT))
-        client = CLIENT(I,P,A)
-        print('Attacking:\n')
-        client.send_and_recive(my_socket, 'SEND_PUBLIC_KEY')
-        print(client.receivedData)
-        client.send_and_recive(my_socket, 'SEND_HMAC')
-        if client.receivedData == 'OK':
-            print('Succsefully entered the server \n')
-        else:
-            print('Failed to enter the server \n')
-        my_socket.close()
+    my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    my_socket.connect((IP, PORT))
+    print('Sequential logins:\n')
+    client.send_and_recive(my_socket, 'SEND_PUBLIC_KEY')
+    print(client.receivedData)
+    client.send_and_recive(my_socket, 'SEND_HMAC')
+    if client.receivedData == 'OK':
+        print('Succsefully entered the server')
+    else:
+        print('Failed to enter the server')
+    my_socket.close()
 
 
 # %% Main
