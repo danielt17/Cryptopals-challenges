@@ -106,7 +106,7 @@ def rsa(plainText,print_procedure = False):
     return plainTextRecovered
 
 def str_to_num_for_rsa(string):
-    return int(string.encode().hex(),16)
+    return int(str(string).encode().hex(),16)
 
 def num_to_str_for_rsa(number):
     return bytes.fromhex(hex(number)[2:]).decode()
@@ -114,8 +114,8 @@ def num_to_str_for_rsa(number):
 # %% Main
 
 if __name__ == '__main__':
-    plainText = 42
-    rsa(plainText,print_procedure = True)
+    plainText = str_to_num_for_rsa(42)
+    print('Recovred plain text: ' + num_to_str_for_rsa(rsa(plainText,print_procedure = True)))
     plainText = 'Hello there!'
     print('\n \n \n \n \n \n')
     print('Plain text: ' + str(plainText) + '\n')
