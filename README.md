@@ -78,7 +78,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 
 | Challenge | Solution | Explanation |
 | :---: | :---: | :---: |
-| <a href="https://cryptopals.com/sets/6/challenges/41">Challenge 41</a> | | [Explanation 41](#challenge-41) |
+| <a href="https://cryptopals.com/sets/6/challenges/41">Challenge 41</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q61.py">code</a> | [Explanation 41](#challenge-41) |
 | <a href="https://cryptopals.com/sets/6/challenges/42">Challenge 42</a> | | [Explanation 42](#challenge-42) |
 | <a href="https://cryptopals.com/sets/6/challenges/43">Challenge 43</a> | | [Explanation 43](#challenge-43) |
 | <a href="https://cryptopals.com/sets/6/challenges/44">Challenge 44</a> | | [Explanation 44](#challenge-44) |
