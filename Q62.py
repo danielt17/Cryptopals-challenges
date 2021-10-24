@@ -105,8 +105,8 @@ def forge_signature(message_to_be_forged,key_length = 1024):
     block_format = b'\x00\x01\xff\x00' + ASN1_SHA1 + unhexlify(SHA1(message_to_be_forged))
     garbage = b'\xff'+ b'\x00' * (key_length//8-len(block_format)) # have to add at the start something other than \x00 because for some very odd reason it desregard the next numbers otherwise
     block_format =  block_format + garbage
-    pre_encryption = bytes_to_int(block_format)
-    forged_signature = find_invpow(pre_encryption,3)
+    block_format_int = bytes_to_int(block_format)
+    forged_signature = find_invpow(block_format_int,3)
     print('Forged encrypted signature: \n')
     print_certificate(int_to_bytes(forged_signature))
     return forged_signature
