@@ -37,6 +37,10 @@ def estimate_private_key(m1,s1,m2,s2,q):
     return estimated_k
 
 def brute_force_key(data,y,p,q,g):
+    print('Brute force over messages to find the repeated nonce k\n')
+    print('   1. Taking two messages. \n')
+    print('   2. estimating k by: (m1 - m2)/(s1-s2) % q. \n')
+    print('   3. estimating private key by: ((s * k) - H(msg)/r) mod q. \n')
     n_samples = len(data)
     for i in range(n_samples):
         for j in range(n_samples):
