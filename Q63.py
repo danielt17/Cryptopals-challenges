@@ -5,14 +5,6 @@ Created on Fri Oct 29 20:10:03 2021
 @author: danie
 """
 
-
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 23 14:27:51 2021
-
-@author: danie
-"""
-
 # https://cryptopals.com/sets/6/challenges/43
 
 # %% Imports
