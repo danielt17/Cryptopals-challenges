@@ -6,7 +6,7 @@ Created on Sat Feb 12 15:41:58 2022
 """
 
 
-# https://cryptopals.com/sets/6/challenges/41
+# https://cryptopals.com/sets/6/challenges/46
 
 # %% Imports
 
