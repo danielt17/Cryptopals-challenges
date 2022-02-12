@@ -79,9 +79,9 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | Challenge | Solution | Explanation |
 | :---: | :---: | :---: |
 | <a href="https://cryptopals.com/sets/6/challenges/41">Challenge 41</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q61.py">code</a> | [Explanation 41](#challenge-41) |
-| <a href="https://cryptopals.com/sets/6/challenges/42">Challenge 42</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q62.py">code</a> | [Explanation 42](#challenge-42)| [Explanation 42](#challenge-42) |
-| <a href="https://cryptopals.com/sets/6/challenges/43">Challenge 43</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q63.py">code</a> | [Explanation 43](#challenge-43) | [Explanation 43](#challenge-43) |
-| <a href="https://cryptopals.com/sets/6/challenges/44">Challenge 44</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q64.py">code</a> | [Explanation 44](#challenge-44) | [Explanation 44](#challenge-44) |
+| <a href="https://cryptopals.com/sets/6/challenges/42">Challenge 42</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q62.py">code</a> | [Explanation 42](#challenge-42) |
+| <a href="https://cryptopals.com/sets/6/challenges/43">Challenge 43</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q63.py">code</a> | [Explanation 43](#challenge-43) |
+| <a href="https://cryptopals.com/sets/6/challenges/44">Challenge 44</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q64.py">code</a> | [Explanation 44](#challenge-44) |
 | <a href="https://cryptopals.com/sets/6/challenges/45">Challenge 45</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q65.py">code</a> | [Explanation 45](#challenge-45) |
 | <a href="https://cryptopals.com/sets/6/challenges/46">Challenge 46</a> | | [Explanation 46](#challenge-46) |
 | <a href="https://cryptopals.com/sets/6/challenges/47">Challenge 47</a> | | [Explanation 47](#challenge-47) |
