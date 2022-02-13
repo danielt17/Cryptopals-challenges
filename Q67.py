@@ -144,21 +144,31 @@ def Bleichenbacher_98_attack(RSA,cipherText,public_key):
 if __name__ == '__main__':
     print('\n\n\n')
     print("Bleichenbacher's PKCS 1.5 padding oracle attack (Simple case): \n")
-    print('\n\n\n')
-    prime_size = 128
-    plainText = b"kick it, CC"
-    RSA = RSAPCKS1PaddingOracle(prime_size)
-    print('Plain text to be encrypted: ' + str(plainText) + '\n')
-    cipherText = RSA.encrypt(plainText)
-    print('Cipher text to be sent over unsecure line: ' + str(cipherText) + '\n')
-    print('Interecpting cipher text using man in the middle, received data:\n')
-    public_key = RSA.send_public_key()
-    print('Received public key: ' + str(public_key))
-    print('Received cipher text: ' + str(cipherText) + '\n')
-    print('\n\n\n')
-    recovered_plainText = Bleichenbacher_98_attack(RSA,cipherText,public_key)
     print('Important this version of the attack works sometimes for small prime sizes (16), to see the full version go to Q68.\n')
     print('\n\n\n')
+    prime_size = 16
+    plainText = b"kick it, CC"
+    while True:
+        try:
+            RSA = RSAPCKS1PaddingOracle(prime_size)
+            print('Plain text to be encrypted: ' + str(plainText) + '\n')
+            cipherText = RSA.encrypt(plainText)
+            print('Cipher text to be sent over unsecure line: ' + str(cipherText) + '\n')
+            print('Interecpting cipher text using man in the middle, received data:\n')
+            public_key = RSA.send_public_key()
+            print('Received public key: ' + str(public_key))
+            print('Received cipher text: ' + str(cipherText) + '\n')
+            print('\n\n\n')
+            recovered_plainText = Bleichenbacher_98_attack(RSA,cipherText,public_key)
+            if len(recovered_plainText) == 0:
+                continue
+            print('\n\n\n')
+            break
+        except:
+            print('\n\n\n\n\n\n')
+            print('Exception reached!')
+            print('\n\n\n\n\n\n')
+    print('Recovered plain text: ' + str(recovered_plainText[0]) + '\n')
     
 
 
