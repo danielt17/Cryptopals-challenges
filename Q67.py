@@ -115,6 +115,7 @@ def Bleichenbacher_98_attack(RSA,cipherText,public_key):
             s_next = ceil((2 * B + r_cur * n)/M[1])
         else:
             s_next = s_next + 1
+    # Step 3: arrowing the set of solutions
     print('Step 3: Narrowing the set of solutions.\n')
     r_lower = ceil((M[0] * s_next - 3 * B + 1)/n)
     r_upper = floor((M[1]*s_next - 2 * B)/n)
@@ -123,9 +124,10 @@ def Bleichenbacher_98_attack(RSA,cipherText,public_key):
         upper = max(M[0],ceil((2 * B + rs * n)/s_next))
         lower = min(M[1],floor((3 * B - 1  + rs * n)/s_next))
         Ms.append([upper,lower])
+    # Step 4: Computing the solution
+    print('Step 4: Computing the solution.\n')
     if len(Ms) == 1:
         amount = Ms[0][1] - Ms[0][0]
-        print('Amount: ' + str(amount) + '\n')
         if amount <= 100:
             m = []
             for value in range(Ms[0][0],Ms[0][1]):
