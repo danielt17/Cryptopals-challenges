@@ -15,7 +15,6 @@ from Q57 import generate_prime_number,invmod
 from Crypto.Util.number import long_to_bytes
 import sys
 from random import getrandbits
-from math import ceil,floor
 
 sys.setrecursionlimit(1500)
 
@@ -84,59 +83,100 @@ class RSAPCKS1PaddingOracle:
             return decrypted_text[(i + 1):]
         else:
             raise Exception('Decryption failed!')
+            
+    def remove_pkcs(self,text):
+        i = 2
+        while text[i] != 0:
+            i = i + 1
+        return text[(i + 1):]
         
-def Bleichenbacher_98_attack(RSA,cipherText,public_key):
+def ceil(a, b):
+    return (a + b - 1) // b
+
+def append_and_merge(intervals, lower_bound, upper_bound):
+    for i, (a, b) in enumerate(intervals):
+        if not (b < lower_bound or a > upper_bound):
+            new_a = min(lower_bound, a)
+            new_b = max(upper_bound, b)
+            intervals[i] = new_a, new_b
+            return
+    intervals.append((lower_bound, upper_bound))
+
+def Bleichenbacher_98_attack(ciphertext, RSA):
     # Implementation of Bleichenbacher's 98 attack
     # Taken from the paper: Chosen Ciphertext Attacks Against Protocols Based on the RSA Encryption Standard PKCS #1
     # Link: http://archiv.infsec.ethz.ch/education/fs08/secsem/bleichenbacher98.pdf
     print("Starting Bleichenbacher's PKCS 1.5 attack: \n")
-    c = cipherText; e = public_key[0]; n = public_key[1];
-    B = 2**(8*(RSA.k-2))
+    e = RSA.e; n = RSA.n;
+    B = 2 ** (8 * (RSA.k - 2))
     # Step 1: Blinding. (we don't actually need it cause c is known to be PKCS conforming)
+    c = cipherText
     print('Step 1: Blinding.\n')
     print('Intializing c (the cipher text is already PKCS conforming): ' + str(c) + '\n')
-    M = [2*B, 3*B - 1] # This is the range between \x00\x02\x00...\x00  to \x00\x02\xff...\xff
+    M = [(2 * B, 3 * B - 1)] # This is the range between \x00\x02\x00...\x00  to \x00\x02\xff...\xff
     print('Intializing M limits [2*B, 3*B-1]: ' + str(M) + '\n')
     i = 1;
+    Calls_to_oracle = 0;
     print('Intializing i: ' + str(i) + '\n')
-    # Step 2: Searching for PKCS conforming messages
-    print('Step 2: Searching for PKCS conforming messages.\n')
-    print('Step 2.a: Starting the search.\n')
-    s_cur = ceil(n/(3*B))
-    while not RSA.padding_oracle((c * modexp(s_cur, e, n)) % n):
-        s_cur = s_cur + 1
-    print('Step 2.b: Searching with more than one interval left. --- CURRENTLY NOT IMPLEMENTED! --- \n')
-    print('Step 2.c: Searching with one interval left.\n')
-    r_cur = ceil(2 * (M[1] * s_cur - 2 * B)/n)
-    s_next = ceil((2 * B + r_cur * n)/M[1])
-    while not RSA.padding_oracle((c * modexp(s_next, e, n)) % n):
-        if s_next == floor((3 * B + r_cur * n)/M[0]):
-            r_cur = r_cur + 1
-            s_next = ceil((2 * B + r_cur * n)/M[1])
-        else:
-            s_next = s_next + 1
-    # Step 3: arrowing the set of solutions
-    print('Step 3: Narrowing the set of solutions.\n')
-    r_lower = ceil((M[0] * s_next - 3 * B + 1)/n)
-    r_upper = floor((M[1]*s_next - 2 * B)/n)
-    Ms = []
-    for rs in range(r_lower,r_upper + 1):
-        upper = max(M[0],ceil((2 * B + rs * n)/s_next))
-        lower = min(M[1],floor((3 * B - 1  + rs * n)/s_next))
-        Ms.append([upper,lower])
+    print("Starting Bleichenbacher's attack iterative loop:\n")
+    while True:
+        print('Iteration number: ' + str(i) + '\n')
+        print('--------------------------------------\n')
+        # Step 2: Searching for PKCS conforming messages
+        print('Step 2: Searching for PKCS conforming messages.\n')
+        if i == 1:
+            print('Step 2.a: Starting the search.\n')
+            s = ceil(n,3*B)
+            while not RSA.padding_oracle((c * modexp(s, e, n)) % n):
+                s = s + 1
+                Calls_to_oracle += 1
+                if Calls_to_oracle % 10000 == 0:
+                    print('Calls to Oracle: ' + str(Calls_to_oracle))
+        elif len(M) >= 2:
+            print('Step 2.b: Searching with more than one interval left.\n')
+            s = s + 1
+            while not RSA.padding_oracle((c * modexp(s, e, n)) % n):
+                s = s + 1
+                Calls_to_oracle += 1
+                if Calls_to_oracle % 10000 == 0:
+                    print('Calls to Oracle: ' + str(Calls_to_oracle))
+        elif i > 1 and len(M) == 1:
+            print('Step 2.c: Searching with one interval left.\n')
+            a = M[0][0]; b = M[0][1];
+            if a == b: break
+            r = ceil(2*(b * s - 2 * B),n)
+            s = ceil(2 * B + r * n,b)
+            while not RSA.padding_oracle((c * modexp(s, e, n)) % n):
+                s = s + 1
+                if s > (3 * B + r * n)//a:
+                    r = r + 1
+                    s = ceil(2 * B + r * n,b) 
+                Calls_to_oracle += 1
+                if Calls_to_oracle % 10000 == 0:
+                    print('Calls to Oracle: ' + str(Calls_to_oracle))
+        # Step 3: arrowing the set of solutions
+        print('Step 3: Narrowing the set of solutions.\n')
+        Ms = []
+        for j in range(len(M)):
+            a = M[j][0]; b = M[j][1]
+            r_lower = ceil(a * s - (3 * B) + 1,n)
+            r_upper = (b * s - (2 * B))//n
+            for r in range(r_lower,r_upper + 1):
+                lower = max(a,ceil(2 * B + r * n,s))
+                upper = min(b,(3 * B - 1  + r * n)//s)
+                # if lower > upper:
+                    # raise Exception('Lower is bigger than upper!')
+                append_and_merge(Ms, lower, upper)
+        if len(Ms) == 0:
+            raise Exception('Unexpected error: there are 0 intervals.')
+        M = Ms
+        i = i + 1
+        print('Current limits: ' + str(M) + '\n')
     # Step 4: Computing the solution
     print('Step 4: Computing the solution.\n')
-    if len(Ms) == 1:
-        amount = Ms[0][1] - Ms[0][0]
-        if amount <= 100:
-            m = []
-            for value in range(Ms[0][0],Ms[0][1]):
-                m.append(long_to_bytes(value % n,RSA.k))
-            return m
-        else:
-            raise Exception('To many values inside single union: ' + str(amount))
-    else:
-        raise Exception('To many values in union (' +  str(len(Ms)) + '), we solve this case in Q68')
+    m = M[0][0] % n
+    print('Solution: ' + str(m) + '\n')
+    return m
     
         
 # %% Main
@@ -146,29 +186,24 @@ if __name__ == '__main__':
     print("Bleichenbacher's PKCS 1.5 padding oracle attack (Simple case): \n")
     print('Important this version of the attack works sometimes for small prime sizes (16), to see the full version go to Q68.\n')
     print('\n\n\n')
-    prime_size = 16
+    prime_size = 128
     plainText = b"kick it, CC"
-    while True:
-        try:
-            RSA = RSAPCKS1PaddingOracle(prime_size)
-            print('Plain text to be encrypted: ' + str(plainText) + '\n')
-            cipherText = RSA.encrypt(plainText)
-            print('Cipher text to be sent over unsecure line: ' + str(cipherText) + '\n')
-            print('Interecpting cipher text using man in the middle, received data:\n')
-            public_key = RSA.send_public_key()
-            print('Received public key: ' + str(public_key))
-            print('Received cipher text: ' + str(cipherText) + '\n')
-            print('\n\n\n')
-            recovered_plainText = Bleichenbacher_98_attack(RSA,cipherText,public_key)
-            if len(recovered_plainText) == 0:
-                continue
-            print('\n\n\n')
-            break
-        except:
-            print('\n\n\n\n\n\n')
-            print('Exception reached!')
-            print('\n\n\n\n\n\n')
-    print('Recovered plain text: ' + str(recovered_plainText[0]) + '\n')
+    RSA = RSAPCKS1PaddingOracle(prime_size)
+    print('Plain text to be encrypted: ' + str(plainText) + '\n')
+    cipherText = RSA.encrypt(plainText)
+    print('Cipher text to be sent over unsecure line: ' + str(cipherText) + '\n')
+    print('Interecpting cipher text using man in the middle, received data:\n')
+    public_key = RSA.send_public_key()
+    print('Received public key: ' + str(public_key))
+    print('Received cipher text: ' + str(cipherText) + '\n')
+    print('\n\n\n')
+    recovered_plainText = Bleichenbacher_98_attack(cipherText, RSA)
+    print('Actual plain text: ' + str(long_to_bytes(RSA.decrypt(cipherText),RSA.k)) + '\n')
+    print('Recovered plain text: ' + str(long_to_bytes(recovered_plainText,RSA.k)) + '\n')
+    print('Remove padding: \n')
+    print('Actual plain text: ' + str(plainText) + '\n')
+    print('Recovered plain text: ' + str(RSA.remove_pkcs(long_to_bytes(recovered_plainText))) + '\n')
+    print('\n\n\n')
     
 
 
