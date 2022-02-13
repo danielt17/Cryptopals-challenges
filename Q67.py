@@ -15,6 +15,7 @@ from Q57 import generate_prime_number,invmod
 from Crypto.Util.number import long_to_bytes
 import sys
 from random import getrandbits
+from time import sleep
 
 sys.setrecursionlimit(1500)
 
@@ -183,7 +184,7 @@ def Bleichenbacher_98_attack(cipherText, RSA):
 
 if __name__ == '__main__':
     print('\n\n\n')
-    print("Bleichenbacher's PKCS 1.5 padding oracle attack (Simple case): \n")
+    print("Bleichenbacher's PKCS 1.5 padding oracle attack: \n")
     print('\n\n\n')
     prime_size = 128
     plainText = b"kick it, CC"
@@ -193,9 +194,10 @@ if __name__ == '__main__':
     print('Cipher text to be sent over unsecure line: ' + str(cipherText) + '\n')
     print('Interecpting cipher text using man in the middle, received data:\n')
     public_key = RSA.send_public_key()
-    print('Received public key: ' + str(public_key))
+    print('Received public key: ' + str(public_key) + '\n')
     print('Received cipher text: ' + str(cipherText) + '\n')
     print('\n\n\n')
+    sleep(10)
     recovered_plainText = Bleichenbacher_98_attack(cipherText, RSA)
     print('Actual plain text: ' + str(long_to_bytes(RSA.decrypt(cipherText),RSA.k)) + '\n')
     print('Recovered plain text: ' + str(long_to_bytes(recovered_plainText,RSA.k)) + '\n')
