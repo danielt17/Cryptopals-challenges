@@ -16,6 +16,7 @@ from Crypto.Util.number import long_to_bytes
 import sys
 from random import getrandbits
 from time import sleep
+from pwn import hexdump
 
 sys.setrecursionlimit(1500)
 
@@ -41,8 +42,20 @@ class RSAPCKS1PaddingOracle:
         self.public_key = [self.e,self.n]
         self.private_key = [self.d,self.n]
         print('Generated RSA paramters: \n')
-        print('Public key: ' + str(self.public_key) + '\n')
-        print('Private key: ' + str(self.private_key) + '\n')
+        print('---------------------------\n')
+        print('---------------------------\n')
+        print('Public key: \n')
+        print('---------------------------\n')
+        print('e: \n')
+        print(hexdump(long_to_bytes(self.public_key[0])))
+        print('n: \n')
+        print(hexdump(long_to_bytes(self.public_key[1])))
+        print('\n')
+        print('---------------------------\n')
+        print('Private key: \n')
+        print('---------------------------\n')
+        print(hexdump(long_to_bytes(self.private_key[0])))
+        print('\n')
         
     def send_public_key(self):
         return self.public_key
@@ -199,8 +212,10 @@ if __name__ == '__main__':
     print('\n\n\n')
     sleep(10)
     recovered_plainText = Bleichenbacher_98_attack(cipherText, RSA)
-    print('Actual plain text: ' + str(long_to_bytes(RSA.decrypt(cipherText),RSA.k)) + '\n')
-    print('Recovered plain text: ' + str(long_to_bytes(recovered_plainText,RSA.k)) + '\n')
+    print('Actual plain text: \n')
+    print(hexdump(long_to_bytes(RSA.decrypt(cipherText),RSA.k)) + '\n')
+    print('Recovered plain text: \n')
+    print(hexdump(long_to_bytes(recovered_plainText,RSA.k)) + '\n')
     print('Remove padding: \n')
     print('Actual plain text: ' + str(plainText) + '\n')
     print('Recovered plain text: ' + str(RSA.remove_pkcs(long_to_bytes(recovered_plainText))) + '\n')

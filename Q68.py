@@ -14,6 +14,7 @@ from Q67 import RSAPCKS1PaddingOracle,Bleichenbacher_98_attack
 from Crypto.Util.number import long_to_bytes
 import sys
 from time import sleep
+from pwn import hexdump
 
 sys.setrecursionlimit(1500)
 
@@ -36,8 +37,10 @@ if __name__ == '__main__':
     print('\n\n\n')
     sleep(10)
     recovered_plainText = Bleichenbacher_98_attack(cipherText, RSA)
-    print('Actual plain text: ' + str(long_to_bytes(RSA.decrypt(cipherText),RSA.k)) + '\n')
-    print('Recovered plain text: ' + str(long_to_bytes(recovered_plainText,RSA.k)) + '\n')
+    print('Actual plain text: \n')
+    print(hexdump(long_to_bytes(RSA.decrypt(cipherText),RSA.k)) + '\n')
+    print('Recovered plain text: \n')
+    print(hexdump(long_to_bytes(recovered_plainText,RSA.k)) + '\n')
     print('Remove padding: \n')
     print('Actual plain text: ' + str(plainText) + '\n')
     print('Recovered plain text: ' + str(RSA.remove_pkcs(long_to_bytes(recovered_plainText))) + '\n')
