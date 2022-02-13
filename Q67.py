@@ -23,7 +23,7 @@ sys.setrecursionlimit(1500)
 class RSAPCKS1PaddingOracle:
     
     def __init__(self,prime_size=128):
-        print('Generating valid RSA parameters:\n')
+        print('Generating valid RSA-' + str(prime_size*2) + ' parameters:\n')
         self.succed_in_suitable_primes = False # we need phi_n to be coprime to e therefore looping until we find suitable primes for this condition
         while not self.succed_in_suitable_primes:
             try:
