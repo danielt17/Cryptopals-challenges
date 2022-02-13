@@ -102,7 +102,7 @@ def append_and_merge(intervals, lower_bound, upper_bound):
             return
     intervals.append((lower_bound, upper_bound))
 
-def Bleichenbacher_98_attack(ciphertext, RSA):
+def Bleichenbacher_98_attack(cipherText, RSA):
     # Implementation of Bleichenbacher's 98 attack
     # Taken from the paper: Chosen Ciphertext Attacks Against Protocols Based on the RSA Encryption Standard PKCS #1
     # Link: http://archiv.infsec.ethz.ch/education/fs08/secsem/bleichenbacher98.pdf
@@ -184,7 +184,6 @@ def Bleichenbacher_98_attack(ciphertext, RSA):
 if __name__ == '__main__':
     print('\n\n\n')
     print("Bleichenbacher's PKCS 1.5 padding oracle attack (Simple case): \n")
-    print('Important this version of the attack works sometimes for small prime sizes (16), to see the full version go to Q68.\n')
     print('\n\n\n')
     prime_size = 128
     plainText = b"kick it, CC"
