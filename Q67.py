@@ -41,8 +41,10 @@ class RSAPCKS1PaddingOracle:
         self.k = len(long_to_bytes(self.n)) # length of modulos (in terms of bytes)
         self.public_key = [self.e,self.n]
         self.private_key = [self.d,self.n]
+        print('---------------------------\n')
         print('Generated RSA paramters: \n')
         print('---------------------------\n')
+        print('\n\n\n')
         print('---------------------------\n')
         print('Public key: \n')
         print('---------------------------\n')
@@ -185,7 +187,19 @@ def Bleichenbacher_98_attack(cipherText, RSA):
             raise Exception('Unexpected error: there are 0 intervals.')
         M = Ms
         i = i + 1
-        print('Current limits: ' + str(M) + '\n')
+        print('Current limits: \n')
+        print('--------------------------')
+        print('Lower: \n')
+        print('--------------------------')
+        print(hexdump(M[0][0]) + '\n')
+        print('--------------------------')
+        print('Upper: \n')
+        print('--------------------------')
+        print(hexdump(M[0][1]) + '\n')
+        print('--------------------------')
+        print('\n')
+        
+        
     # Step 4: Computing the solution
     print('Step 4: Computing the solution.\n')
     m = M[0][0] % n
