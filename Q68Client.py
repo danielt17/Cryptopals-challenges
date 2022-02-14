@@ -10,7 +10,7 @@ Created on Mon Feb 14 12:41:17 2022
 
 # %% Imports
 
-from Q67 import RSAPCKS1PaddingOracle
+from Q51 import modexp
 from Crypto.Util.number import long_to_bytes
 import sys
 from time import sleep
@@ -27,6 +27,22 @@ PORT = 8820
 BUFFER_SIZE = 8192
 
 # %% Functions
+
+def PKCS1_pad(plainTextBytes,k):
+    # Implemented according to RFC 3447 
+    # https://datatracker.ietf.org/doc/html/rfc3447#page-23
+    PS = b''
+    for _ in range(k - len(plainTextBytes) - 3): 
+        PS_current = 0
+        while PS_current == 0:
+            PS_current = getrandbits(8)
+        PS = PS +  long_to_bytes(PS_current)
+    return b'\x00\x02' + PS + b'\x00' + plainTextBytes
+    
+def encrypt(plainText,e,n,k):
+    # plainText input as bytes object
+    plainTextPadded = int.from_bytes(PKCS1_pad(plainText,k),'big')
+    return modexp(plainTextPadded, e, n)
 
 def print_with_hexdump(binary,send_or_receive,enb_pause=False):
     if send_or_receive == 'send':
@@ -52,6 +68,8 @@ class CLIENT:
         self.cipher_suit = None
         self.e = None
         self.n = None
+        self.k = None
+        self.key = None
         
     def valid_request(self,request):
         return request in self.valid_requests
@@ -75,6 +93,22 @@ class CLIENT:
             compression_methods =       bytearray.fromhex("00")
             # Client hello - packet
             data = record_header + handshake_header + client_version + client_random + session_id + cipher_suites + compression_methods
+        elif request == 'Client_Send_Encrypted_Key':
+            print('Send secret AES-128 key.\n')
+            handshake_record =          bytearray.fromhex("16") 
+            protocol_version =          bytearray.fromhex("03 03")
+            message_len =               bytearray.fromhex("01 06") # message length in bytes to follow
+            record_header =             handshake_record + protocol_version + message_len
+            handshake_message_type =    bytearray.fromhex("10")
+            message_len_2 =             bytearray.fromhex("00 01 02") # yeah TLS is a really stupidly built 
+            handshake_header =          handshake_message_type + message_len_2
+            self.key = getrandbits(128) # AES-128 key
+            print('Secret key: ' + str(long_to_bytes(self.key,16)) + ' \n')
+            cipherText_len =            bytearray.fromhex("01 00")
+            cipherText = long_to_bytes(encrypt(long_to_bytes(self.key,16),self.e,self.n,self.k),self.k)
+            data = record_header + handshake_header + cipherText_len + cipherText
+        else:
+            raise Exception('Wrong request, fix your code!')
         print_with_hexdump(data,'send',True)
         my_socket.send(data)
         
@@ -102,8 +136,10 @@ class CLIENT:
         elif request == 'Server_Key_Exchange':
             print('Received Server Key Exchange.\n')
             self.e = int.from_bytes(data[10:12],'big')
+            self.k = int.from_bytes(data[12:14],'big')
             self.n = int.from_bytes(data[14:],'big')
             print('Public key: ' + str(self.e) + '\n')
+            print('Modulos length in bytes: ' + str(self.k) + '\n')
             print('Public modulos: ' + str(self.n) + '\n')
         elif request == 'Server_Hello_Done':
             print('Received Server Hello Done.\n')
@@ -132,6 +168,7 @@ def main():
     client.process_server_response(my_socket)
     client.process_server_response(my_socket)
     client.process_server_response(my_socket)
+    client.send_request_to_server(my_socket, 'Client_Send_Encrypted_Key')
     print('Close connection\n') 
     my_socket.close()
 

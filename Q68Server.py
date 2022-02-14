@@ -46,6 +46,7 @@ class SERVER:
     def __init__ (self):
         self.available_cipher_suits = bytearray.fromhex("00 2f")
         self.message_type_client_hello = bytearray.fromhex("01")[0]
+        self.message_type_client_send_encrypted_key = bytearray.fromhex("10")[0]
         self.k = 1024
         self.RSA = None
         self.e = None
@@ -54,9 +55,12 @@ class SERVER:
 
     def receive_client_request(self,client_socket):
         data = client_socket.recv(BUFFER_SIZE)
-        print_with_hexdump(data,'receive',True)
         if data[5] == self.message_type_client_hello:
+            print_with_hexdump(data,'receive',True)
             request = 'Client_Hello'
+        elif data[5] == self.message_type_client_send_encrypted_key:
+            print_with_hexdump(data,'receive')
+            request = 'Client_Send_Encrypted_Key'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request, data
@@ -150,12 +154,31 @@ class SERVER:
             message_len_2 =             bytearray.fromhex("00 00 00")
             handshake_header =          handshake_message_type + message_len_2
             data = record_header + handshake_header
+        elif request == 'Client_Send_Encrypted_Key':
+            print('Received client encrypted key.\n')
+            handshake_record =          bytearray.fromhex("16")
+            protocol_version =          bytearray.fromhex("03 03")
+            message_len =               bytearray.fromhex("00 06")
+            record_header =             handshake_record + protocol_version + message_len
+            handshake_message_type =    bytearray.fromhex("ff") # new message type for padding failure or success
+            message_len_2 =             bytearray.fromhex("00 00 02")
+            handshake_header =          handshake_message_type + message_len_2
+            message_len_3 =             bytearray.fromhex("01")
+            cipherText = int.from_bytes(data[11:],'big')
+            if self.RSA.padding_oracle(cipherText):
+                valid_padding = bytearray.fromhex("01")
+            else:
+                valid_padding = bytearray.fromhex("00")
+            data = record_header + handshake_header + message_len_3 + valid_padding
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
     
     def send_response_to_client(self,client_socket,data):
-        print_with_hexdump(data,'send',True)
+        if data[5] == bytearray.fromhex("ff")[0]:
+            print_with_hexdump(data,'send')
+        else:
+            print_with_hexdump(data,'send',True)
         client_socket.send(data)
 
     def send_to_client(self,request,client_socket):
@@ -167,6 +190,8 @@ class SERVER:
         if self.check_client_request(data):
             data = self.handle_client_request(request, data)
             self.send_response_to_client(client_socket,data)
+            if data == 'something': return True
+            else: return False
         else:
             raise Exception('Invalid request! request is not formatted correctly check your length')
     
@@ -185,6 +210,10 @@ def main():
     server.send_to_client('Server_Certificate',client_socket)
     server.send_to_client('Server_Key_Exchange',client_socket)
     server.send_to_client('Server_Hello_Done',client_socket)
+    while True:
+        val = server.receive_and_send_response(client_socket)
+        if val:
+            break
     print('Client connected\n')
     print('Close connection\n')
     client_socket.close()

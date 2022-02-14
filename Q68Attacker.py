@@ -10,7 +10,8 @@ Created on Mon Feb 14 12:54:34 2022
 
 # %% Imports
 
-from Q67 import RSAPCKS1PaddingOracle
+from Q51 import modexp
+from Q67 import ceil,append_and_merge
 from Crypto.Util.number import long_to_bytes
 import sys
 from time import sleep
@@ -55,15 +56,22 @@ class MITM:
         self.message_type_server_certificate = bytearray.fromhex("0b")[0]
         self.message_type_server_key_exchange = bytearray.fromhex("0c")[0]
         self.message_type_server_hello_done = bytearray.fromhex("0e")[0]
+        self.message_type_client_send_encrypted_key = bytearray.fromhex("10")[0]
+        self.message_type_padding_validation = bytearray.fromhex("ff")[0]
         self.cipher_suit = None
         self.e = None
         self.n = None
+        self.k = None
+        self.cipherText = None
+        self.dataBlock = None
     
     def receive_alice_request(self, alice_socket):
         data = alice_socket.recv(BUFFER_SIZE)
         print_with_hexdump(data,'receive_alice',True)
         if data[5] == self.message_type_client_hello:
             request = 'Client_Hello'
+        elif data[5] == self.message_type_client_send_encrypted_key:
+            request = 'Client_Send_Encrypted_Key'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request, data
@@ -79,6 +87,12 @@ class MITM:
             print('Removing all other cipher suits!\n')
             data = data[:3] + bytearray.fromhex("00 2c 01 00 00 28") + data[9:44] + self.allowed_cipher_suits + data[58:]
             print('Sending tempered Client Hello.\n')
+        elif request == 'Client_Send_Encrypted_Key':
+            print('Received Client Encrypted Key.\n')
+            print('Encrypted secret key: ' + str(data[11:]) + ' \n')
+            self.dataBlock = data[:11]
+            self.cipherText = int.from_bytes(data[11:],'big')
+            data = data
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -86,15 +100,21 @@ class MITM:
     
     def receive_bob_response(self, bob_socket):
         data = bob_socket.recv(BUFFER_SIZE)
-        print_with_hexdump(data,'receive_bob',True)
         if data[5] == self.message_type_server_hello:
+            print_with_hexdump(data,'receive_bob',True)
             request = 'Server_Hello'
         elif data[5] == self.message_type_server_certificate:
+            print_with_hexdump(data,'receive_bob',True)
             request = 'Server_Certificate'
         elif data[5] == self.message_type_server_key_exchange:
+            print_with_hexdump(data,'receive_bob',True)
             request = 'Server_Key_Exchange'
         elif data[5] == self.message_type_server_hello_done:
+            print_with_hexdump(data,'receive_bob',True)
             request = 'Server_Hello_Done'
+        elif data[5] == self.message_type_padding_validation:
+            print_with_hexdump(data,'receive_bob')
+            request = 'Client_Send_Encrypted_Key'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request,data
@@ -112,15 +132,19 @@ class MITM:
         elif request == 'Server_Key_Exchange':
             print('Received Server Key Exchange.\n')
             self.e = int.from_bytes(data[10:12],'big')
+            self.k = int.from_bytes(data[12:14],'big')
             self.n = int.from_bytes(data[14:],'big')
             print('Public key: ' + str(self.e) + '\n')
+            print('Modulos length in bytes: ' + str(self.k) + '\n')
             print('Public modulos: ' + str(self.n) + '\n')
             data = data
             print('Forwarding Server Key Exchange.\n')
         elif request == 'Server_Hello_Done':
             print('Received Server Hello Done.\n')
-            data= data
+            data = data
             print('Forwarding Server Hello Done.\n')
+        elif request == 'Client_Send_Encrypted_Key':
+            data = data[10]
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -148,7 +172,96 @@ class MITM:
         self.receive_alice_send_bob(alice_socket,bob_socket)
         self.receive_bob_send_alice(alice_socket,bob_socket)
     
+    def prepare_data_for_attack(self,alice_socket,bob_socket):
+        request, data = self.receive_alice_request(alice_socket)
+        self.handle_alice_request(request, data)
     
+    def prepare_fake_data_block(self,c_cur):
+        data = self.dataBlock + long_to_bytes(c_cur,self.k)
+        return data
+    
+    def padding_oracle(self,c_cur,bob_socket):
+        data = self.prepare_fake_data_block(c_cur)
+        print_with_hexdump(data,'send_bob')
+        bob_socket.send(data)
+        request,data = self.receive_bob_response(bob_socket)
+        data = self.handle_bob_response(request, data)
+        if data == 1:
+            return True
+        else:
+            return False
+    
+    def Bleichenbacher_98_attack(self,bob_socket):
+        print("Starting Bleichenbacher's PKCS 1.5 attack: \n")
+        e = self.e; n = self.n;
+        B = 2 ** (8 * (self.k - 2))
+        # Step 1: Blinding. (we don't actually need it cause c is known to be PKCS conforming)
+        c = self.cipherText
+        print('Step 1: Blinding.\n')
+        print('Intializing c (the cipher text is already PKCS conforming): ' + str(c) + '\n')
+        M = [(2 * B, 3 * B - 1)] # This is the range between \x00\x02\x00...\x00  to \x00\x02\xff...\xff
+        print('Intializing M limits [2*B, 3*B-1]: ' + str(M) + '\n')
+        i = 1;
+        Calls_to_oracle = 0;
+        print('Intializing i: ' + str(i) + '\n')
+        print("Starting Bleichenbacher's attack iterative loop:\n")
+        while True:
+            print('Iteration number: ' + str(i) + '\n')
+            print('--------------------------------------\n')
+            # Step 2: Searching for PKCS conforming messages
+            print('Step 2: Searching for PKCS conforming messages.\n')
+            if i == 1:
+                print('Step 2.a: Starting the search.\n')
+                s = ceil(n,3*B)
+                while not self.padding_oracle((c * modexp(s, e, n)) % n,bob_socket):
+                    s = s + 1
+                    Calls_to_oracle += 1
+                    if Calls_to_oracle % 100 == 0:
+                        print('Calls to Oracle: ' + str(Calls_to_oracle))
+            elif len(M) >= 2:
+                print('Step 2.b: Searching with more than one interval left.\n')
+                s = s + 1
+                while not self.padding_oracle((c * modexp(s, e, n)) % n,bob_socket):
+                    s = s + 1
+                    Calls_to_oracle += 1
+                    if Calls_to_oracle % 100 == 0:
+                        print('Calls to Oracle: ' + str(Calls_to_oracle))
+            elif i > 1 and len(M) == 1:
+                print('Step 2.c: Searching with one interval left.\n')
+                a = M[0][0]; b = M[0][1];
+                if a == b: break
+                r = ceil(2*(b * s - 2 * B),n)
+                s = ceil(2 * B + r * n,b)
+                while not self.padding_oracle((c * modexp(s, e, n)) % n,bob_socket):
+                    s = s + 1
+                    if s > (3 * B + r * n)//a:
+                        r = r + 1
+                        s = ceil(2 * B + r * n,b) 
+                    Calls_to_oracle += 1
+                    if Calls_to_oracle % 100 == 0:
+                        print('Calls to Oracle: ' + str(Calls_to_oracle))
+            # Step 3: arrowing the set of solutions
+            print('Step 3: Narrowing the set of solutions.\n')
+            Ms = []
+            for j in range(len(M)):
+                a = M[j][0]; b = M[j][1]
+                r_lower = ceil(a * s - (3 * B) + 1,n)
+                r_upper = (b * s - (2 * B))//n
+                for r in range(r_lower,r_upper + 1):
+                    lower = max(a,ceil(2 * B + r * n,s))
+                    upper = min(b,(3 * B - 1  + r * n)//s)
+                    append_and_merge(Ms, lower, upper)
+            if len(Ms) == 0:
+                raise Exception('Unexpected error: there are 0 intervals.')
+            M = Ms
+            i = i + 1
+            print('Lower limit: \n')
+            print('--------------------------\n')
+            print(hexdump(long_to_bytes(M[0][0],self.k)) + '\n')
+            print('\n')
+            print('--------------------------\n')
+            print('\n')
+        
 def main():
     # open socket with client
     print('\n')
@@ -167,6 +280,8 @@ def main():
     ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
     ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
     ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
+    ManInTheMiddle.prepare_data_for_attack(alice_socket,bob_socket)
+    ManInTheMiddle.Bleichenbacher_98_attack(bob_socket)
     print('Closing connection with Bob\n')
     bob_socket.close()
     print('Disconnecting Alice\n')
