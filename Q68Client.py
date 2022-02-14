@@ -28,7 +28,7 @@ BUFFER_SIZE = 8192
 
 # %% Functions
 
-def print_with_hexdump(binary,send_or_receive):
+def print_with_hexdump(binary,send_or_receive,enb_pause=False):
     if send_or_receive == 'send':
         print('Send command to server: \n')
     elif send_or_receive == 'receive':
@@ -38,6 +38,8 @@ def print_with_hexdump(binary,send_or_receive):
     print('------------------------------\n')
     print(hexdump(binary) + '\n')
     print('------------------------------\n')
+    if enb_pause:
+        sleep(2)
 
 class CLIENT:
     
@@ -68,12 +70,12 @@ class CLIENT:
             compression_methods =       bytearray.fromhex("00")
             # Client hello - packet
             data = record_header + handshake_header + client_version + client_random + session_id + cipher_suites + compression_methods
-        print_with_hexdump(data,'send')
+        print_with_hexdump(data,'send',True)
         my_socket.send(data)
         
     def receive_server_response(self,my_socket):
         data = my_socket.recv(BUFFER_SIZE)
-        print_with_hexdump(data,'receive')
+        print_with_hexdump(data,'receive',True)
         if data[5] == self.message_type_server_hello:
             request = 'Server_Hello'
         else:

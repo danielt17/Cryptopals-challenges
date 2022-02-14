@@ -29,7 +29,7 @@ BUFFER_SIZE = 8192
 
 # %% Functions
 
-def print_with_hexdump(binary,send_or_receive):
+def print_with_hexdump(binary,send_or_receive,enb_pause=False):
     if send_or_receive == 'send_alice':
         print('Send command to client: \n')
     elif send_or_receive == 'receive_alice':
@@ -43,6 +43,8 @@ def print_with_hexdump(binary,send_or_receive):
     print('------------------------------\n')
     print(hexdump(binary) + '\n')
     print('------------------------------\n')
+    if enb_pause:
+        sleep(2)
 
 class MITM:
     
@@ -54,7 +56,7 @@ class MITM:
     
     def receive_alice_request(self, alice_socket):
         data = alice_socket.recv(BUFFER_SIZE)
-        print_with_hexdump(data,'receive_alice')
+        print_with_hexdump(data,'receive_alice',True)
         if data[5] == self.message_type_client_hello:
             request = 'Client_Hello'
         else:
@@ -79,7 +81,7 @@ class MITM:
     
     def receive_bob_response(self, bob_socket):
         data = bob_socket.recv(BUFFER_SIZE)
-        print_with_hexdump(data,'receive_bob')
+        print_with_hexdump(data,'receive_bob',True)
         if data[5] == self.message_type_server_hello:
             request = 'Server_Hello'
         else:
@@ -98,9 +100,9 @@ class MITM:
     
     def send_to(self, response, cur_socket,socket_name):
         if socket_name == 'Alice':
-            print_with_hexdump(response,'send_alice')
+            print_with_hexdump(response,'send_alice',True)
         elif socket_name == 'Bob':
-            print_with_hexdump(response,'send_bob')
+            print_with_hexdump(response,'send_bob',True)
         else:
             raise Exception('Wrong socket name, fix it!')
         cur_socket.send(response)

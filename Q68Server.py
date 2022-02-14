@@ -28,7 +28,7 @@ BUFFER_SIZE = 8192
 
 # %% Functions
 
-def print_with_hexdump(binary,send_or_receive):
+def print_with_hexdump(binary,send_or_receive,enb_pause=False):
     if send_or_receive == 'send':
         print('Send command to client: \n')
     elif send_or_receive == 'receive':
@@ -38,6 +38,8 @@ def print_with_hexdump(binary,send_or_receive):
     print('------------------------------\n')
     print(hexdump(binary) + '\n')
     print('------------------------------\n')
+    if enb_pause:
+        sleep(2)
 
 class SERVER:
 
@@ -47,7 +49,7 @@ class SERVER:
 
     def receive_client_request(self,client_socket):
         data = client_socket.recv(BUFFER_SIZE)
-        print_with_hexdump(data,'receive')
+        print_with_hexdump(data,'receive',True)
         if data[5] == self.message_type_client_hello:
             request = 'Client_Hello'
         else:
@@ -86,7 +88,7 @@ class SERVER:
         return data
     
     def send_response_to_client(self,client_socket,data):
-        print_with_hexdump(data,'send')
+        print_with_hexdump(data,'send',True)
         client_socket.send(data)
 
     def receive_and_send_response(self,client_socket):
