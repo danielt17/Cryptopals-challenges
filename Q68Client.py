@@ -48,6 +48,7 @@ class CLIENT:
         self.message_type_server_hello = bytearray.fromhex("02")[0]
         self.message_type_server_certificate = bytearray.fromhex("0b")[0]
         self.message_type_server_key_exchange = bytearray.fromhex("0c")[0]
+        self.message_type_server_hello_done = bytearray.fromhex("0e")[0]
         self.cipher_suit = None
         self.e = None
         self.n = None
@@ -86,6 +87,8 @@ class CLIENT:
             request = 'Server_Certificate' 
         elif data[5] == self.message_type_server_key_exchange:
             request = 'Server_Key_Exchange'
+        elif data[5] == self.message_type_server_hello_done:
+            request = 'Server_Hello_Done'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request, data
@@ -102,6 +105,8 @@ class CLIENT:
             self.n = int.from_bytes(data[14:],'big')
             print('Public key: ' + str(self.e) + '\n')
             print('Public modulos: ' + str(self.n) + '\n')
+        elif request == 'Server_Hello_Done':
+            print('Received Server Hello Done.\n')
         else:
             raise Exception('Request is invalid! fix your code!')
     
@@ -124,6 +129,7 @@ def main():
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     my_socket.connect((IP, PORT))
     client.send_and_recive(my_socket, 'Client_Hello')
+    client.process_server_response(my_socket)
     client.process_server_response(my_socket)
     client.process_server_response(my_socket)
     print('Close connection\n') 

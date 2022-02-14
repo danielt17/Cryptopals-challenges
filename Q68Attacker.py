@@ -54,6 +54,7 @@ class MITM:
         self.message_type_server_hello = bytearray.fromhex("02")[0]
         self.message_type_server_certificate = bytearray.fromhex("0b")[0]
         self.message_type_server_key_exchange = bytearray.fromhex("0c")[0]
+        self.message_type_server_hello_done = bytearray.fromhex("0e")[0]
         self.cipher_suit = None
         self.e = None
         self.n = None
@@ -92,6 +93,8 @@ class MITM:
             request = 'Server_Certificate'
         elif data[5] == self.message_type_server_key_exchange:
             request = 'Server_Key_Exchange'
+        elif data[5] == self.message_type_server_hello_done:
+            request = 'Server_Hello_Done'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request,data
@@ -114,6 +117,10 @@ class MITM:
             print('Public modulos: ' + str(self.n) + '\n')
             data = data
             print('Forwarding Server Key Exchange.\n')
+        elif request == 'Server_Hello_Done':
+            print('Received Server Hello Done.\n')
+            data= data
+            print('Forwarding Server Hello Done.\n')
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -157,6 +164,7 @@ def main():
     print('Connecting to Bob\n')
     bob_socket.connect((IP2, PORT2))
     ManInTheMiddle.receive_from_alice_send_to_bob_and_receive_send_back_to_alice(alice_socket,bob_socket)
+    ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
     ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
     ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
     print('Closing connection with Bob\n')

@@ -140,6 +140,16 @@ class SERVER:
             public_e =                  b'\x03' + long_to_bytes(self.e,2)
             public_n =                  bytearray.fromhex("01 00") + long_to_bytes(self.n,self.k*2)
             data = record_header + handshake_header + public_e + public_n
+        elif request == 'Server_Hello_Done':
+            print('Sending  Server Hello Done.\n')
+            handshake_record =          bytearray.fromhex("16")
+            protocol_version =          bytearray.fromhex("03 03")
+            message_len =               bytearray.fromhex("00 04")
+            record_header =             handshake_record + protocol_version + message_len
+            handshake_message_type =    bytearray.fromhex("0e")
+            message_len_2 =             bytearray.fromhex("00 00 00")
+            handshake_header =          handshake_message_type + message_len_2
+            data = record_header + handshake_header
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -174,6 +184,7 @@ def main():
     server.receive_and_send_response(client_socket)
     server.send_to_client('Server_Certificate',client_socket)
     server.send_to_client('Server_Key_Exchange',client_socket)
+    server.send_to_client('Server_Hello_Done',client_socket)
     print('Client connected\n')
     print('Close connection\n')
     client_socket.close()
