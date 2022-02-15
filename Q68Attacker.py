@@ -17,6 +17,7 @@ import sys
 from time import sleep
 from pwn import hexdump
 import socket
+from Q68Client import AESCBC,SHA1_MAC
 
 sys.setrecursionlimit(1500)
 
@@ -65,6 +66,8 @@ class MITM:
         self.message_type_client_send_encrypted_key = bytearray.fromhex("10")[0]
         self.message_type_padding_validation = bytearray.fromhex("ff")[0]
         self.message_type_change_cipher_spec = bytearray.fromhex("14")[0]
+        self.message_type_client_handshake_finished = bytearray.fromhex("fe")[0]
+        self.message_type_client_close_notification = bytearray.fromhex("15")[0]
         self.cipher_suit = None
         self.e = None
         self.n = None
@@ -73,16 +76,22 @@ class MITM:
         self.dataBlock = None
         self.key = None
         self.change_client_cipher_suit_message = None
+        self.client_handshake_finished_message = None
+        self.symmetric_cipher = None
     
     def receive_alice_request(self, alice_socket):
         data = alice_socket.recv(BUFFER_SIZE)
         print_with_hexdump(data,'receive_alice',True)
         if data[0] == self.message_type_change_cipher_spec:
             request = 'Client_Change_Cipher_Spec'
+        elif data[0] == self.message_type_client_close_notification:
+            request = 'Client_Close_Notification'
         elif data[5] == self.message_type_client_hello:
             request = 'Client_Hello'
         elif data[5] == self.message_type_client_send_encrypted_key:
             request = 'Client_Send_Encrypted_Key'
+        elif data[5] == self.message_type_client_handshake_finished:
+            request = 'Client_Handshake_Finished'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request, data
@@ -110,6 +119,15 @@ class MITM:
             self.change_client_cipher_suit_message = data
             data = data
             print('Saving the message for later uses\n')
+        elif request == 'Client_Handshake_Finished':
+            print('Received client handshake finished.\n')
+            self.client_handshake_finished_message = data
+            data = data
+            print('Saving the message for later uses\n')
+        elif request == 'Client_Close_Notification':
+            print('Received client close notification.\n')
+            data = data
+            print('Forwarding client close notificaion.\n')
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -117,7 +135,10 @@ class MITM:
     
     def receive_bob_response(self, bob_socket):
         data = bob_socket.recv(BUFFER_SIZE)
-        if data[5] == self.message_type_server_hello:
+        if data[0] == self.message_type_change_cipher_spec:
+            print_with_hexdump(data,'receive_bob',True)
+            request = 'Server_Change_Cipher_Spec'
+        elif data[5] == self.message_type_server_hello:
             print_with_hexdump(data,'receive_bob',True)
             request = 'Server_Hello'
         elif data[5] == self.message_type_server_certificate:
@@ -132,6 +153,9 @@ class MITM:
         elif data[5] == self.message_type_padding_validation:
             print_with_hexdump(data,'receive_bob')
             request = 'Client_Send_Encrypted_Key'
+        elif data[5] == self.message_type_client_handshake_finished:
+            print_with_hexdump(data,'receive_bob',True)
+            request = 'Server_Handshake_Finished'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request,data
@@ -162,6 +186,17 @@ class MITM:
             print('Forwarding Server Hello Done.\n')
         elif request == 'Client_Send_Encrypted_Key':
             data = data[10]
+        elif request == 'Server_Change_Cipher_Spec':
+            print('Received server change cipher spec.\n')
+            data = data
+            print('Forwarding server change cipher spec.\n')
+        elif request == 'Server_Handshake_Finished':
+            print('Received server handshake finished.\n')
+            iv = data[9:25]
+            cipherText = data[25:57]
+            mac = data[59:]
+            self.decrypt_data_check_authentication(cipherText,iv,mac)
+            print('Forwarding server handshake finished.\n')
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -190,6 +225,8 @@ class MITM:
         self.receive_bob_send_alice(alice_socket,bob_socket)
     
     def prepare_data_for_attack(self,alice_socket,bob_socket):
+        request, data = self.receive_alice_request(alice_socket)
+        self.handle_alice_request(request, data)
         request, data = self.receive_alice_request(alice_socket)
         self.handle_alice_request(request, data)
         request, data = self.receive_alice_request(alice_socket)
@@ -295,7 +332,28 @@ class MITM:
         self.post_attack_message(bob_socket)
         
     def send_client_change_cipher_spec(self,bob_socket):
+        print('Forwarding client change cipher spec.\n')
         self.send_to(self.change_client_cipher_suit_message, bob_socket,'Bob')
+    
+    def decrypt_data_check_authentication(self,cipherText,iv,mac):
+        print('Processing and decrypting the encrypted message:\n')
+        self.symmetric_cipher = AESCBC(self.key,iv)
+        plainText = self.symmetric_cipher.decrypt(cipherText)
+        mac_computed = SHA1_MAC(self.key,plainText.decode())
+        if mac_computed == mac:
+            print('Successful decryption!')
+            print('Interecpted decrypted text: ' + str(plainText) + '\n')
+        else:
+            raise Exception('Decryption failed fix your code!')
+    
+    def send_client_handshake_finished(self,bob_socket):
+        iv = self.client_handshake_finished_message[9:25]
+        cipherText = self.client_handshake_finished_message[25:57]
+        mac = self.client_handshake_finished_message[59:]
+        self.decrypt_data_check_authentication(cipherText,iv,mac)
+        print('Forwarding client handshake finished.\n')
+        self.send_to(self.client_handshake_finished_message, bob_socket,'Bob')
+        
     
 def main():
     # open socket with client
@@ -318,6 +376,10 @@ def main():
     ManInTheMiddle.prepare_data_for_attack(alice_socket,bob_socket)
     ManInTheMiddle.Bleichenbacher_98_attack(bob_socket)
     ManInTheMiddle.send_client_change_cipher_spec(bob_socket)
+    ManInTheMiddle.send_client_handshake_finished(bob_socket)
+    ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
+    ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
+    ManInTheMiddle.receive_alice_send_bob(alice_socket,bob_socket)
     print('Closing connection with Bob\n')
     bob_socket.close()
     print('Disconnecting Alice\n')

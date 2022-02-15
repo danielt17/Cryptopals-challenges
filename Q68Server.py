@@ -17,6 +17,9 @@ from time import sleep
 from pwn import hexdump
 import socket
 from random import getrandbits
+from Q68Client import AESCBC,SHA1_MAC
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher.AES import block_size
 
 sys.setrecursionlimit(1500)
 
@@ -48,6 +51,8 @@ class SERVER:
         self.message_type_client_hello = bytearray.fromhex("01")[0]
         self.message_type_client_send_encrypted_key = bytearray.fromhex("10")[0]
         self.message_type_change_cipher_spec = bytearray.fromhex("14")[0]
+        self.message_type_client_handshake_finished = bytearray.fromhex("fe")[0]
+        self.message_type_client_close_notification = bytearray.fromhex("15")[0]
         self.k = 1024
         self.RSA = None
         self.e = None
@@ -56,17 +61,32 @@ class SERVER:
         self.plainText = None
         self.key = None
 
+    def decrypt_and_authenticate(self,cipherText,iv,mac):
+        print('Decrypting received message:\n')
+        self.symmetric_cipher = AESCBC(self.key,iv)
+        plainText = self.symmetric_cipher.decrypt(cipherText)
+        mac_computed = SHA1_MAC(self.key,plainText.decode())
+        if mac_computed == mac:
+            print('Received text: ' + str(plainText) + '\n')
+        else:
+            raise Exception('Decryption failed fix your code, mac is not valid!')
+
     def receive_client_request(self,client_socket):
         data = client_socket.recv(BUFFER_SIZE)
         if data[0] == self.message_type_change_cipher_spec:
             print_with_hexdump(data,'receive',True)
             request = 'Client_Change_Cipher_Spec'
+        elif data[0] == self.message_type_client_close_notification:
+            print_with_hexdump(data,'receive',True)
+            request = 'Client_Close_Notification'
         elif data[5] == self.message_type_client_hello:
             print_with_hexdump(data,'receive',True)
             request = 'Client_Hello'
         elif data[5] == self.message_type_client_send_encrypted_key:
             print_with_hexdump(data,'receive')
             request = 'Client_Send_Encrypted_Key'
+        elif data[5] == self.message_type_client_handshake_finished:
+            request = 'Client_Handshake_Finished'
         else:
             raise Exception('Request is invalid! fix your code!')
         return request, data
@@ -182,6 +202,37 @@ class SERVER:
             data = record_header + handshake_header + message_len_3 + valid_padding
         elif request == 'Client_Change_Cipher_Spec':
             print('Changing cipher spec.\n')
+        elif request == 'Client_Handshake_Finished':
+            print('Received client handshake finished.\n')
+            iv = data[9:25]
+            cipherText = data[25:57]
+            mac = data[59:]
+            self.decrypt_and_authenticate(cipherText,iv,mac)
+            change_cipher_spec =        bytearray.fromhex("14") 
+            protocol_version =          bytearray.fromhex("03 03")
+            message_len =               bytearray.fromhex("00 01") 
+            payload =                   bytearray.fromhex("01")
+            data = change_cipher_spec + protocol_version + message_len + payload
+            print('Sending server change cipher suit.\n')
+        elif request == 'Server_Handshake_Finished':
+            print('Send server handshake finished.\n')
+            handshake_record =          bytearray.fromhex("16")
+            protocol_version =          bytearray.fromhex("03 03")
+            message_len =               bytearray.fromhex("00 4a")
+            record_header =             handshake_record + protocol_version + message_len
+            handshake_message_type =    bytearray.fromhex("fe")
+            message_len_2 =             bytearray.fromhex("00 00 46")
+            handshake_header =          handshake_message_type + message_len_2
+            self.iv =                   get_random_bytes(block_size)
+            self.symmetric_cipher =     AESCBC(self.key,self.iv)
+            super_secret_message =      'Hello there GetZer0Dayed!!'
+            encrypted_data =            self.symmetric_cipher.encrypt(super_secret_message) # 32 bytes
+            mac_len =                   bytearray.fromhex("00 20")
+            mac =                       SHA1_MAC(self.key,super_secret_message) # 20 bytes
+            data = record_header + handshake_header + self.iv + encrypted_data + mac_len + mac
+        elif request == 'Client_Close_Notification':
+            print('Received client close notification.\n')
+            data = data
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -205,7 +256,10 @@ class SERVER:
             self.send_response_to_client(client_socket,data)
         else:
             raise Exception('Invalid request! request is not formatted correctly check your length')
-    
+       
+    def receive_and_handle(self,client_socket):
+        request, data = self.receive_client_request(client_socket)
+        self.handle_client_request(request, data)
         
 def main():
     # open socket with client
@@ -225,7 +279,9 @@ def main():
         val = server.receive_and_send_response(client_socket)
         if val:
             break
-        
+    server.receive_and_send_response(client_socket)
+    server.send_to_client('Server_Handshake_Finished',client_socket)
+    server.receive_and_handle(client_socket)
     print('Client connected\n')
     print('Close connection\n')
     client_socket.close()
