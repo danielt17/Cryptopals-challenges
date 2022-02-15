@@ -47,15 +47,21 @@ class SERVER:
         self.available_cipher_suits = bytearray.fromhex("00 2f")
         self.message_type_client_hello = bytearray.fromhex("01")[0]
         self.message_type_client_send_encrypted_key = bytearray.fromhex("10")[0]
+        self.message_type_change_cipher_spec = bytearray.fromhex("14")[0]
         self.k = 1024
         self.RSA = None
         self.e = None
         self.n = None
         self.d = None
+        self.plainText = None
+        self.key = None
 
     def receive_client_request(self,client_socket):
         data = client_socket.recv(BUFFER_SIZE)
-        if data[5] == self.message_type_client_hello:
+        if data[0] == self.message_type_change_cipher_spec:
+            print_with_hexdump(data,'receive',True)
+            request = 'Client_Change_Cipher_Spec'
+        elif data[5] == self.message_type_client_hello:
             print_with_hexdump(data,'receive',True)
             request = 'Client_Hello'
         elif data[5] == self.message_type_client_send_encrypted_key:
@@ -93,7 +99,7 @@ class SERVER:
             else:
                 raise Exception('No valid cipher suit, please fix your code!')
         elif request == 'Server_Certificate':
-            print('Sending  Server Certificate.\n')
+            print('Sending Server Certificate.\n')
             handshake_record =          bytearray.fromhex("16")
             protocol_version =          bytearray.fromhex("03 03")
             message_len =               bytearray.fromhex("03 2f")
@@ -130,6 +136,7 @@ class SERVER:
             data = record_header + handshake_header + certificate + certificate_sequence + certificate_info_sequence + version + serial_number + algorithm + issuer_sequence + country + organizational_unit + validity + subject_sequence + country2 + common_name + public_key + extensions + extension_key_usage + extension_extend_key_usage + extension_auth_key_identity + signature_algorithm2 + signature
         elif request == 'Server_Key_Exchange':
             self.RSA = RSAPCKS1PaddingOracle(self.k)
+            sleep(2) # make sure data has time to move
             self.e = self.RSA.e
             self.n = self.RSA.n
             self.d = self.RSA.d
@@ -167,9 +174,14 @@ class SERVER:
             cipherText = int.from_bytes(data[11:],'big')
             if self.RSA.padding_oracle(cipherText):
                 valid_padding = bytearray.fromhex("01")
+                self.plainText = self.RSA.decrypt(cipherText)
+                self.key = self.RSA.remove_pkcs(long_to_bytes(self.plainText,self.k))[-16:]
+                print('Decrypted plain text without padding: ' + str(self.key) + '\n')
             else:
                 valid_padding = bytearray.fromhex("00")
             data = record_header + handshake_header + message_len_3 + valid_padding
+        elif request == 'Client_Change_Cipher_Spec':
+            print('Changing cipher spec.\n')
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -189,9 +201,8 @@ class SERVER:
         request, data = self.receive_client_request(client_socket)
         if self.check_client_request(data):
             data = self.handle_client_request(request, data)
+            if request == 'Client_Change_Cipher_Spec': return True
             self.send_response_to_client(client_socket,data)
-            if data == 'something': return True
-            else: return False
         else:
             raise Exception('Invalid request! request is not formatted correctly check your length')
     
@@ -214,6 +225,7 @@ def main():
         val = server.receive_and_send_response(client_socket)
         if val:
             break
+        
     print('Client connected\n')
     print('Close connection\n')
     client_socket.close()

