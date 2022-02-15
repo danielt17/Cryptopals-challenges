@@ -176,7 +176,7 @@ class MITM:
             self.k = int.from_bytes(data[12:14],'big')
             self.n = int.from_bytes(data[14:],'big')
             print('Public key: ' + str(self.e) + '\n')
-            print('Modulos length in bytes: ' + str(self.k) + '\n')
+            print('Modulos length in bits: ' + str(self.k * 8) + '\n')
             print('Public modulos: ' + str(self.n) + '\n')
             data = data
             print('Forwarding Server Key Exchange.\n')
