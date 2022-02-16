@@ -53,15 +53,17 @@ def aes_cbc_decrypt(cipherText, Key, Iv, unpad=True):
 # %% Main
 
 if __name__ == '__main__':
+    print('\n')
     with open('22.txt') as f:
         cipherText = b64decode(f.read())
     Iv = b'\x00' * AES.block_size
     Key = "YELLOW SUBMARINE".encode("utf8")
     plainText = aes_cbc_decrypt(cipherText, Key, Iv)
-    print('Decrypted text: ' + str(plainText.decode()))
+    print('Decrypted text: \n\n' + str(plainText.decode()))
     ciphertextrebuilt = str(aes_cbc_encrypt(plainText,Key, Iv))
     if ciphertextrebuilt == str(cipherText):
-        print('\n Encrypt decrypt chain was successfully built \n')
+        print('\n')
+        print('Encrypt decrypt chain was successfully built. \n')
     else:
         print('\n Fail \n')
     
