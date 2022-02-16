@@ -311,6 +311,16 @@ Unpadded text: b'YELLOW SUBMARINE'
 
 ### [Challenge 10](#challenge-10)
 
+Implementing CBC mode is a straight forward proces but one should first understand the need for it. In ECB mode we could only encrypt regular sized messages, although padding allows us to deal with variable length message. This isn't the main problem CBC comes to deal with, we want the same blocks to be encrypted into different ciphertexts, this negates frequency analysis techniques on single blocks. This allows us to make collisions (two encryption process have the same result) extremely unlikely around 2^-64 unlikely. This is achieved using the following construction, where each encryption dependents on the previous encryption process, to start the process we have to use a unique initializaion vector (IV) which is sent over a public channel (as it is for single use, otherwise we can exploit this). The mathmatical operation and diagrams describing the mode of opeartion can be seen below.
+
+![image](https://user-images.githubusercontent.com/60748408/154333638-8bf15ec7-8e2a-421e-9b4d-edd3b0a5d448.png)
+
+![image](https://user-images.githubusercontent.com/60748408/154332910-19fccb57-3883-4a6d-9438-cdea507b12cf.png)
+![image](https://user-images.githubusercontent.com/60748408/154333279-d374e4f6-2b49-4892-bb9e-5f1a7df995e9.png)
+
+In the following image which we have used before, we can see the difference between encrypting using ECB mode and CBC (or other modes) of encryption.
+
+![image](https://user-images.githubusercontent.com/60748408/154333678-1b6ab661-26e7-4712-a3e4-ed0a56382620.png)
 
 
 Expected output: 
