@@ -423,6 +423,12 @@ Experiments: 1000. Successful: 1000
 
 ### [Challenge 12](#challenge-12)
 
+This challenge gives us our first modern cryptanalysis challenge, in which we do a Byte-at-a-time ECB decryption. The challange teaches us how to carry out a full attack from start to finish. In the challange we have an Oracle (A Complicated way of saying we have a function which described an interaction with the encryption/decryption algorithm) where we can input a string of our own which will be concatenated by an unknown string to the user and than encrypted using AES-ECB mode, or in a more formal languge: AES-128-ECB(your-string || unknown-string, random-key) which we call from now on O('your-string').
+
+1. We start by figuring out the block size of our encryption function. We start by calling the oracle in the following way Oracle(''), we get the current out length of the ciphertext, which we call initial length (n). Now we start querying the oracle in the following way Oracle('A'* i) we search for the first value of i for which the length of the cipher text changes, we call this value current length (m). By subtracting m-m we get the block size of the cipher.
+2. Now we detect the mode of operation, as we have done in Challenge 11 (we input constant '0'*128 so we will find repeating blocks).
+3. 
+
 Expected output: 
 ```python
 What we expect to get at the end: 
