@@ -29,6 +29,10 @@ def PKCS7unpadding(textpadded,blockSize):
     else: 
         text = unpad(textpadded, blockSize)
     return text
+
+def PKCS7unpaddingFixed(textpadded,blockSize):
+    text = unpad(textpadded, blockSize)
+    return text
     
 # %% Main
 
@@ -39,7 +43,7 @@ if __name__ == '__main__':
     if textPadded == solution:
         print('Correct solution \n')
         print('Original text: ' + str(text) + '. Padded text: ' + str(textPadded) + ' \n')
-        print('Unpadded text: ' + str(PKCS7unpadding(textPadded,20)))
+        print('Unpadded text: ' + str(PKCS7unpaddingFixed(textPadded,20)))
     else:
         print('Please fix')
     
