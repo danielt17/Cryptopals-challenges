@@ -423,6 +423,318 @@ Experiments: 1000. Successful: 1000
 
 ### [Challenge 12](#challenge-12)
 
+Expected output: 
+```python
+What we expect to get at the end: 
+ 
+Rollin' in my 5.0
+With my rag-top down so my hair can blow
+The girlies on standby waving just to say hi
+Did you stop? No, I just drove by
+
+
+
+
+Analysing cipher: 
+
+Detected block size of: 16
+
+Detected mode of operation: ECB
+
+Iteration: 1. b'R' 
+
+Iteration: 2. b'Ro' 
+
+Iteration: 3. b'Rol' 
+
+Iteration: 4. b'Roll' 
+
+Iteration: 5. b'Rolli' 
+
+Iteration: 6. b'Rollin' 
+
+Iteration: 7. b"Rollin'" 
+
+Iteration: 8. b"Rollin' " 
+
+Iteration: 9. b"Rollin' i" 
+
+Iteration: 10. b"Rollin' in" 
+
+Iteration: 11. b"Rollin' in " 
+
+Iteration: 12. b"Rollin' in m" 
+
+Iteration: 13. b"Rollin' in my" 
+
+Iteration: 14. b"Rollin' in my " 
+
+Iteration: 15. b"Rollin' in my 5" 
+
+Iteration: 16. b"Rollin' in my 5." 
+
+Iteration: 17. b"Rollin' in my 5.0" 
+
+Iteration: 18. b"Rollin' in my 5.0\n" 
+
+Iteration: 19. b"Rollin' in my 5.0\nW" 
+
+Iteration: 20. b"Rollin' in my 5.0\nWi" 
+
+Iteration: 21. b"Rollin' in my 5.0\nWit" 
+
+Iteration: 22. b"Rollin' in my 5.0\nWith" 
+
+Iteration: 23. b"Rollin' in my 5.0\nWith " 
+
+Iteration: 24. b"Rollin' in my 5.0\nWith m" 
+
+Iteration: 25. b"Rollin' in my 5.0\nWith my" 
+
+Iteration: 26. b"Rollin' in my 5.0\nWith my " 
+
+Iteration: 27. b"Rollin' in my 5.0\nWith my r" 
+
+Iteration: 28. b"Rollin' in my 5.0\nWith my ra" 
+
+Iteration: 29. b"Rollin' in my 5.0\nWith my rag" 
+
+Iteration: 30. b"Rollin' in my 5.0\nWith my rag-" 
+
+Iteration: 31. b"Rollin' in my 5.0\nWith my rag-t" 
+
+Iteration: 32. b"Rollin' in my 5.0\nWith my rag-to" 
+
+Iteration: 33. b"Rollin' in my 5.0\nWith my rag-top" 
+
+Iteration: 34. b"Rollin' in my 5.0\nWith my rag-top " 
+
+Iteration: 35. b"Rollin' in my 5.0\nWith my rag-top d" 
+
+Iteration: 36. b"Rollin' in my 5.0\nWith my rag-top do" 
+
+Iteration: 37. b"Rollin' in my 5.0\nWith my rag-top dow" 
+
+Iteration: 38. b"Rollin' in my 5.0\nWith my rag-top down" 
+
+Iteration: 39. b"Rollin' in my 5.0\nWith my rag-top down " 
+
+Iteration: 40. b"Rollin' in my 5.0\nWith my rag-top down s" 
+
+Iteration: 41. b"Rollin' in my 5.0\nWith my rag-top down so" 
+
+Iteration: 42. b"Rollin' in my 5.0\nWith my rag-top down so " 
+
+Iteration: 43. b"Rollin' in my 5.0\nWith my rag-top down so m" 
+
+Iteration: 44. b"Rollin' in my 5.0\nWith my rag-top down so my" 
+
+Iteration: 45. b"Rollin' in my 5.0\nWith my rag-top down so my " 
+
+Iteration: 46. b"Rollin' in my 5.0\nWith my rag-top down so my h" 
+
+Iteration: 47. b"Rollin' in my 5.0\nWith my rag-top down so my ha" 
+
+Iteration: 48. b"Rollin' in my 5.0\nWith my rag-top down so my hai" 
+
+Iteration: 49. b"Rollin' in my 5.0\nWith my rag-top down so my hair" 
+
+Iteration: 50. b"Rollin' in my 5.0\nWith my rag-top down so my hair " 
+
+Iteration: 51. b"Rollin' in my 5.0\nWith my rag-top down so my hair c" 
+
+Iteration: 52. b"Rollin' in my 5.0\nWith my rag-top down so my hair ca" 
+
+Iteration: 53. b"Rollin' in my 5.0\nWith my rag-top down so my hair can" 
+
+Iteration: 54. b"Rollin' in my 5.0\nWith my rag-top down so my hair can " 
+
+Iteration: 55. b"Rollin' in my 5.0\nWith my rag-top down so my hair can b" 
+
+Iteration: 56. b"Rollin' in my 5.0\nWith my rag-top down so my hair can bl" 
+
+Iteration: 57. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blo" 
+
+Iteration: 58. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow" 
+
+Iteration: 59. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\n" 
+
+Iteration: 60. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nT" 
+
+Iteration: 61. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nTh" 
+
+Iteration: 62. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe" 
+
+Iteration: 63. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe " 
+
+Iteration: 64. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe g" 
+
+Iteration: 65. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe gi" 
+
+Iteration: 66. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe gir" 
+
+Iteration: 67. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girl" 
+
+Iteration: 68. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girli" 
+
+Iteration: 69. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlie" 
+
+Iteration: 70. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies" 
+
+Iteration: 71. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies " 
+
+Iteration: 72. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies o" 
+
+Iteration: 73. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on" 
+
+Iteration: 74. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on " 
+
+Iteration: 75. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on s" 
+
+Iteration: 76. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on st" 
+
+Iteration: 77. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on sta" 
+
+Iteration: 78. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on stan" 
+
+Iteration: 79. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on stand" 
+
+Iteration: 80. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standb" 
+
+Iteration: 81. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby" 
+
+Iteration: 82. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby " 
+
+Iteration: 83. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby w" 
+
+Iteration: 84. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby wa" 
+
+Iteration: 85. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby wav" 
+
+Iteration: 86. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby wavi" 
+
+Iteration: 87. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby wavin" 
+
+Iteration: 88. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving" 
+
+Iteration: 89. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving " 
+
+Iteration: 90. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving j" 
+
+Iteration: 91. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving ju" 
+
+Iteration: 92. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving jus" 
+
+Iteration: 93. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just" 
+
+Iteration: 94. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just " 
+
+Iteration: 95. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just t" 
+
+Iteration: 96. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to" 
+
+Iteration: 97. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to " 
+
+Iteration: 98. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to s" 
+
+Iteration: 99. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to sa" 
+
+Iteration: 100. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say" 
+
+Iteration: 101. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say " 
+
+Iteration: 102. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say h" 
+
+Iteration: 103. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi" 
+
+Iteration: 104. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\n" 
+
+Iteration: 105. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nD" 
+
+Iteration: 106. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDi" 
+
+Iteration: 107. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid" 
+
+Iteration: 108. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid " 
+
+Iteration: 109. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid y" 
+
+Iteration: 110. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid yo" 
+
+Iteration: 111. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you" 
+
+Iteration: 112. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you " 
+
+Iteration: 113. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you s" 
+
+Iteration: 114. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you st" 
+
+Iteration: 115. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you sto" 
+
+Iteration: 116. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop" 
+
+Iteration: 117. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop?" 
+
+Iteration: 118. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? " 
+
+Iteration: 119. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? N" 
+
+Iteration: 120. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No" 
+
+Iteration: 121. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No," 
+
+Iteration: 122. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, " 
+
+Iteration: 123. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I" 
+
+Iteration: 124. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I " 
+
+Iteration: 125. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I j" 
+
+Iteration: 126. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I ju" 
+
+Iteration: 127. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I jus" 
+
+Iteration: 128. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just" 
+
+Iteration: 129. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just " 
+
+Iteration: 130. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just d" 
+
+Iteration: 131. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just dr" 
+
+Iteration: 132. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just dro" 
+
+Iteration: 133. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drov" 
+
+Iteration: 134. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove" 
+
+Iteration: 135. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove " 
+
+Iteration: 136. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove b" 
+
+Iteration: 137. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by" 
+
+Iteration: 138. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by\n" 
+
+Iteration: 139. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by\n\x01" 
+
+Iteration: 140. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by\n\x01" 
+
+Iteration: 141. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by\n\x01" 
+
+Iteration: 142. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by\n\x01" 
+
+Iteration: 143. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by\n\x01" 
+
+Iteration: 144. b"Rollin' in my 5.0\nWith my rag-top down so my hair can blow\nThe girlies on standby waving just to say hi\nDid you stop? No, I just drove by\n\x01" 
+
+Decrypted text: Rollin' in my 5.0
+With my rag-top down so my hair can blow
+The girlies on standby waving just to say hi
+Did you stop? No, I just drove by
+```
+
 ### [Challenge 13](#challenge-13)
 
 ### [Challenge 14](#challenge-14)
