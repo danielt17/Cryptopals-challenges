@@ -298,6 +298,18 @@ AES ECB encrypted file: 165
 
 ### [Challenge 9](#challenge-9)
 
+In this challange we are asked to implement the PKCS#7 padding scheme described <a href="https://datatracker.ietf.org/doc/html/rfc5652">here</a>, the idea behind this padding scheme is very simple. Let's say we have a text of size m, and the block cipher block size is n where n>m, we need a padding scheme which will make our text of length m tranform into length n so we can apply are block cipher. This is done in the following way: we have a block length of size n bytes and text of m bytes size (where n>m) therefore we append to the end of the text n-m bytes of the value n-m. 
+
+Expected output: 
+```python
+Correct solution 
+
+Original text: b'YELLOW SUBMARINE'. Padded text: b'YELLOW SUBMARINE\x04\x04\x04\x04' 
+
+Unpadded text: b'YELLOW SUBMARINE'
+```
+
+
 ### [Challenge 10](#challenge-10)
 
 ### [Challenge 11](#challenge-11)
