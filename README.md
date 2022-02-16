@@ -315,7 +315,7 @@ Implementing CBC mode is a straight forward proces but one should first understa
 
 ![image](https://user-images.githubusercontent.com/60748408/154333638-8bf15ec7-8e2a-421e-9b4d-edd3b0a5d448.png)
 
-![image](https://user-images.githubusercontent.com/60748408/154333784-1ae9ed65-7bff-402c-a2f5-f47ef478b852.png)
+![image](https://user-images.githubusercontent.com/60748408/154333856-3cbcbca7-8210-46ca-84ba-84386d80fb9d.png)
 ![image](https://user-images.githubusercontent.com/60748408/154333279-d374e4f6-2b49-4892-bb9e-5f1a7df995e9.png)
 
 In the following image which we have used before, we can see the difference between encrypting using ECB mode and CBC (or other modes) of encryption.
