@@ -414,6 +414,13 @@ Encrypt decrypt chain was successfully built.
 
 ### [Challenge 11](#challenge-11)
 
+Developing an algorithm to detect the use of ECB or CBC mode is simple. In ECB mode we expect the exact same block to go to the same ciphertext output, while in CBC under different IVs we expect the ciphertext blocks to be different (its 2^-64 unlikely to get a collision), developing such an algorithm is trivial from this observation. 
+
+Expected output: 
+```python
+Experiments: 1000. Successful: 1000
+```
+
 ### [Challenge 12](#challenge-12)
 
 ### [Challenge 13](#challenge-13)
