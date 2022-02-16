@@ -59,7 +59,7 @@ if __name__ == '__main__':
     Iv = b'\x00' * AES.block_size
     Key = "YELLOW SUBMARINE".encode("utf8")
     plainText = aes_cbc_decrypt(cipherText, Key, Iv)
-    print('Decrypted text: \n\n' + str(plainText.decode()))
+    print('Decrypted text: \n\n' + str(plainText.decode())[:-4])
     ciphertextrebuilt = str(aes_cbc_encrypt(plainText,Key, Iv))
     if ciphertextrebuilt == str(cipherText):
         print('\n')
