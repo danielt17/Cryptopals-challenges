@@ -5,7 +5,6 @@ Created on Sun Oct  3 14:17:25 2021
 @author: danie
 """
 
-
 # https://cryptopals.com/sets/5/challenges/33
 
 # %% Imports
@@ -60,7 +59,7 @@ class DiffieHellman:
     
 def run_diffie_hellman_exchange(p,g):
     print('\n')
-    print('Running Diffie-Hellman key exchange:')
+    print('Running Diffie-Hellman key exchange: \n')
     print('g: ' + str(g) + '. p: '  + str(p))
     alice = DiffieHellman(p,g)
     bob = DiffieHellman(p,g)
