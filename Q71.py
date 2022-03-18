@@ -87,9 +87,9 @@ class Server:
         print('Signature verfication oracle is up: ')
         self.Verification_Oracle = AES_CBC_MAC(self.key,iv)
         if mac == self.Verification_Oracle.get_mac(message):
-            print('Signature is valid!')
+            print('Signature is valid!\n\n\n')
         else:
-            print('Signature is invalid!!!!')
+            print('Signature is invalid!!!!\n\n\n')
     
 def failed_forgery(full_message,forged_amount=1000000):
     failed_forged_message = full_message.copy()
@@ -107,6 +107,7 @@ if __name__ == '__main__':
     client = Client(key)
     server = Server(key)
     full_message = client.send_message(500)
+    print('\n')
     print('First we will look at an example which has a valid signature: \n')
     server.receive_and_validate_message(full_message)
     print('Now we will look at an example which has an invalid signature and was fabricated badly: \n')
