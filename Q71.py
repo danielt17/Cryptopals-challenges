@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Feb 20 19:43:42 2022
-
 @author: danie
 """
 
@@ -25,22 +24,23 @@ class Diffie_Hellman:
     def run_key_exchange(self):
         shared_secret = run_diffie_hellman_exchange(self.p,self.g)
         shared_secret_key = MD5(long_to_bytes(shared_secret)).digest()
+        print('\n')
         print('Shared key: ' + str(shared_secret_key) + '.\n')
         return shared_secret_key
 
 class AES_CBC_MAC:
     '''AES CBC MAC oracle'''
     
-    def __init__(self,key):
+    def __init__(self,key,iv=None):
         # Initialize AES-CBC-MAC key and iv
-        self.iv = get_random_bytes(AES.block_size)
+        if iv is None:
+            self.iv = get_random_bytes(AES.block_size)
+        else:
+            self.iv = iv
         self.key = key
         print('AES-CBC-MAC oracle is up, with the following parameters: \n')
         print('IV: ' + str(self.iv))
         print('Key: ' + str(self.key) + '\n')
-    
-    def get_new_iv(self):
-        self.iv = get_random_bytes(AES.block_size)
     
     def get_mac(self,plainText):
         # Get MAC for plaintext
@@ -48,10 +48,61 @@ class AES_CBC_MAC:
         mac = cipherText[-AES.block_size:]
         return mac
 
+class Client:
+
+    def __init__(self,key):
+        self.from_id =  int.from_bytes(get_random_bytes(4),'big')
+        self.to_id =  int.from_bytes(get_random_bytes(4),'big')
+        self.Signing_Oracle = AES_CBC_MAC(key)
+        
+    def prepare_message(self,amount):
+        if type(amount) != int:
+            raise Exception("Message is not formatted correctly, make sure its an int!")
+        message = 'from=#' + str(self.from_id) + '&=#' + str(self.to_id) + '&amount=#' + str(amount)
+        return message.encode()
+    
+    def send_message(self,amount):
+        print('API got a request of sending: ' + str(amount) + str(' space bucks.\n'))
+        message = self.prepare_message(amount)
+        iv = self.Signing_Oracle.iv
+        mac = self.Signing_Oracle.get_mac(message)
+        full_message = dict({'message': message, 'iv': iv, 'mac': mac})
+        print('Sent message: ' + str(full_message) + '\n')
+        return full_message
+
+class Server:
+    
+    def __init__(self,key, iv = None):
+        self.key = key
+        if iv is None:
+            self.Verification_Oracle = None
+        else:
+            self.Verification_Oracle = AES_CBC_MAC(key,iv)
+
+    def receive_and_validate_message(self,full_message):
+        print('Received message: ' + str(full_message) + '\n')
+        print('parsing the message: ')
+        message = full_message['message']; iv = full_message['iv']; mac = full_message['mac']
+        print('message: ' + str(message)); print('iv: ' + str(iv)); print('mac: ' + str(mac) + '\n')
+        print('Signature verfication oracle is up: ')
+        self.Verification_Oracle = AES_CBC_MAC(self.key,iv)
+        if mac == self.Verification_Oracle.get_mac(message):
+            print('Signature is valid!')
+        else:
+            raise Exception('Signature is invalid')
+    
+    
+    
+    
+
 # %% Main
 
 if __name__ == '__main__':
     print('\n\n\n')
     print('CBC-MAC message forgery simulation:\n')
     key = Diffie_Hellman().run_key_exchange()
-    Oracle = AES_CBC_MAC(key)
+    client = Client(key)
+    server = Server(key)
+    full_message = client.send_message(500)
+    server.receive_and_validate_message(full_message)
+    
