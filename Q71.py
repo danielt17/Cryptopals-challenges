@@ -12,6 +12,7 @@ from Crypto.Util.number import long_to_bytes
 from Q28 import aes_cbc_encrypt
 from Q46MD5 import MD5
 from Q51 import run_diffie_hellman_exchange
+from Q22 import xor
 
 # %% Functions
 
@@ -98,14 +99,13 @@ def failed_forgery(full_message,forged_amount=1000000):
     failed_forged_message['message'] = (failed_forged_message['message'].decode()[:-3] + str(forged_amount)).encode()
     return failed_forged_message
 
-# def forgery_algorithm(failed_forged_message):
-#     forged_message = failed_forged_message.copy()
-#     iv = failed_forged_message['iv']
-#     fakeIV = [0]*16
-#     fakeIV[0:6] = iv[0:6]
-#     fakeIV = bytearray(fakeIV)
-#     forged_message['iv'] = fakeIV
-#     return forged_message
+def forgery_algorithm(full_message,failed_forged_message):
+    forged_message = failed_forged_message.copy()
+    iv = failed_forged_message['iv']
+    # need to add padding to make this work PKCS7
+    fake_iv = xor(iv, xor(full_message['message'][16:], forged_message['message'][16:]))
+    forged_message['iv'] = fake_iv
+    return forged_message
     
 # %% Main
 
@@ -124,6 +124,6 @@ if __name__ == '__main__':
     failed_forged_message = failed_forgery(full_message,forged_amount)
     server.receive_and_validate_message(failed_forged_message)
     print('Now we will look at a correctly forged message: \n')
-    # forged_message = forgery_algorithm(failed_forged_message)
-    # server.receive_and_validate_message(forged_message)
+    forged_message = forgery_algorithm(full_message,failed_forged_message)
+    server.receive_and_validate_message(forged_message)
     
