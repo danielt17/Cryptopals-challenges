@@ -51,14 +51,14 @@ class AES_CBC_MAC:
 class Client:
 
     def __init__(self,key):
-        self.from_id =  int.from_bytes(get_random_bytes(4),'big')
-        self.to_id =  int.from_bytes(get_random_bytes(4),'big')
+        self.from_id =  0
+        self.to_id =  1
         self.Signing_Oracle = AES_CBC_MAC(key)
         
     def prepare_message(self,amount):
         if type(amount) != int:
             raise Exception("Message is not formatted correctly, make sure its an int!")
-        message = 'from=#' + str(self.from_id) + '&=#' + str(self.to_id) + '&amount=#' + str(amount)
+        message = 'from=#' + str(self.from_id) + '&to=#' + str(self.to_id) + '&amount=#' + str(amount)
         return message.encode()
     
     def send_message(self,amount):
@@ -89,9 +89,12 @@ class Server:
         if mac == self.Verification_Oracle.get_mac(message):
             print('Signature is valid!')
         else:
-            raise Exception('Signature is invalid')
+            print('Signature is invalid!!!!')
     
-    
+def failed_forgery(full_message,forged_amount=1000000):
+    failed_forged_message = full_message.copy()
+    failed_forged_message['message'] = (failed_forged_message['message'].decode()[:-3] + str(forged_amount)).encode()
+    return failed_forged_message
     
     
 
@@ -104,5 +107,10 @@ if __name__ == '__main__':
     client = Client(key)
     server = Server(key)
     full_message = client.send_message(500)
+    print('First we will look at an example which has a valid signature: \n')
     server.receive_and_validate_message(full_message)
+    print('Now we will look at an example which has an invalid signature and was fabricated badly: \n')
+    forged_amount = 1000000
+    failed_forged_message = failed_forgery(full_message,forged_amount)
+    server.receive_and_validate_message(failed_forged_message)
     
