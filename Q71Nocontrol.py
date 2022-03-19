@@ -17,6 +17,7 @@ from Q22 import xor
 class Client:
 
     def __init__(self,key,iv):
+        print('Signature signing oracle is up: \n')
         self.Signing_Oracle = AES_CBC_MAC(key,iv)
         
     def prepare_message(self,from_id,tx_list):
@@ -44,15 +45,34 @@ class Server:
 
     def receive_and_validate_message(self,full_message):
         print('Received message: ' + str(full_message) + '\n')
-        print('parsing the message: ')
         message = full_message['message']; mac = full_message['mac']
-        print('message: ' + str(message)); print('mac: ' + str(mac) + '\n')
         calcualted_signature = self.Verification_Oracle.get_mac(message)
+        print('Received mac: ' + str(mac) + '\n')
         print('Calculated signature: ' + str(calcualted_signature) + '\n')
         if mac == calcualted_signature:
             print('Signature is valid!\n\n\n')
         else:
             print('Signature is invalid!!!!\n\n\n')
+
+def length_extension_attack(full_message,client):
+    fake_message = full_message.copy()
+    id_extended = 1; tx_list_extended = [['a;1',1000],[2,10001]]
+    print('The forged message should have specific structure that will allow us to pass the regex parser, therefore add padding at the start with a specific structure.\n')
+    second_message = client.send_message(id_extended,tx_list_extended)
+    m1 = full_message['message']; mac1 = full_message['mac']
+    m2 = second_message['message']; mac2 = second_message['mac']
+    p1 = m1[:block_size];               p1_ = m2[:block_size];
+    p2 = m1[block_size:(2*block_size)]; p2_ = m2[block_size:(2*block_size)]
+    p2_new = pad(p2,block_size);
+    p3 = xor(mac1,p1_)
+    p4 = p2_
+    Q = p1 + p2_new + p3 + p4
+    fake_message['message'] = Q
+    fake_message['mac'] = mac2
+    print('Forged message: ' + str(fake_message['message']))
+    print('Forged message mac: ' + str(fake_message['mac']) + '\n')
+    return fake_message
+    
 
 # %% Main
 
@@ -73,6 +93,7 @@ if __name__ == '__main__':
     full_message = client.send_message(from_id,tx_list)
     server.receive_and_validate_message(full_message)
     print('Now we will look at a length extended attacked message which has a valid signature: \n')
-    
+    fake_message = length_extension_attack(full_message,client)
+    server.receive_and_validate_message(fake_message)
     
     
