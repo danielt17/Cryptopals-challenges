@@ -7,7 +7,10 @@ Created on Sat Mar 19 17:27:59 2022
 
 # %% Imports
 
+from Crypto.Cipher.AES import block_size
 from Q71IVcontrol import Diffie_Hellman,AES_CBC_MAC
+from Crypto.Util.Padding import pad
+from Q22 import xor
 
 # %% Functions
 
@@ -50,8 +53,10 @@ class Server:
             print('Signature is valid!\n\n\n')
         else:
             print('Signature is invalid!!!!\n\n\n')
-    
+
 # %% Main
+
+# Theres some big problem with this code i dont know where it is, should be somewhere with the implementation of AES-CBC-MAC
 
 if __name__ == '__main__':
     print('\n\n\n')
@@ -63,9 +68,11 @@ if __name__ == '__main__':
     server = Server(key,iv)
     from_id = 0
     tx_list = [[5,1000],[3,10000]]
-    full_message = client.send_message(from_id,tx_list)
     print('\n')
     print('First we will look at an example which has a valid signature: \n')
+    full_message = client.send_message(from_id,tx_list)
     server.receive_and_validate_message(full_message)
-   
+    print('Now we will look at a length extended attacked message which has a valid signature: \n')
+    
+    
     
