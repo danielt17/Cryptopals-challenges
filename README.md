@@ -91,7 +91,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 
 | Challenge | Solution | Explanation |
 | :---: | :---: | :---: |
-| <a href="https://cryptopals.com/sets/7/challenges/49">Challenge 49</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q71IVcontrol.py">code Attacker controlled IV</a>, <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q71Nocontrol.py">code Attacker has no control of IV</a> | [Explanation 49](#challenge-49) |
+| <a href="https://cryptopals.com/sets/7/challenges/49">Challenge 49</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q71IVcontrol.py">code (Attacker controlled IV)</a>, <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q71Nocontrol.py">code (Attacker has no control of IV)</a> | [Explanation 49](#challenge-49) |
 | <a href="https://cryptopals.com/sets/7/challenges/50">Challenge 50</a> | | [Explanation 50](#challenge-50) |
 | <a href="https://cryptopals.com/sets/7/challenges/51">Challenge 51</a> | | [Explanation 51](#challenge-51) |
 | <a href="https://cryptopals.com/sets/7/challenges/52">Challenge 52</a> | | [Explanation 52](#challenge-52) |
