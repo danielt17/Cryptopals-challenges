@@ -124,7 +124,7 @@ def forgery_algorithm(full_message,failed_forged_message):
 
 if __name__ == '__main__':
     print('\n\n\n')
-    print('CBC-MAC message forgery simulation:\n')
+    print('CBC-MAC message forgery with iv control simulation:\n')
     key = Diffie_Hellman().run_key_exchange()
     client = Client(key)
     server = Server(key)
