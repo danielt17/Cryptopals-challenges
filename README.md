@@ -96,7 +96,7 @@ Each set has about 8 challenges, one can find in each table a link to the challe
 | <a href="https://cryptopals.com/sets/7/challenges/51">Challenge 51</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q73.py">code</a> | [Explanation 51](#challenge-51) |
 | <a href="https://cryptopals.com/sets/7/challenges/52">Challenge 52</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q74.py">code</a> | [Explanation 52](#challenge-52) |
 | <a href="https://cryptopals.com/sets/7/challenges/53">Challenge 53</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q75.py">code</a> | [Explanation 53](#challenge-53) |
-| <a href="https://cryptopals.com/sets/7/challenges/54">Challenge 54</a> | | [Explanation 54](#challenge-54) |
+| <a href="https://cryptopals.com/sets/7/challenges/54">Challenge 54</a> | <a href="https://github.com/danielt17/Cryptopals-challenges/blob/main/Q76.py">code</a> | [Explanation 54](#challenge-54) |
 | <a href="https://cryptopals.com/sets/7/challenges/55">Challenge 55</a> | | [Explanation 55](#challenge-55) |
 | <a href="https://cryptopals.com/sets/7/challenges/56">Challenge 56</a> | | [Explanation 56](#challenge-56) |
 
