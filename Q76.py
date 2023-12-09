@@ -142,7 +142,7 @@ def main():
     known_digest = nostradamus.get_digest()
     print(f'Known digest: {known_digest}\n')
     # generate ctpf
-    challenger_prefix = b'War in 2020!'
+    challenger_prefix = b'There will be a War in 2020'
     prediction = nostradamus.generate_ctfp(challenger_prefix)
     print(f'Prediction: {prediction}\n')
     # Proof
