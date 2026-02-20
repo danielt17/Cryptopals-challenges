@@ -1,0 +1,7 @@
+pycryptodome
+numpy
+tqdm
+z3-solver
+flask
+requests
+pwntools

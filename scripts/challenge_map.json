@@ -1,0 +1,1220 @@
+{
+  "set_info": {
+    "1": {
+      "slug": "basics",
+      "name": "Basics"
+    },
+    "2": {
+      "slug": "block_crypto",
+      "name": "Block crypto"
+    },
+    "3": {
+      "slug": "block_and_stream_crypto",
+      "name": "Block and stream crypto"
+    },
+    "4": {
+      "slug": "stream_crypto_and_randomness",
+      "name": "Stream crypto and randomness"
+    },
+    "5": {
+      "slug": "diffie_hellman_and_friends",
+      "name": "Diffie-Hellman and friends"
+    },
+    "6": {
+      "slug": "rsa_and_dsa",
+      "name": "RSA and DSA"
+    },
+    "7": {
+      "slug": "hashes",
+      "name": "Hashes"
+    },
+    "8": {
+      "slug": "abstract_algebra",
+      "name": "Abstract Algebra"
+    }
+  },
+  "challenges": {
+    "1": {
+      "set": 1,
+      "title": "Convert hex to base64",
+      "slug": "hex_to_base64",
+      "link": "https://cryptopals.com/sets/1/challenges/1",
+      "scripts": [
+        {
+          "file": "hex_to_base64.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "2": {
+      "set": 1,
+      "title": "Fixed XOR",
+      "slug": "fixed_xor",
+      "link": "https://cryptopals.com/sets/1/challenges/2",
+      "scripts": [
+        {
+          "file": "fixed_xor.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "3": {
+      "set": 1,
+      "title": "Single-byte XOR cipher",
+      "slug": "single_byte_xor_cipher",
+      "link": "https://cryptopals.com/sets/1/challenges/3",
+      "scripts": [
+        {
+          "file": "single_byte_xor_cipher.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "4": {
+      "set": 1,
+      "title": "Detect single-character XOR",
+      "slug": "detect_single_character_xor",
+      "link": "https://cryptopals.com/sets/1/challenges/4",
+      "scripts": [
+        {
+          "file": "detect_single_character_xor.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "14.txt"
+      ],
+      "run_sequence": null
+    },
+    "5": {
+      "set": 1,
+      "title": "Implement repeating-key XOR",
+      "slug": "repeating_key_xor",
+      "link": "https://cryptopals.com/sets/1/challenges/5",
+      "scripts": [
+        {
+          "file": "repeating_key_xor.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "6": {
+      "set": 1,
+      "title": "Break repeating-key XOR",
+      "slug": "break_repeating_key_xor",
+      "link": "https://cryptopals.com/sets/1/challenges/6",
+      "scripts": [
+        {
+          "file": "break_repeating_key_xor.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "16.txt"
+      ],
+      "run_sequence": null
+    },
+    "7": {
+      "set": 1,
+      "title": "AES in ECB mode",
+      "slug": "aes_ecb_mode",
+      "link": "https://cryptopals.com/sets/1/challenges/7",
+      "scripts": [
+        {
+          "file": "aes_ecb_mode.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "17.txt"
+      ],
+      "run_sequence": null
+    },
+    "8": {
+      "set": 1,
+      "title": "Detect AES in ECB mode",
+      "slug": "detect_aes_ecb_mode",
+      "link": "https://cryptopals.com/sets/1/challenges/8",
+      "scripts": [
+        {
+          "file": "detect_aes_ecb_mode.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "18.txt"
+      ],
+      "run_sequence": null
+    },
+    "9": {
+      "set": 2,
+      "title": "Implement PKCS#7 padding",
+      "slug": "pkcs7_padding",
+      "link": "https://cryptopals.com/sets/2/challenges/9",
+      "scripts": [
+        {
+          "file": "pkcs7_padding.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "10": {
+      "set": 2,
+      "title": "Implement CBC mode",
+      "slug": "cbc_mode",
+      "link": "https://cryptopals.com/sets/2/challenges/10",
+      "scripts": [
+        {
+          "file": "cbc_mode.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "22.txt"
+      ],
+      "run_sequence": null
+    },
+    "11": {
+      "set": 2,
+      "title": "An ECB/CBC detection oracle",
+      "slug": "ecb_cbc_detection_oracle",
+      "link": "https://cryptopals.com/sets/2/challenges/11",
+      "scripts": [
+        {
+          "file": "ecb_cbc_detection_oracle.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "12": {
+      "set": 2,
+      "title": "Byte-at-a-time ECB decryption (simple)",
+      "slug": "byte_at_a_time_ecb_simple",
+      "link": "https://cryptopals.com/sets/2/challenges/12",
+      "scripts": [
+        {
+          "file": "byte_at_a_time_ecb_simple.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "13": {
+      "set": 2,
+      "title": "ECB cut-and-paste",
+      "slug": "ecb_cut_and_paste",
+      "link": "https://cryptopals.com/sets/2/challenges/13",
+      "scripts": [
+        {
+          "file": "ecb_cut_and_paste.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "14": {
+      "set": 2,
+      "title": "Byte-at-a-time ECB decryption (harder)",
+      "slug": "byte_at_a_time_ecb_harder",
+      "link": "https://cryptopals.com/sets/2/challenges/14",
+      "scripts": [
+        {
+          "file": "byte_at_a_time_ecb_harder.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "15": {
+      "set": 2,
+      "title": "PKCS#7 padding validation",
+      "slug": "pkcs7_padding_validation",
+      "link": "https://cryptopals.com/sets/2/challenges/15",
+      "scripts": [
+        {
+          "file": "pkcs7_padding_validation.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "16": {
+      "set": 2,
+      "title": "CBC bitflipping attacks",
+      "slug": "cbc_bitflipping",
+      "link": "https://cryptopals.com/sets/2/challenges/16",
+      "scripts": [
+        {
+          "file": "cbc_bitflipping.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "17": {
+      "set": 3,
+      "title": "The CBC padding oracle",
+      "slug": "cbc_padding_oracle",
+      "link": "https://cryptopals.com/sets/3/challenges/17",
+      "scripts": [
+        {
+          "file": "cbc_padding_oracle.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "18": {
+      "set": 3,
+      "title": "Implement CTR mode",
+      "slug": "aes_ctr_mode",
+      "link": "https://cryptopals.com/sets/3/challenges/18",
+      "scripts": [
+        {
+          "file": "aes_ctr_mode.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "19": {
+      "set": 3,
+      "title": "Break fixed-nonce CTR mode using substitutions",
+      "slug": "break_fixed_nonce_ctr",
+      "link": "https://cryptopals.com/sets/3/challenges/19",
+      "scripts": [
+        {
+          "file": "break_fixed_nonce_ctr.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "33.txt"
+      ],
+      "run_sequence": null
+    },
+    "20": {
+      "set": 3,
+      "title": "Break fixed-nonce CTR statistically",
+      "slug": "break_fixed_nonce_ctr_statistical",
+      "link": "https://cryptopals.com/sets/3/challenges/20",
+      "scripts": [
+        {
+          "file": "break_fixed_nonce_ctr_statistical.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "34.txt"
+      ],
+      "run_sequence": null
+    },
+    "21": {
+      "set": 3,
+      "title": "Implement the MT19937 Mersenne Twister RNG",
+      "slug": "mt19937_rng",
+      "link": "https://cryptopals.com/sets/3/challenges/21",
+      "scripts": [
+        {
+          "file": "mt19937_rng.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "22": {
+      "set": 3,
+      "title": "Crack an MT19937 seed",
+      "slug": "crack_mt19937_seed",
+      "link": "https://cryptopals.com/sets/3/challenges/22",
+      "scripts": [
+        {
+          "file": "crack_mt19937_seed.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "23": {
+      "set": 3,
+      "title": "Clone an MT19937 RNG from its output",
+      "slug": "clone_mt19937",
+      "link": "https://cryptopals.com/sets/3/challenges/23",
+      "scripts": [
+        {
+          "file": "clone_mt19937.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "24": {
+      "set": 3,
+      "title": "Create the MT19937 stream cipher and break it",
+      "slug": "mt19937_stream_cipher",
+      "link": "https://cryptopals.com/sets/3/challenges/24",
+      "scripts": [
+        {
+          "file": "mt19937_stream_cipher.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "25": {
+      "set": 4,
+      "title": "Break random-access read/write AES CTR",
+      "slug": "break_random_access_aes_ctr",
+      "link": "https://cryptopals.com/sets/4/challenges/25",
+      "scripts": [
+        {
+          "file": "break_random_access_aes_ctr.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "41.txt"
+      ],
+      "run_sequence": null
+    },
+    "26": {
+      "set": 4,
+      "title": "CTR bitflipping",
+      "slug": "ctr_bitflipping",
+      "link": "https://cryptopals.com/sets/4/challenges/26",
+      "scripts": [
+        {
+          "file": "ctr_bitflipping.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "27": {
+      "set": 4,
+      "title": "Recover the key from CBC with IV=Key",
+      "slug": "recover_key_from_iv_equal_key",
+      "link": "https://cryptopals.com/sets/4/challenges/27",
+      "scripts": [
+        {
+          "file": "recover_key_from_iv_equal_key.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "28": {
+      "set": 4,
+      "title": "Implement a SHA-1 keyed MAC",
+      "slug": "sha1_keyed_mac",
+      "link": "https://cryptopals.com/sets/4/challenges/28",
+      "scripts": [
+        {
+          "file": "sha1_keyed_mac.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "29": {
+      "set": 4,
+      "title": "Break a SHA-1 keyed MAC using length extension",
+      "slug": "sha1_length_extension",
+      "link": "https://cryptopals.com/sets/4/challenges/29",
+      "scripts": [
+        {
+          "file": "sha1_length_extension.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "30": {
+      "set": 4,
+      "title": "Break an MD4 keyed MAC using length extension",
+      "slug": "md4_length_extension",
+      "link": "https://cryptopals.com/sets/4/challenges/30",
+      "scripts": [
+        {
+          "file": "md4_length_extension.py",
+          "role": "script",
+          "run": true
+        },
+        {
+          "file": "md5_length_extension.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "run",
+          "scripts": [
+            "md4_length_extension.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "md5_length_extension.py"
+          ]
+        }
+      ]
+    },
+    "31": {
+      "set": 4,
+      "title": "Implement and break HMAC-SHA1 with an artificial timing leak",
+      "slug": "hmac_sha1_timing_leak_artificial",
+      "link": "https://cryptopals.com/sets/4/challenges/31",
+      "scripts": [
+        {
+          "file": "utils.py",
+          "role": "utils",
+          "run": false
+        },
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": true
+        },
+        {
+          "file": "attacker.py",
+          "role": "attacker",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "server.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "attacker.py"
+          ]
+        }
+      ]
+    },
+    "32": {
+      "set": 4,
+      "title": "Break HMAC-SHA1 with a slightly less artificial timing leak",
+      "slug": "hmac_sha1_timing_leak_less_artificial",
+      "link": "https://cryptopals.com/sets/4/challenges/32",
+      "scripts": [
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": true
+        },
+        {
+          "file": "attacker.py",
+          "role": "attacker",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "server.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "attacker.py"
+          ]
+        }
+      ]
+    },
+    "33": {
+      "set": 5,
+      "title": "Implement Diffie-Hellman",
+      "slug": "diffie_hellman",
+      "link": "https://cryptopals.com/sets/5/challenges/33",
+      "scripts": [
+        {
+          "file": "diffie_hellman.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "34": {
+      "set": 5,
+      "title": "MITM key-fixing attack on Diffie-Hellman with parameter injection",
+      "slug": "dh_mitm_key_fixing",
+      "link": "https://cryptopals.com/sets/5/challenges/34",
+      "scripts": [
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": true
+        },
+        {
+          "file": "attacker.py",
+          "role": "attacker",
+          "run": true
+        },
+        {
+          "file": "client.py",
+          "role": "client",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "server.py"
+          ]
+        },
+        {
+          "action": "start",
+          "scripts": [
+            "attacker.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "client.py"
+          ]
+        }
+      ]
+    },
+    "35": {
+      "set": 5,
+      "title": "DH with negotiated groups, malicious g",
+      "slug": "dh_malicious_g",
+      "link": "https://cryptopals.com/sets/5/challenges/35",
+      "scripts": [
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": true
+        },
+        {
+          "file": "attacker.py",
+          "role": "attacker",
+          "run": true
+        },
+        {
+          "file": "client.py",
+          "role": "client",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "server.py"
+          ]
+        },
+        {
+          "action": "start",
+          "scripts": [
+            "attacker.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "client.py"
+          ]
+        }
+      ]
+    },
+    "36": {
+      "set": 5,
+      "title": "Implement Secure Remote Password (SRP)",
+      "slug": "srp",
+      "link": "https://cryptopals.com/sets/5/challenges/36",
+      "scripts": [
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": true
+        },
+        {
+          "file": "client.py",
+          "role": "client",
+          "run": true
+        },
+        {
+          "file": "utils.py",
+          "role": "utils",
+          "run": false
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "server.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "client.py"
+          ]
+        }
+      ]
+    },
+    "37": {
+      "set": 5,
+      "title": "Break SRP with a zero key",
+      "slug": "srp_zero_key",
+      "link": "https://cryptopals.com/sets/5/challenges/37",
+      "scripts": [
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": true
+        },
+        {
+          "file": "client_setup_then_attack.py",
+          "role": "client",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "server.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "client_setup_then_attack.py"
+          ]
+        }
+      ]
+    },
+    "38": {
+      "set": 5,
+      "title": "Offline dictionary attack on simplified SRP",
+      "slug": "srp_offline_dictionary",
+      "link": "https://cryptopals.com/sets/5/challenges/38",
+      "scripts": [
+        {
+          "file": "fake_server.py",
+          "role": "attacker",
+          "run": true
+        },
+        {
+          "file": "client.py",
+          "role": "client",
+          "run": true
+        },
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": false
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "fake_server.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "client.py"
+          ]
+        }
+      ]
+    },
+    "39": {
+      "set": 5,
+      "title": "Implement RSA",
+      "slug": "rsa_implementation",
+      "link": "https://cryptopals.com/sets/5/challenges/39",
+      "scripts": [
+        {
+          "file": "rsa_implementation.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "40": {
+      "set": 5,
+      "title": "RSA broadcast attack (e=3)",
+      "slug": "rsa_broadcast_attack",
+      "link": "https://cryptopals.com/sets/5/challenges/40",
+      "scripts": [
+        {
+          "file": "rsa_broadcast_attack.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "41": {
+      "set": 6,
+      "title": "Unpadded message recovery oracle",
+      "slug": "unpadded_rsa_message_recovery",
+      "link": "https://cryptopals.com/sets/6/challenges/41",
+      "scripts": [
+        {
+          "file": "unpadded_rsa_message_recovery.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "42": {
+      "set": 6,
+      "title": "Bleichenbacher's e=3 RSA signature forgery",
+      "slug": "rsa_signature_forgery",
+      "link": "https://cryptopals.com/sets/6/challenges/42",
+      "scripts": [
+        {
+          "file": "rsa_signature_forgery.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "43": {
+      "set": 6,
+      "title": "DSA key recovery from nonce",
+      "slug": "dsa_key_recovery_from_nonce",
+      "link": "https://cryptopals.com/sets/6/challenges/43",
+      "scripts": [
+        {
+          "file": "dsa_key_recovery_from_nonce.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "44": {
+      "set": 6,
+      "title": "DSA nonce reuse",
+      "slug": "dsa_nonce_reuse",
+      "link": "https://cryptopals.com/sets/6/challenges/44",
+      "scripts": [
+        {
+          "file": "dsa_nonce_reuse.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [
+        "64.txt"
+      ],
+      "run_sequence": null
+    },
+    "45": {
+      "set": 6,
+      "title": "DSA parameter tampering",
+      "slug": "dsa_parameter_tampering",
+      "link": "https://cryptopals.com/sets/6/challenges/45",
+      "scripts": [
+        {
+          "file": "dsa_parameter_tampering.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "46": {
+      "set": 6,
+      "title": "RSA parity oracle",
+      "slug": "rsa_parity_oracle",
+      "link": "https://cryptopals.com/sets/6/challenges/46",
+      "scripts": [
+        {
+          "file": "rsa_parity_oracle.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "47": {
+      "set": 6,
+      "title": "Bleichenbacher's PKCS 1.5 padding oracle",
+      "slug": "pkcs1_v1_5_padding_oracle",
+      "link": "https://cryptopals.com/sets/6/challenges/47",
+      "scripts": [
+        {
+          "file": "pkcs1_v1_5_padding_oracle_rsa256.py",
+          "role": "script",
+          "run": true
+        },
+        {
+          "file": "pkcs1_v1_5_padding_oracle_rsa2048.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "run",
+          "scripts": [
+            "pkcs1_v1_5_padding_oracle_rsa256.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "pkcs1_v1_5_padding_oracle_rsa2048.py"
+          ]
+        }
+      ]
+    },
+    "48": {
+      "set": 6,
+      "title": "Bleichenbacher 98 attack (TLS)",
+      "slug": "bleichenbacher_98",
+      "link": "https://cryptopals.com/sets/6/challenges/48",
+      "scripts": [
+        {
+          "file": "server.py",
+          "role": "server",
+          "run": true
+        },
+        {
+          "file": "attacker.py",
+          "role": "attacker",
+          "run": true
+        },
+        {
+          "file": "client.py",
+          "role": "client",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "start",
+          "scripts": [
+            "server.py"
+          ]
+        },
+        {
+          "action": "start",
+          "scripts": [
+            "attacker.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "client.py"
+          ]
+        }
+      ]
+    },
+    "49": {
+      "set": 7,
+      "title": "CBC-MAC message forgery",
+      "slug": "cbc_mac_message_forgery",
+      "link": "https://cryptopals.com/sets/7/challenges/49",
+      "scripts": [
+        {
+          "file": "iv_control.py",
+          "role": "script",
+          "run": true
+        },
+        {
+          "file": "no_iv_control.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": [
+        {
+          "action": "run",
+          "scripts": [
+            "iv_control.py"
+          ]
+        },
+        {
+          "action": "run",
+          "scripts": [
+            "no_iv_control.py"
+          ]
+        }
+      ]
+    },
+    "50": {
+      "set": 7,
+      "title": "Hashing with CBC-MAC",
+      "slug": "hashing_with_cbc_mac",
+      "link": "https://cryptopals.com/sets/7/challenges/50",
+      "scripts": [
+        {
+          "file": "hashing_with_cbc_mac.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "51": {
+      "set": 7,
+      "title": "Compression ratio side-channel attacks",
+      "slug": "compression_ratio_side_channel",
+      "link": "https://cryptopals.com/sets/7/challenges/51",
+      "scripts": [
+        {
+          "file": "compression_ratio_side_channel.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "52": {
+      "set": 7,
+      "title": "Iterated hash function multicollisions",
+      "slug": "iterated_hash_multicollisions",
+      "link": "https://cryptopals.com/sets/7/challenges/52",
+      "scripts": [
+        {
+          "file": "iterated_hash_multicollisions.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "53": {
+      "set": 7,
+      "title": "Kelsey and Schneier's expandable messages",
+      "slug": "expandable_messages",
+      "link": "https://cryptopals.com/sets/7/challenges/53",
+      "scripts": [
+        {
+          "file": "expandable_messages.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "54": {
+      "set": 7,
+      "title": "Kelsey and Kohno's Nostradamus attack",
+      "slug": "nostradamus_attack",
+      "link": "https://cryptopals.com/sets/7/challenges/54",
+      "scripts": [
+        {
+          "file": "nostradamus_attack.py",
+          "role": "script",
+          "run": true
+        }
+      ],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "55": {
+      "set": 7,
+      "title": "MD4 collisions",
+      "slug": "md4_collisions",
+      "link": "https://cryptopals.com/sets/7/challenges/55",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "56": {
+      "set": 7,
+      "title": "RC4 single-byte biases",
+      "slug": "rc4_single_byte_biases",
+      "link": "https://cryptopals.com/sets/7/challenges/56",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "57": {
+      "set": 8,
+      "title": "Diffie-Hellman Revisited: Subgroup-Confinement Attacks",
+      "slug": "diffie_hellman_revisited_subgroup_confinement",
+      "link": "https://toadstyle.org/cryptopals/513b590b41d19eff3a0aa028023349fd.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "58": {
+      "set": 8,
+      "title": "Pollard's Method for Catching Kangaroos",
+      "slug": "pollards_method_catching_kangaroos",
+      "link": "https://toadstyle.org/cryptopals/3e17c7b35fcf491d08c989081ed18c9a.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "59": {
+      "set": 8,
+      "title": "Elliptic Curve Diffie-Hellman and Invalid-Curve Attacks",
+      "slug": "ecdh_invalid_curve_attacks",
+      "link": "https://toadstyle.org/cryptopals/a0833e607878a80fdc0808f889c721b1.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "60": {
+      "set": 8,
+      "title": "Single-Coordinate Ladders and Insecure Twists",
+      "slug": "single_coordinate_ladders_insecure_twists",
+      "link": "https://toadstyle.org/cryptopals/c53b90a3e9e753ddad56edbbd33838aa.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "61": {
+      "set": 8,
+      "title": "Duplicate-Signature Key Selection in ECDSA (and RSA)",
+      "slug": "duplicate_signature_key_selection",
+      "link": "https://toadstyle.org/cryptopals/809dccecda0e94ea588d66c12a1cf593.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "62": {
+      "set": 8,
+      "title": "Key-Recovery Attacks on ECDSA with Biased Nonces",
+      "slug": "ecdsa_biased_nonce_key_recovery",
+      "link": "https://toadstyle.org/cryptopals/76f2e314809b2a34ce9ff0d2a08f7a7f.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "63": {
+      "set": 8,
+      "title": "Key-Recovery Attacks on GCM with Repeated Nonces",
+      "slug": "gcm_repeated_nonces_key_recovery",
+      "link": "https://toadstyle.org/cryptopals/2dfbf7e58fd43c140b62485f8d90bebe.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "64": {
+      "set": 8,
+      "title": "Key-Recovery Attacks on GCM with a Truncated MAC",
+      "slug": "gcm_truncated_mac_key_recovery",
+      "link": "https://toadstyle.org/cryptopals/1d79ee513b73e1e0367eae2297e9f234.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "65": {
+      "set": 8,
+      "title": "Truncated-MAC GCM Revisited: Improving the Key-Recovery Attack",
+      "slug": "gcm_truncated_mac_improved_key_recovery",
+      "link": "https://toadstyle.org/cryptopals/a1a2e7311ec5f2535ec46eaebd4588f0.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    },
+    "66": {
+      "set": 8,
+      "title": "Exploiting Implementation Errors in Diffie-Hellman",
+      "slug": "dh_implementation_errors",
+      "link": "https://toadstyle.org/cryptopals/66.txt",
+      "scripts": [],
+      "data_files": [],
+      "run_sequence": null
+    }
+  }
+}
