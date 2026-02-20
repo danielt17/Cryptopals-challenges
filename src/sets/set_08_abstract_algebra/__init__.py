@@ -1,0 +1,3 @@
+"""Package for set_08_abstract_algebra."""
+
+__all__ = ['challenge_57_diffie_hellman_revisited_subgroup_confinement', 'challenge_58_pollards_method_catching_kangaroos', 'challenge_59_ecdh_invalid_curve_attacks', 'challenge_60_single_coordinate_ladders_insecure_twists', 'challenge_61_duplicate_signature_key_selection', 'challenge_62_ecdsa_biased_nonce_key_recovery', 'challenge_63_gcm_repeated_nonces_key_recovery', 'challenge_64_gcm_truncated_mac_key_recovery', 'challenge_65_gcm_truncated_mac_improved_key_recovery', 'challenge_66_dh_implementation_errors']

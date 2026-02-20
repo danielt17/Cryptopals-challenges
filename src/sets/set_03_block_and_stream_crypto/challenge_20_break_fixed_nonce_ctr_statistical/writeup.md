@@ -1,0 +1,21 @@
+# Challenge 20: Break fixed-nonce CTR statistically
+Link: https://cryptopals.com/sets/3/challenges/20
+
+## Goal
+Break fixed-nonce CTR statistically across many ciphertexts.
+
+## Cryptographic Insight
+This is a statistical variant of the previous challenge. By aligning ciphertexts and scoring each byte position across all samples, you can recover the keystream with frequency analysis.
+
+## Method
+- Truncate ciphertexts to a common length.
+- For each position, score all 256 key bytes against English frequency.
+- Assemble the best-scoring keystream and decrypt.
+
+## Implementation Notes
+Scripts: break_fixed_nonce_ctr_statistical.py
+Data files: 34.txt
+Run: python scripts/run_challenge.py 20
+
+## Verification
+The script prints recovered plaintexts and the inferred keystream.
