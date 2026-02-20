@@ -1,5 +1,7 @@
 # Challenge 14: Byte-at-a-time ECB decryption (harder)
-Link: https://cryptopals.com/sets/2/challenges/14
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/14
+Run: `python scripts/run_challenge.py 14`
 
 ## Goal
 Recover an unknown suffix with a random-length prefix in front of your input.

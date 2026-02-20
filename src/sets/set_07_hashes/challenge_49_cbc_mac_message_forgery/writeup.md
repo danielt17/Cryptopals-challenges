@@ -1,5 +1,7 @@
 # Challenge 49: CBC-MAC message forgery
-Link: https://cryptopals.com/sets/7/challenges/49
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/49
+Run: `python scripts/run_challenge.py 49`
 
 ## Goal
 Forge CBC-MACs under different IV assumptions.

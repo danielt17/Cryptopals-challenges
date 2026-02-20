@@ -1,5 +1,7 @@
 # Challenge 04: Detect single-character XOR
-Link: https://cryptopals.com/sets/1/challenges/4
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/4
+Run: `python scripts/run_challenge.py 4`
 
 ## Goal
 Detect which line in a file is encrypted with single-byte XOR and decrypt it.

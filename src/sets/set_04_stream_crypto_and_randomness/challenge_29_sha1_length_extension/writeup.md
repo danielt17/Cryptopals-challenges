@@ -1,5 +1,7 @@
 # Challenge 29: Break a SHA-1 keyed MAC using length extension
-Link: https://cryptopals.com/sets/4/challenges/29
+Set: 04 - Stream crypto and randomness
+Cryptopals: https://cryptopals.com/sets/4/challenges/29
+Run: `python scripts/run_challenge.py 29`
 
 ## Goal
 Forge a SHA-1 MAC using length extension.

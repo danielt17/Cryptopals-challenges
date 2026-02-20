@@ -1,5 +1,7 @@
 # Challenge 38: Offline dictionary attack on simplified SRP
-Link: https://cryptopals.com/sets/5/challenges/38
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/38
+Run: `python scripts/run_challenge.py 38`
 
 ## Goal
 Perform an offline dictionary attack on simplified SRP.

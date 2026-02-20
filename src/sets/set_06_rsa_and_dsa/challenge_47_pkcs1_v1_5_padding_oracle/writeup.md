@@ -1,5 +1,7 @@
 # Challenge 47: Bleichenbacher's PKCS 1.5 padding oracle
-Link: https://cryptopals.com/sets/6/challenges/47
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/47
+Run: `python scripts/run_challenge.py 47`
 
 ## Goal
 Exploit a PKCS#1 v1.5 padding oracle to decrypt RSA ciphertexts.

@@ -1,5 +1,7 @@
 # Challenge 34: MITM key-fixing attack on Diffie-Hellman with parameter injection
-Link: https://cryptopals.com/sets/5/challenges/34
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/34
+Run: `python scripts/run_challenge.py 34`
 
 ## Goal
 Mount a MITM key-fixing attack on Diffie-Hellman with parameter injection.

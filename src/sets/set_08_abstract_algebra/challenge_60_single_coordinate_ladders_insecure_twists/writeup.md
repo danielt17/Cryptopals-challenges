@@ -1,5 +1,7 @@
 # Challenge 60: Single-Coordinate Ladders and Insecure Twists
-Link: https://toadstyle.org/cryptopals/c53b90a3e9e753ddad56edbbd33838aa.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/c53b90a3e9e753ddad56edbbd33838aa.txt
+Run: `python scripts/run_challenge.py 60`
 
 ## Goal
 Implement a Montgomery ladder and exploit insecure twists.

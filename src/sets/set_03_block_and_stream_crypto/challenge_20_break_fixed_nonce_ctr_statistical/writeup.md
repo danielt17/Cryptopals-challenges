@@ -1,5 +1,7 @@
 # Challenge 20: Break fixed-nonce CTR statistically
-Link: https://cryptopals.com/sets/3/challenges/20
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/20
+Run: `python scripts/run_challenge.py 20`
 
 ## Goal
 Break fixed-nonce CTR statistically across many ciphertexts.

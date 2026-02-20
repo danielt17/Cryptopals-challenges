@@ -1,5 +1,7 @@
 # Challenge 40: RSA broadcast attack (e=3)
-Link: https://cryptopals.com/sets/5/challenges/40
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/40
+Run: `python scripts/run_challenge.py 40`
 
 ## Goal
 Recover plaintext from RSA broadcast with e=3 using CRT.

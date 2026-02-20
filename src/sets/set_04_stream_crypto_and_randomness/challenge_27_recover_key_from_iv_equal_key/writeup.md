@@ -1,5 +1,7 @@
 # Challenge 27: Recover the key from CBC with IV=Key
-Link: https://cryptopals.com/sets/4/challenges/27
+Set: 04 - Stream crypto and randomness
+Cryptopals: https://cryptopals.com/sets/4/challenges/27
+Run: `python scripts/run_challenge.py 27`
 
 ## Goal
 Recover the AES key when CBC uses IV=Key.

@@ -1,5 +1,7 @@
 # Challenge 10: Implement CBC mode
-Link: https://cryptopals.com/sets/2/challenges/10
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/10
+Run: `python scripts/run_challenge.py 10`
 
 ## Goal
 Implement AES-CBC encryption and decryption using AES-ECB as the block primitive.

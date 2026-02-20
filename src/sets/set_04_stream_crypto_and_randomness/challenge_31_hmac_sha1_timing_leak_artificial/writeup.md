@@ -1,5 +1,7 @@
 # Challenge 31: Implement and break HMAC-SHA1 with an artificial timing leak
-Link: https://cryptopals.com/sets/4/challenges/31
+Set: 04 - Stream crypto and randomness
+Cryptopals: https://cryptopals.com/sets/4/challenges/31
+Run: `python scripts/run_challenge.py 31`
 
 ## Goal
 Recover an HMAC-SHA1 tag using an artificial timing leak.

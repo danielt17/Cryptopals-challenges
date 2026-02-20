@@ -1,5 +1,7 @@
 # Challenge 21: Implement the MT19937 Mersenne Twister RNG
-Link: https://cryptopals.com/sets/3/challenges/21
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/21
+Run: `python scripts/run_challenge.py 21`
 
 ## Goal
 Implement the MT19937 Mersenne Twister PRNG.

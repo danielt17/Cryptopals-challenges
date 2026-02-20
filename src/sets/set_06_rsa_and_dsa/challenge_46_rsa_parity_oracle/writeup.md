@@ -1,5 +1,7 @@
 # Challenge 46: RSA parity oracle
-Link: https://cryptopals.com/sets/6/challenges/46
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/46
+Run: `python scripts/run_challenge.py 46`
 
 ## Goal
 Use an RSA parity oracle to recover plaintext.

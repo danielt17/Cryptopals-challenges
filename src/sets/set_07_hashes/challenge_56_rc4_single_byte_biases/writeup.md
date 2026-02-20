@@ -1,5 +1,7 @@
 # Challenge 56: RC4 single-byte biases
-Link: https://cryptopals.com/sets/7/challenges/56
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/56
+Run: `python scripts/run_challenge.py 56`
 
 ## Goal
 Explain RC4 single-byte biases and plaintext recovery.

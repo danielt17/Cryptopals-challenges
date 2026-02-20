@@ -1,5 +1,7 @@
 # Challenge 43: DSA key recovery from nonce
-Link: https://cryptopals.com/sets/6/challenges/43
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/43
+Run: `python scripts/run_challenge.py 43`
 
 ## Goal
 Recover a DSA private key when a nonce is known.

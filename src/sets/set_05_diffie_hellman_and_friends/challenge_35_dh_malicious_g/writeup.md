@@ -1,5 +1,7 @@
 # Challenge 35: DH with negotiated groups, malicious g
-Link: https://cryptopals.com/sets/5/challenges/35
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/35
+Run: `python scripts/run_challenge.py 35`
 
 ## Goal
 Exploit malicious generator choices in Diffie-Hellman.

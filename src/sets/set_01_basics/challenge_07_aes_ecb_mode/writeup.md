@@ -1,5 +1,7 @@
 # Challenge 07: AES in ECB mode
-Link: https://cryptopals.com/sets/1/challenges/7
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/7
+Run: `python scripts/run_challenge.py 7`
 
 ## Goal
 Decrypt an AES-ECB ciphertext with a known key.

@@ -1,5 +1,7 @@
 # Challenge 02: Fixed XOR
-Link: https://cryptopals.com/sets/1/challenges/2
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/2
+Run: `python scripts/run_challenge.py 2`
 
 ## Goal
 XOR two equal-length buffers and output the resulting bytes.

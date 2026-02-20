@@ -1,5 +1,7 @@
 # Challenge 16: CBC bitflipping attacks
-Link: https://cryptopals.com/sets/2/challenges/16
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/16
+Run: `python scripts/run_challenge.py 16`
 
 ## Goal
 Perform a CBC bitflipping attack to inject ';admin=true;'.

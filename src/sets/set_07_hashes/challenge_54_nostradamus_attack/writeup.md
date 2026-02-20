@@ -1,5 +1,7 @@
 # Challenge 54: Kelsey and Kohno's Nostradamus attack
-Link: https://cryptopals.com/sets/7/challenges/54
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/54
+Run: `python scripts/run_challenge.py 54`
 
 ## Goal
 Perform the Nostradamus preimage attack on a hash function.

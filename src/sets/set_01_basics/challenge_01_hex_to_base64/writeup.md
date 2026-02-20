@@ -1,5 +1,7 @@
 # Challenge 01: Convert hex to base64
-Link: https://cryptopals.com/sets/1/challenges/1
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/1
+Run: `python scripts/run_challenge.py 1`
 
 ## Goal
 Convert a hex-encoded string into base64, matching the expected output.

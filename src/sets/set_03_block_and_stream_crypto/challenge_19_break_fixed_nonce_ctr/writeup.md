@@ -1,5 +1,7 @@
 # Challenge 19: Break fixed-nonce CTR mode using substitutions
-Link: https://cryptopals.com/sets/3/challenges/19
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/19
+Run: `python scripts/run_challenge.py 19`
 
 ## Goal
 Break fixed-nonce CTR mode using substitutions.

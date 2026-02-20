@@ -1,5 +1,7 @@
 # Challenge 65: Truncated-MAC GCM Revisited: Improving the Key-Recovery Attack
-Link: https://toadstyle.org/cryptopals/a1a2e7311ec5f2535ec46eaebd4588f0.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/a1a2e7311ec5f2535ec46eaebd4588f0.txt
+Run: `python scripts/run_challenge.py 65`
 
 ## Goal
 Improve the truncated GCM attack using ciphertext length extension.

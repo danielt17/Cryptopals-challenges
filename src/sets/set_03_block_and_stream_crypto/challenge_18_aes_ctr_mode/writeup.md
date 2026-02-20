@@ -1,5 +1,7 @@
 # Challenge 18: Implement CTR mode
-Link: https://cryptopals.com/sets/3/challenges/18
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/18
+Run: `python scripts/run_challenge.py 18`
 
 ## Goal
 Implement AES-CTR mode.

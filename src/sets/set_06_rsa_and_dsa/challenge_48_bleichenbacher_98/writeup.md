@@ -1,5 +1,7 @@
 # Challenge 48: Bleichenbacher 98 attack (TLS)
-Link: https://cryptopals.com/sets/6/challenges/48
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/48
+Run: `python scripts/run_challenge.py 48`
 
 ## Goal
 Perform Bleichenbacher's 98 attack against a TLS-like padding oracle.

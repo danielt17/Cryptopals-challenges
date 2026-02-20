@@ -1,5 +1,7 @@
 # Challenge 13: ECB cut-and-paste
-Link: https://cryptopals.com/sets/2/challenges/13
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/13
+Run: `python scripts/run_challenge.py 13`
 
 ## Goal
 Exploit ECB block independence to forge an admin profile.

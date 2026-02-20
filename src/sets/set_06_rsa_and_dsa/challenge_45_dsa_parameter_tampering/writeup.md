@@ -1,5 +1,7 @@
 # Challenge 45: DSA parameter tampering
-Link: https://cryptopals.com/sets/6/challenges/45
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/45
+Run: `python scripts/run_challenge.py 45`
 
 ## Goal
 Exploit DSA parameter tampering to forge signatures.

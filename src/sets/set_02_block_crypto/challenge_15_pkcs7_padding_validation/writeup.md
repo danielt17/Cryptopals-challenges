@@ -1,5 +1,7 @@
 # Challenge 15: PKCS#7 padding validation
-Link: https://cryptopals.com/sets/2/challenges/15
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/15
+Run: `python scripts/run_challenge.py 15`
 
 ## Goal
 Validate PKCS#7 padding and reject invalid padding.

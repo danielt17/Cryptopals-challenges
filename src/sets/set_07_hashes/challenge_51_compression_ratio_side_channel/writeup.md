@@ -1,5 +1,7 @@
 # Challenge 51: Compression ratio side-channel attacks
-Link: https://cryptopals.com/sets/7/challenges/51
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/51
+Run: `python scripts/run_challenge.py 51`
 
 ## Goal
 Recover secret data using a compression ratio side-channel.

@@ -1,5 +1,7 @@
 # Challenge 66: Exploiting Implementation Errors in Diffie-Hellman
-Link: https://toadstyle.org/cryptopals/66.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/66.txt
+Run: `python scripts/run_challenge.py 66`
 
 ## Goal
 Recover Diffie-Hellman secrets via deterministic fault injection.

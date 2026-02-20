@@ -1,5 +1,7 @@
 # Challenge 30: Break an MD4 keyed MAC using length extension
-Link: https://cryptopals.com/sets/4/challenges/30
+Set: 04 - Stream crypto and randomness
+Cryptopals: https://cryptopals.com/sets/4/challenges/30
+Run: `python scripts/run_challenge.py 30`
 
 ## Goal
 Forge MD4-based (and MD5-based) MACs via length extension.

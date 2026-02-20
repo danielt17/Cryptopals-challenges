@@ -1,5 +1,7 @@
 # Challenge 42: Bleichenbacher's e=3 RSA signature forgery
-Link: https://cryptopals.com/sets/6/challenges/42
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/42
+Run: `python scripts/run_challenge.py 42`
 
 ## Goal
 Forge an RSA signature when the verifier is too lenient.

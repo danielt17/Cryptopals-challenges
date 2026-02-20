@@ -1,5 +1,7 @@
 # Challenge Index
 
+See `docs/index.md` for the documentation overview.
+
 This index maps each challenge to its scripts, writeup, and data files.
 Use `python scripts/run_challenge.py <num>` to run with the default sequence.
 

@@ -1,5 +1,7 @@
 # Challenge 23: Clone an MT19937 RNG from its output
-Link: https://cryptopals.com/sets/3/challenges/23
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/23
+Run: `python scripts/run_challenge.py 23`
 
 ## Goal
 Clone an MT19937 RNG from its output.

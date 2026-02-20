@@ -1,5 +1,7 @@
 # Challenge 17: The CBC padding oracle
-Link: https://cryptopals.com/sets/3/challenges/17
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/17
+Run: `python scripts/run_challenge.py 17`
 
 ## Goal
 Use a CBC padding oracle to decrypt a ciphertext without the key.

@@ -1,5 +1,7 @@
 # Challenge 52: Iterated hash function multicollisions
-Link: https://cryptopals.com/sets/7/challenges/52
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/52
+Run: `python scripts/run_challenge.py 52`
 
 ## Goal
 Construct multicollisions for an iterated hash function.

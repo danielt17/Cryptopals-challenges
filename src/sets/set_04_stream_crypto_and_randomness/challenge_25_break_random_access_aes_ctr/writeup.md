@@ -1,5 +1,7 @@
 # Challenge 25: Break random-access read/write AES CTR
-Link: https://cryptopals.com/sets/4/challenges/25
+Set: 04 - Stream crypto and randomness
+Cryptopals: https://cryptopals.com/sets/4/challenges/25
+Run: `python scripts/run_challenge.py 25`
 
 ## Goal
 Recover plaintext from an AES-CTR ciphertext given a random-access edit oracle.

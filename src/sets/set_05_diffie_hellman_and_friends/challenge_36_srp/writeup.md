@@ -1,5 +1,7 @@
 # Challenge 36: Implement Secure Remote Password (SRP)
-Link: https://cryptopals.com/sets/5/challenges/36
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/36
+Run: `python scripts/run_challenge.py 36`
 
 ## Goal
 Implement the Secure Remote Password (SRP) protocol.

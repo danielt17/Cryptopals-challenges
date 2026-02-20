@@ -1,5 +1,7 @@
 # Challenge 05: Implement repeating-key XOR
-Link: https://cryptopals.com/sets/1/challenges/5
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/5
+Run: `python scripts/run_challenge.py 5`
 
 ## Goal
 Implement repeating-key XOR encryption.

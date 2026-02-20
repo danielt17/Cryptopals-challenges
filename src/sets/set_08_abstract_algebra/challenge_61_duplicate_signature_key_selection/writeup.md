@@ -1,5 +1,7 @@
 # Challenge 61: Duplicate-Signature Key Selection in ECDSA (and RSA)
-Link: https://toadstyle.org/cryptopals/809dccecda0e94ea588d66c12a1cf593.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/809dccecda0e94ea588d66c12a1cf593.txt
+Run: `python scripts/run_challenge.py 61`
 
 ## Goal
 Forge public keys that validate a given signature in ECDSA and RSA.

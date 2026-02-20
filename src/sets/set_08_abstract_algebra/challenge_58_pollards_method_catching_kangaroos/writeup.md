@@ -1,5 +1,7 @@
 # Challenge 58: Pollard's Method for Catching Kangaroos
-Link: https://toadstyle.org/cryptopals/3e17c7b35fcf491d08c989081ed18c9a.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/3e17c7b35fcf491d08c989081ed18c9a.txt
+Run: `python scripts/run_challenge.py 58`
 
 ## Goal
 Use Pollard's kangaroo to recover discrete logs in a known interval.

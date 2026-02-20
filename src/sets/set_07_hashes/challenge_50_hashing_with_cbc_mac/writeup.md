@@ -1,5 +1,7 @@
 # Challenge 50: Hashing with CBC-MAC
-Link: https://cryptopals.com/sets/7/challenges/50
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/50
+Run: `python scripts/run_challenge.py 50`
 
 ## Goal
 Demonstrate weaknesses in CBC-MAC for variable-length messages.

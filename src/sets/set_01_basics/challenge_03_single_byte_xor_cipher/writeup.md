@@ -1,5 +1,7 @@
 # Challenge 03: Single-byte XOR cipher
-Link: https://cryptopals.com/sets/1/challenges/3
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/3
+Run: `python scripts/run_challenge.py 3`
 
 ## Goal
 Break a ciphertext encrypted with a single-byte XOR key.

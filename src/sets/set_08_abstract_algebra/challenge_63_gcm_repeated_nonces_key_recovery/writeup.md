@@ -1,5 +1,7 @@
 # Challenge 63: Key-Recovery Attacks on GCM with Repeated Nonces
-Link: https://toadstyle.org/cryptopals/2dfbf7e58fd43c140b62485f8d90bebe.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/2dfbf7e58fd43c140b62485f8d90bebe.txt
+Run: `python scripts/run_challenge.py 63`
 
 ## Goal
 Recover the GCM authentication key from repeated nonces.

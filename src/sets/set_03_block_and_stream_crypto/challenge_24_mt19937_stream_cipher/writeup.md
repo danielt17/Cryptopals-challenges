@@ -1,5 +1,7 @@
 # Challenge 24: Create the MT19937 stream cipher and break it
-Link: https://cryptopals.com/sets/3/challenges/24
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/24
+Run: `python scripts/run_challenge.py 24`
 
 ## Goal
 Build and break a stream cipher based on MT19937.

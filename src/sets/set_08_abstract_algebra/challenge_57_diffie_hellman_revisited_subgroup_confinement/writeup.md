@@ -1,5 +1,7 @@
 # Challenge 57: Diffie-Hellman Revisited: Subgroup-Confinement Attacks
-Link: https://toadstyle.org/cryptopals/513b590b41d19eff3a0aa028023349fd.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/513b590b41d19eff3a0aa028023349fd.txt
+Run: `python scripts/run_challenge.py 57`
 
 ## Goal
 Recover a Diffie-Hellman private key using subgroup confinement attacks.

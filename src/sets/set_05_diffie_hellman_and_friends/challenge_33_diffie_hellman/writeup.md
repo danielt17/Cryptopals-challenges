@@ -1,5 +1,7 @@
 # Challenge 33: Implement Diffie-Hellman
-Link: https://cryptopals.com/sets/5/challenges/33
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/33
+Run: `python scripts/run_challenge.py 33`
 
 ## Goal
 Implement basic Diffie-Hellman key exchange.

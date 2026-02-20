@@ -1,5 +1,7 @@
 # Challenge 64: Key-Recovery Attacks on GCM with a Truncated MAC
-Link: https://toadstyle.org/cryptopals/1d79ee513b73e1e0367eae2297e9f234.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/1d79ee513b73e1e0367eae2297e9f234.txt
+Run: `python scripts/run_challenge.py 64`
 
 ## Goal
 Exploit truncated GCM tags to forge and recover the authentication key.

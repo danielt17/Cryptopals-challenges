@@ -1,5 +1,7 @@
 # Challenge 55: MD4 collisions
-Link: https://cryptopals.com/sets/7/challenges/55
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/55
+Run: `python scripts/run_challenge.py 55`
 
 ## Goal
 Understand and explain MD4 collision attacks.

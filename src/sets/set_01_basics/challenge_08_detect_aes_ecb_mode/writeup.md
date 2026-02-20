@@ -1,5 +1,7 @@
 # Challenge 08: Detect AES in ECB mode
-Link: https://cryptopals.com/sets/1/challenges/8
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/8
+Run: `python scripts/run_challenge.py 8`
 
 ## Goal
 Detect which ciphertext in a set is likely encrypted with AES-ECB.

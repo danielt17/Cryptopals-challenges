@@ -1,5 +1,7 @@
 # Challenge 22: Crack an MT19937 seed
-Link: https://cryptopals.com/sets/3/challenges/22
+Set: 03 - Block and stream crypto
+Cryptopals: https://cryptopals.com/sets/3/challenges/22
+Run: `python scripts/run_challenge.py 22`
 
 ## Goal
 Recover the MT19937 seed from a time-based initialization.

@@ -1,5 +1,7 @@
 # Challenge 28: Implement a SHA-1 keyed MAC
-Link: https://cryptopals.com/sets/4/challenges/28
+Set: 04 - Stream crypto and randomness
+Cryptopals: https://cryptopals.com/sets/4/challenges/28
+Run: `python scripts/run_challenge.py 28`
 
 ## Goal
 Implement a SHA-1 keyed MAC.

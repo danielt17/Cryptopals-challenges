@@ -1,5 +1,7 @@
 # Challenge 12: Byte-at-a-time ECB decryption (simple)
-Link: https://cryptopals.com/sets/2/challenges/12
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/12
+Run: `python scripts/run_challenge.py 12`
 
 ## Goal
 Recover an unknown suffix from an ECB oracle by decrypting one byte at a time.

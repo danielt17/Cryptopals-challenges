@@ -1,5 +1,7 @@
 # Challenge 11: An ECB/CBC detection oracle
-Link: https://cryptopals.com/sets/2/challenges/11
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/11
+Run: `python scripts/run_challenge.py 11`
 
 ## Goal
 Build an oracle that encrypts under ECB or CBC and detect the mode.

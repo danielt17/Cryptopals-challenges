@@ -1,5 +1,7 @@
 # Challenge 39: Implement RSA
-Link: https://cryptopals.com/sets/5/challenges/39
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/39
+Run: `python scripts/run_challenge.py 39`
 
 ## Goal
 Implement RSA key generation, encryption, and decryption.

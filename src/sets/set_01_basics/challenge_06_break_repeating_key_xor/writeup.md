@@ -1,5 +1,7 @@
 # Challenge 06: Break repeating-key XOR
-Link: https://cryptopals.com/sets/1/challenges/6
+Set: 01 - Basics
+Cryptopals: https://cryptopals.com/sets/1/challenges/6
+Run: `python scripts/run_challenge.py 6`
 
 ## Goal
 Break repeating-key XOR by recovering the key and plaintext.

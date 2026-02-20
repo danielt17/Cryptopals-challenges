@@ -1,5 +1,7 @@
 # Challenge 62: Key-Recovery Attacks on ECDSA with Biased Nonces
-Link: https://toadstyle.org/cryptopals/76f2e314809b2a34ce9ff0d2a08f7a7f.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/76f2e314809b2a34ce9ff0d2a08f7a7f.txt
+Run: `python scripts/run_challenge.py 62`
 
 ## Goal
 Recover an ECDSA private key from biased nonces using lattice reduction.

@@ -107,13 +107,22 @@ def run_sequence(challenge_num: int, challenge: dict, set_info: dict, sequence: 
 def main() -> int:
     """Run the script entry point."""
     parser = argparse.ArgumentParser(
-        description="Run a Cryptopals challenge by number.",
+        description="Run Cryptopals challenges by number using the challenge map.",
     )
-    parser.add_argument("challenge", nargs="?", type=int, help="Challenge number (1-66)")
-    parser.add_argument("--list", action="store_true", help="List challenges and exit")
+    parser.add_argument(
+        "challenge",
+        nargs="?",
+        type=int,
+        help="Challenge number (1-66). Use --list to see available challenges.",
+    )
+    parser.add_argument(
+        "--list",
+        action="store_true",
+        help="List challenges and their scripts, then exit.",
+    )
     parser.add_argument(
         "--script",
-        help="Run a single script for a challenge (overrides the default run sequence).",
+        help="Run a specific script within a challenge (overrides the default run sequence).",
     )
     args = parser.parse_args()
 

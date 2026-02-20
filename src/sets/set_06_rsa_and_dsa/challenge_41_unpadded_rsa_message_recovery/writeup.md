@@ -1,5 +1,7 @@
 # Challenge 41: Unpadded message recovery oracle
-Link: https://cryptopals.com/sets/6/challenges/41
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/41
+Run: `python scripts/run_challenge.py 41`
 
 ## Goal
 Exploit RSA's multiplicative property to recover plaintext using an oracle.

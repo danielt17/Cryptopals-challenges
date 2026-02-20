@@ -1,5 +1,7 @@
 # Challenge 53: Kelsey and Schneier's expandable messages
-Link: https://cryptopals.com/sets/7/challenges/53
+Set: 07 - Hashes
+Cryptopals: https://cryptopals.com/sets/7/challenges/53
+Run: `python scripts/run_challenge.py 53`
 
 ## Goal
 Build expandable messages and use them to collide with a target hash.

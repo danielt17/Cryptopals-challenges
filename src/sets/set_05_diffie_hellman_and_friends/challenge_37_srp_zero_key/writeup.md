@@ -1,5 +1,7 @@
 # Challenge 37: Break SRP with a zero key
-Link: https://cryptopals.com/sets/5/challenges/37
+Set: 05 - Diffie-Hellman and friends
+Cryptopals: https://cryptopals.com/sets/5/challenges/37
+Run: `python scripts/run_challenge.py 37`
 
 ## Goal
 Break SRP by forcing a zero shared key.

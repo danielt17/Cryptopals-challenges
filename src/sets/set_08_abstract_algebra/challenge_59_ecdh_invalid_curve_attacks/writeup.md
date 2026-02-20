@@ -1,5 +1,7 @@
 # Challenge 59: Elliptic Curve Diffie-Hellman and Invalid-Curve Attacks
-Link: https://toadstyle.org/cryptopals/a0833e607878a80fdc0808f889c721b1.txt
+Set: 08 - Abstract Algebra
+Cryptopals: https://toadstyle.org/cryptopals/a0833e607878a80fdc0808f889c721b1.txt
+Run: `python scripts/run_challenge.py 59`
 
 ## Goal
 Implement ECDH and perform invalid-curve attacks.

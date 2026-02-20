@@ -1,5 +1,7 @@
 # Challenge 44: DSA nonce reuse
-Link: https://cryptopals.com/sets/6/challenges/44
+Set: 06 - RSA and DSA
+Cryptopals: https://cryptopals.com/sets/6/challenges/44
+Run: `python scripts/run_challenge.py 44`
 
 ## Goal
 Recover a DSA private key from repeated nonces.

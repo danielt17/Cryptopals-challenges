@@ -1,5 +1,7 @@
 # Challenge 26: CTR bitflipping
-Link: https://cryptopals.com/sets/4/challenges/26
+Set: 04 - Stream crypto and randomness
+Cryptopals: https://cryptopals.com/sets/4/challenges/26
+Run: `python scripts/run_challenge.py 26`
 
 ## Goal
 Perform a CTR bitflipping attack to inject data into plaintext.

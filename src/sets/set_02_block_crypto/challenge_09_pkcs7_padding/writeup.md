@@ -1,5 +1,7 @@
 # Challenge 09: Implement PKCS#7 padding
-Link: https://cryptopals.com/sets/2/challenges/9
+Set: 02 - Block crypto
+Cryptopals: https://cryptopals.com/sets/2/challenges/9
+Run: `python scripts/run_challenge.py 9`
 
 ## Goal
 Implement PKCS#7 padding for arbitrary block sizes.
