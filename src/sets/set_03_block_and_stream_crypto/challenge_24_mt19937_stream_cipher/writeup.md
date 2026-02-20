@@ -14,6 +14,17 @@ Using MT19937 output as a keystream yields a stream cipher. If the seed is small
 - Use known plaintext or brute-force a small seed space to recover the seed.
 - Recreate the keystream and decrypt the ciphertext.
 
+## Detailed Walkthrough
+## Set 4: Stream crypto and randomness
+
+MT19937 as a stream cipher is weak when the seed is small. The keystream is generated from MT outputs and XORed with plaintext.
+
+The attack brute forces the seed using a known plaintext suffix. This also demonstrates that tokens derived from MT19937 outputs are predictable if seeded with time.
+
+- Generate ciphertext using MT19937 keystream.
+- Brute force the seed and test against known plaintext.
+- Detect time-seeded tokens by matching outputs.
+
 ## Implementation Notes
 Scripts: mt19937_stream_cipher.py
 Data files: none

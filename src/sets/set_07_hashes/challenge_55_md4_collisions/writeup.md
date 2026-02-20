@@ -14,6 +14,15 @@ MD4 is vulnerable to differential cryptanalysis that constructs two different me
 - Solve for message blocks that satisfy those constraints.
 - Output a pair of colliding messages.
 
+## Detailed Walkthrough
+MD4 collisions can be constructed with differential cryptanalysis by carefully controlling bit conditions across rounds. The classic attack uses message modifications to satisfy those conditions and yields a colliding pair.
+
+This writeup describes the high-level approach even though an implementation is not included in the repo.
+
+- Use known differential paths for MD4.
+- Apply message modifications to satisfy constraints.
+- Verify that the hashes collide.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

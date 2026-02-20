@@ -14,6 +14,15 @@ CTR turns a block cipher into a stream cipher by encrypting a nonce+counter to p
 - Encrypt nonce||counter with AES to produce keystream blocks.
 - XOR keystream with input data to encrypt or decrypt.
 
+## Detailed Walkthrough
+CTR mode turns a block cipher into a stream cipher by encrypting successive counter values and XORing with the plaintext. The same operation is used for encryption and decryption.
+
+The key concerns are correct counter construction and ensuring a unique nonce or counter sequence for each message.
+
+- Build a keystream from nonce and counter.
+- XOR the keystream with plaintext or ciphertext.
+- Increment the counter per block.
+
 ## Implementation Notes
 Scripts: aes_ctr_mode.py
 Data files: none

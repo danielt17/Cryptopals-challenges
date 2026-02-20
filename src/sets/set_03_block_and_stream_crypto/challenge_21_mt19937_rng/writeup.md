@@ -14,6 +14,15 @@ MT19937 is a linear PRNG with a large internal state (624 32-bit values). Implem
 - Generate outputs with the twist and temper functions.
 - Verify output against known vectors or internal consistency checks.
 
+## Detailed Walkthrough
+MT19937 is a widely used PRNG with a 624-word internal state. Implementing it requires reproducing the seeding, twist, and tempering operations exactly.
+
+The challenge is primarily about correctness: the output must match known test vectors. Once correct, the generator can be used as a building block for later attacks.
+
+- Implement seeding and state initialization.
+- Implement the twist transformation.
+- Apply tempering to produce outputs.
+
 ## Implementation Notes
 Scripts: mt19937_rng.py
 Data files: none

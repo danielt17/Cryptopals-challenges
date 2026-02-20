@@ -14,6 +14,15 @@ CBC-MAC does not include the message length, so variable-length messages can be 
 - Show that a longer message can be forged from a shorter one.
 - Explain how including length would prevent the attack.
 
+## Detailed Walkthrough
+When CBC-MAC is used as a hash, it inherits malleability issues. By choosing message prefixes and adjusting subsequent blocks, an attacker can create collisions or make a forged file hash to a chosen value.
+
+The challenge demonstrates a practical collision construction using the CBC-MAC chaining property.
+
+- Exploit the XOR chaining between blocks.
+- Adjust blocks so the internal state collides.
+- Produce two different files with the same MAC.
+
 ## Implementation Notes
 Scripts: hashing_with_cbc_mac.py
 Data files: none

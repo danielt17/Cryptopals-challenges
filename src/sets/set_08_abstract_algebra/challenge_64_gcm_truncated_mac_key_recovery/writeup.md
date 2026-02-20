@@ -15,6 +15,15 @@ Multiplication and squaring in GF(2^128) are linear in the bits of h. By flippin
 - Find null-space vectors to force MAC rows to zero and forge tags.
 - Accumulate linear constraints on h to narrow the key space.
 
+## Detailed Walkthrough
+Truncating the GCM tag reduces security and enables key recovery or forgery with fewer queries. With enough chosen messages, the attacker can brute force or solve for the GHASH key despite the truncated tag.
+
+The writeup outlines the algebraic structure of GHASH that makes this possible.
+
+- Exploit the short tag space to collect collisions.
+- Build equations for GHASH using chosen plaintexts.
+- Recover the authentication key or forge tags.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

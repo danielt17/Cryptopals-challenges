@@ -14,6 +14,15 @@ SRP is a password-authenticated key exchange that avoids sending the password or
 - Client and server exchange A and B and compute u.
 - Both derive the same session key and verify with an HMAC.
 
+## Detailed Walkthrough
+Secure Remote Password (SRP) authenticates a password without revealing it. The server stores a verifier v = g^x mod N and a salt. The client and server exchange A and B, compute a scrambling parameter u, and derive a shared session key.
+
+Both sides prove knowledge of the key via HMAC. Correct handling of parameters, salt, and modular arithmetic is essential.
+
+- Compute x from salt and password, store verifier v.
+- Exchange A, B, and u to derive the shared secret.
+- Verify HMACs to authenticate the session.
+
 ## Implementation Notes
 Scripts: server.py, client.py, utils.py
 Data files: none

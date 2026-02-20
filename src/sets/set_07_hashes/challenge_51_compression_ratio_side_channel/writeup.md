@@ -14,6 +14,15 @@ If attacker-controlled input is compressed alongside a secret, the compressed le
 - Pick the guess that yields the shortest compression output.
 - Iterate to recover the secret byte-by-byte.
 
+## Detailed Walkthrough
+Compression ratio side-channel attacks (CRIME) exploit the fact that compression reveals information about repeated substrings. If a secret is included in a compressed request, you can guess the secret by observing which guesses compress best.
+
+The attack iteratively guesses the secret one byte at a time by sending crafted requests and measuring ciphertext length after compression and encryption.
+
+- Build requests that place a guess next to the secret.
+- Compare compressed lengths to find the best match.
+- Repeat to recover the secret.
+
 ## Implementation Notes
 Scripts: compression_ratio_side_channel.py
 Data files: none

@@ -15,6 +15,19 @@ A deterministic fault in scalar multiplication leaks information about the secre
 - Query the oracle to distinguish bits based on whether a fault occurs.
 - Iterate to recover the secret, using kangaroo if needed for the remainder.
 
+## Detailed Walkthrough
+# License
+
+Everything in this repository is distributed under the terms of the MIT License. See file "LICENSE" for further reference.
+
+Diffie-Hellman implementation errors typically involve failing to validate public keys or group membership. Accepting invalid public keys can force computation in small subgroups or even reveal private exponents.
+
+The fix is straightforward: validate inputs, enforce subgroup membership, and reject out-of-range values.
+
+- Check that public values are in the correct range.
+- Verify subgroup membership or use safe primes.
+- Reject invalid parameters before computing secrets.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

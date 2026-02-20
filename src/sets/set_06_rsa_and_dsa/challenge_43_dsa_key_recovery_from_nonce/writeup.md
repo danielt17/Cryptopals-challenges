@@ -14,6 +14,15 @@ DSA signatures use a secret nonce k. If k is known, the private key x can be sol
 - Use the known k to solve for the private key.
 - Verify by recomputing the public key.
 
+## Detailed Walkthrough
+In DSA, the nonce k must be secret. If k is known or can be guessed, the private key x can be recovered from a single signature using the formula x = (s*k - z) / r mod q.
+
+This challenge demonstrates recovering x when k is constrained and brute forced.
+
+- Use the DSA signing equations.
+- Solve for x when k is known.
+- Verify by recomputing the public key.
+
 ## Implementation Notes
 Scripts: dsa_key_recovery_from_nonce.py
 Data files: none

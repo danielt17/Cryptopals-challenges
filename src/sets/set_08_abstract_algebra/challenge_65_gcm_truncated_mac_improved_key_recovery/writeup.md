@@ -15,6 +15,15 @@ If the last ciphertext block is partial, you can tweak the length block to gain 
 - Solve the linear system for a particular solution and add null-space vectors.
 - Use the improved degrees of freedom to forge more efficiently.
 
+## Detailed Walkthrough
+This challenge improves the truncated-tag GCM attack by using more efficient equations and query strategies. The goal is to reduce the number of required queries while still recovering the GHASH key.
+
+It demonstrates how structural weaknesses become exploitable at scale when tags are truncated.
+
+- Design queries that maximize information per tag.
+- Solve for the GHASH key with fewer samples.
+- Validate by forging a tag.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

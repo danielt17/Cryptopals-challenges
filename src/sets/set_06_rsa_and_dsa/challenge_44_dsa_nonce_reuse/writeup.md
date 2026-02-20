@@ -14,6 +14,15 @@ If two signatures reuse the same nonce k, the difference between the signatures 
 - Solve for k using the two signature equations.
 - Recover the private key and verify it.
 
+## Detailed Walkthrough
+If the same DSA nonce k is reused for two different messages, the private key is recoverable. Two signatures with the same r allow solving for k, then for the private key x.
+
+This is a classic nonce-reuse failure in signature schemes.
+
+- Compute k from (z1 - z2) / (s1 - s2) mod q.
+- Recover x from k and one signature.
+- Verify by checking against the public key.
+
 ## Implementation Notes
 Scripts: dsa_nonce_reuse.py
 Data files: 64.txt

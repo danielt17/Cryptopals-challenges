@@ -14,6 +14,15 @@ If the client sends A = 0 (or a multiple of N), the shared secret becomes 0 rega
 - Compute the resulting shared secret (zero) and session key.
 - Forge the HMAC and bypass authentication.
 
+## Detailed Walkthrough
+SRP can be broken if the server accepts A values that force the session key to zero. If a client sends A = 0, A = N, or A = kN, the server computes S = 0 and the session key becomes predictable.
+
+The attacker can then forge the HMAC without knowing the password.
+
+- Send a public value that is 0 mod N.
+- Both sides compute session key 0.
+- Forge the HMAC and authenticate.
+
 ## Implementation Notes
 Scripts: server.py, client_setup_then_attack.py
 Data files: none

@@ -14,6 +14,15 @@ PKCS#7 padding is valid when the last byte value N appears exactly N times at th
 - Check that the last N bytes all equal the pad length.
 - If valid, strip the padding; otherwise reject.
 
+## Detailed Walkthrough
+PKCS#7 padding validation checks whether the final bytes of a plaintext are a valid padding suffix. The last byte indicates the padding length, and each of the last N bytes must match that value.
+
+Correct validation is required to avoid padding oracle vulnerabilities. The validation should reject zero padding length, out-of-range values, and inconsistent bytes.
+
+- Read the last byte to determine N.
+- Verify the last N bytes are all N.
+- Remove padding only when valid.
+
 ## Implementation Notes
 Scripts: pkcs7_padding_validation.py
 Data files: none

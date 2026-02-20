@@ -14,6 +14,15 @@ CTR decryption XORs ciphertext with keystream. Flipping a ciphertext bit flips t
 - Locate the ciphertext positions that map to the target plaintext bytes.
 - Flip the needed bits to produce the desired substring on decryption.
 
+## Detailed Walkthrough
+CTR bitflipping is the stream-cipher analog of CBC bitflipping. Because ciphertext is plaintext XOR keystream, flipping a bit in the ciphertext flips the same bit in the plaintext.
+
+This makes CTR malleable. The attack injects forbidden substrings by flipping bits at the right offsets.
+
+- Identify where the target text should appear.
+- XOR the ciphertext bytes to flip into the desired plaintext bytes.
+- Verify the decrypted plaintext contains the injected field.
+
 ## Implementation Notes
 Scripts: ctr_bitflipping.py
 Data files: none

@@ -14,6 +14,15 @@ The tempering function is invertible. Given 624 consecutive outputs, you can inv
 - Invert the tempering function to recover each internal state value.
 - Initialize a new MT19937 instance with the recovered state and predict outputs.
 
+## Detailed Walkthrough
+Cloning MT19937 uses the fact that its output is a tempered version of the internal state. By inverting the tempering step on 624 consecutive outputs, you can reconstruct the full state.
+
+Once the state is known, the cloned RNG produces the same outputs as the original.
+
+- Collect 624 consecutive outputs.
+- Invert the tempering function for each output.
+- Set the recovered state in a new RNG instance.
+
 ## Implementation Notes
 Scripts: clone_mt19937.py
 Data files: none

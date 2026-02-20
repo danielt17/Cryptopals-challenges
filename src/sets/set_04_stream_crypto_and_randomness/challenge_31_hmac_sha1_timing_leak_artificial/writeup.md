@@ -14,6 +14,15 @@ A byte-by-byte comparison with a fixed delay per matched byte leaks timing infor
 - For each byte position, try all 256 values and measure response time.
 - Choose the byte that yields the longest response and proceed.
 
+## Detailed Walkthrough
+A timing leak in a naive MAC comparison can reveal the correct signature byte by byte. If the server sleeps after each matching byte, the total response time leaks how many bytes matched.
+
+The attacker measures response times for each candidate byte, chooses the slowest, and repeats for the next byte.
+
+- Send signatures with a fixed prefix guess.
+- Pick the byte that yields the longest response time.
+- Repeat to recover the full MAC.
+
 ## Implementation Notes
 Scripts: utils.py, server.py, attacker.py
 Data files: none

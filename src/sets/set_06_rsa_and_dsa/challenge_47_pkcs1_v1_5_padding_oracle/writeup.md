@@ -14,6 +14,15 @@ Bleichenbacher's attack uses a padding oracle to iteratively narrow the range of
 - Maintain intervals of possible plaintext values and update them with each valid s.
 - Iterate until the interval collapses to a single plaintext.
 
+## Detailed Walkthrough
+PKCS#1 v1.5 padding oracle attacks use an oracle that only tells you whether the decrypted plaintext has the correct 0x0002 padding format. Bleichenbacher's 98 algorithm narrows a set of possible plaintext intervals until only one remains.
+
+This challenge implements the oracle and the interval-narrowing search for RSA-256 and RSA-2048.
+
+- Use the padding oracle to test candidate multipliers.
+- Maintain and narrow the interval of possible plaintexts.
+- Recover the exact plaintext once the interval collapses.
+
 ## Implementation Notes
 Scripts: pkcs1_v1_5_padding_oracle_rsa256.py, pkcs1_v1_5_padding_oracle_rsa2048.py
 Data files: none

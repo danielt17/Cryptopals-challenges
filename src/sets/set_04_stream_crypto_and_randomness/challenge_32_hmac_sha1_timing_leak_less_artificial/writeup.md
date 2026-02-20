@@ -14,6 +14,17 @@ Reducing the per-byte delay makes noise a factor. You need multiple samples or a
 - For each candidate byte, take multiple timing samples.
 - Select the byte with the best average and iterate.
 
+## Detailed Walkthrough
+## Set 5: Diffie-Hellman and friends
+
+This challenge makes the timing leak less obvious by reducing or randomizing the delay. The same basic attack still works, but it requires multiple samples and statistical averaging.
+
+Robust attacks measure each candidate many times and select the byte with the best average timing.
+
+- Run repeated measurements per candidate byte.
+- Use averages or medians to reduce noise.
+- Recover the MAC byte by byte.
+
 ## Implementation Notes
 Scripts: server.py, attacker.py
 Data files: none

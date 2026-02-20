@@ -14,6 +14,15 @@ If the generator g is set to 0 or 1, the signature verification equation becomes
 - Generate a signature pair (r, s) that satisfies the verifier's equation.
 - Verify that the signature passes without the private key.
 
+## Detailed Walkthrough
+DSA parameter tampering shows that choosing a malicious generator g can break security. If g = 0, signatures are trivially valid. If g = p + 1, signatures can be forged for any message.
+
+The lesson is to validate DSA parameters or use standardized ones.
+
+- Choose a malicious g value.
+- Forge signatures that pass verification.
+- Demonstrate why parameter validation matters.
+
 ## Implementation Notes
 Scripts: dsa_parameter_tampering.py
 Data files: none

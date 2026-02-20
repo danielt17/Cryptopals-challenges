@@ -14,6 +14,15 @@ RSA relies on modular arithmetic with a composite modulus N = p*q. Encryption is
 - Choose e and compute d = e^-1 mod phi(N).
 - Encrypt and decrypt messages using modular exponentiation.
 
+## Detailed Walkthrough
+This challenge implements RSA from scratch: generate primes, compute n and phi(n), choose a public exponent e, and compute the private exponent d as the modular inverse of e modulo phi(n).
+
+Messages are converted to integers for encryption and back to bytes after decryption. Correct modular exponentiation and prime testing are required.
+
+- Generate large primes p and q.
+- Compute n, phi(n), and d.
+- Encrypt and decrypt with modular exponentiation.
+
 ## Implementation Notes
 Scripts: rsa_implementation.py
 Data files: none

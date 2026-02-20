@@ -14,6 +14,15 @@ CTR mode exposes a keystream. If an oracle allows editing ciphertext by re-encry
 - Capture the resulting ciphertext, which equals the keystream.
 - XOR the original ciphertext with the keystream to recover plaintext.
 
+## Detailed Walkthrough
+The random-access CTR edit oracle allows rewriting arbitrary positions of the plaintext by re-encrypting modified text. Because CTR is XOR-based, editing with known plaintext reveals the keystream.
+
+By requesting an edit that replaces the entire plaintext with zero bytes, the returned ciphertext is the keystream itself, which can then decrypt the original message.
+
+- Use the edit API to set plaintext to zeros.
+- Capture the resulting ciphertext as keystream.
+- XOR keystream with the original ciphertext to recover plaintext.
+
 ## Implementation Notes
 Scripts: break_random_access_aes_ctr.py
 Data files: 41.txt

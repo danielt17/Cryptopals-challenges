@@ -14,6 +14,15 @@ If an oracle reveals the parity (odd/even) of the decrypted plaintext, you can b
 - Repeatedly query parity of 2^e * c mod N and halve the interval.
 - Convert the final interval to the plaintext.
 
+## Detailed Walkthrough
+The RSA parity oracle reveals whether the decrypted plaintext is even or odd. By multiplying the ciphertext by 2^e mod n before each oracle query, you effectively shift the plaintext and can perform a binary search on the interval.
+
+After enough queries, the interval converges to the exact plaintext.
+
+- Initialize a range [0, n].
+- Multiply ciphertext by 2^e mod n each round.
+- Use parity responses to bisect the range.
+
 ## Implementation Notes
 Scripts: rsa_parity_oracle.py
 Data files: none

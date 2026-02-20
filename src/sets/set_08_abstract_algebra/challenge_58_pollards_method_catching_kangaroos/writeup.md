@@ -15,6 +15,15 @@ Pollard's kangaroo (lambda) algorithm finds the discrete log of y in a range [a,
 - Run the wild kangaroo from y and stop when it collides with the tame path.
 - Apply the algorithm to recover remaining bits of a key after subgroup leakage.
 
+## Detailed Walkthrough
+Pollard's kangaroo algorithm solves discrete logs when the exponent lies in a known interval. A tame kangaroo walks the group to create a trap, and a wild kangaroo starting from the target eventually collides with it.
+
+The collision reveals the discrete log with far less memory than a full table.
+
+- Choose parameters for the interval.
+- Run tame and wild walks with the same jump set.
+- Detect a collision and derive the exponent.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

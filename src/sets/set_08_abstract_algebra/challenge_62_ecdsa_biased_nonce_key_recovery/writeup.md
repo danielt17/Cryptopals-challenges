@@ -15,6 +15,15 @@ If the nonce k has known low bits (bias), the signature equations yield approxim
 - Build a lattice basis encoding these approximations and run LLL.
 - Extract the secret key from a short vector in the reduced basis.
 
+## Detailed Walkthrough
+ECDSA nonces must be uniformly random. If nonces are biased (for example, some bits are fixed or leak), lattice attacks can recover the private key from a set of signatures.
+
+The challenge studies how partial information about k translates into a full key recovery.
+
+- Collect signatures with biased nonces.
+- Form a lattice instance from the ECDSA equations.
+- Solve for the private key using lattice reduction.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

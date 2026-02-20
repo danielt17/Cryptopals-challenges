@@ -14,6 +14,15 @@ Reusing a nonce in CTR reuses the keystream, making the ciphertexts equivalent t
 - Treat each position across ciphertexts as a single-byte XOR problem.
 - Recover the keystream and decrypt all messages.
 
+## Detailed Walkthrough
+Fixed-nonce CTR means every message is encrypted with the same keystream. This reduces the problem to breaking a repeating-key XOR across many ciphertexts.
+
+The attack aligns ciphertext bytes by position and uses substitution or scoring to recover the keystream and plaintexts.
+
+- Align ciphertexts by index position.
+- Use English scoring to guess keystream bytes.
+- Recover plaintexts by XORing with the keystream.
+
 ## Implementation Notes
 Scripts: break_fixed_nonce_ctr.py
 Data files: 33.txt

@@ -14,6 +14,15 @@ RSA is multiplicative: (m * s)^e = m^e * s^e mod N. If you can get a decryption 
 - Query the oracle to decrypt c'.
 - Divide by s mod N to recover the original plaintext.
 
+## Detailed Walkthrough
+Unpadded RSA is multiplicatively homomorphic: (m * s)^e mod n = c * s^e mod n. If an oracle decrypts ciphertexts, you can recover m by sending a modified ciphertext and dividing out s.
+
+The attack does not require factoring n, only an oracle that will decrypt arbitrary ciphertexts.
+
+- Choose a multiplier s and compute c' = c * s^e mod n.
+- Ask the oracle to decrypt c'.
+- Divide by s to recover the original message.
+
 ## Implementation Notes
 Scripts: unpadded_rsa_message_recovery.py
 Data files: none

@@ -14,6 +14,15 @@ Expandable messages allow you to choose a prefix length later. By building a col
 - Find a point in the target message whose intermediate hash matches the tree root.
 - Select the appropriate prefix length and append the target suffix.
 
+## Detailed Walkthrough
+Expandable messages let an attacker choose between short and long message blocks while keeping the same hash state. This enables second-preimage attacks on long messages by matching a target hash length.
+
+The attack constructs an expandable prefix, then finds a glue block that links it to the target message.
+
+- Build a tree of collisions with varying lengths.
+- Choose lengths to match the target message length.
+- Find a glue block to connect to the target hash chain.
+
 ## Implementation Notes
 Scripts: expandable_messages.py
 Data files: none

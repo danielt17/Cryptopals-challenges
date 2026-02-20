@@ -14,6 +14,15 @@ This is a statistical variant of the previous challenge. By aligning ciphertexts
 - For each position, score all 256 key bytes against English frequency.
 - Assemble the best-scoring keystream and decrypt.
 
+## Detailed Walkthrough
+This is the statistical variant of the fixed-nonce CTR break. The idea is the same: the keystream is reused, and each column of bytes can be treated like a single-byte XOR problem.
+
+Statistics across many ciphertexts help resolve ambiguous bytes. A scoring function over printable ASCII and letter frequencies yields the most likely keystream byte for each column.
+
+- Truncate ciphertexts to a common length.
+- Score each key byte candidate per column.
+- Assemble the keystream and decrypt.
+
 ## Implementation Notes
 Scripts: break_fixed_nonce_ctr_statistical.py
 Data files: 34.txt

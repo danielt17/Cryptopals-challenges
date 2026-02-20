@@ -15,6 +15,15 @@ GCM's MAC is a polynomial in the authentication key h over GF(2^128). Reusing a 
 - Build the difference polynomial and factor it to find candidate h values.
 - Test candidates by forging a valid tag.
 
+## Detailed Walkthrough
+GCM breaks catastrophically if a nonce is reused with the same key. Reuse reveals the XOR of plaintexts and produces equations over GHASH that can reveal the authentication subkey.
+
+Once the GHASH key is recovered, tags can be forged for arbitrary messages.
+
+- Detect nonce reuse across messages.
+- Use GHASH linearity to solve for the authentication key.
+- Forge tags and decrypt or modify messages.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

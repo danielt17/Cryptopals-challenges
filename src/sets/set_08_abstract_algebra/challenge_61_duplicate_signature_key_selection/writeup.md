@@ -15,6 +15,15 @@ Given a valid signature, you can choose domain parameters to make the verificati
 - For RSA, choose p and q with smooth group orders and solve a discrete log for e'.
 - Construct N' = p*q and demonstrate verification under the crafted key.
 
+## Detailed Walkthrough
+Duplicate-signature key selection explores how signatures can verify under multiple public keys when parameters are chosen maliciously. In ECDSA, careful parameter or key choices can lead to ambiguous verification if implementations do not validate inputs.
+
+This writeup focuses on the importance of strong parameter validation and rejecting duplicate or malformed signatures.
+
+- Understand how signature equations depend on public key parameters.
+- Identify parameter choices that create ambiguous verification.
+- Enforce strict validation to prevent such attacks.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

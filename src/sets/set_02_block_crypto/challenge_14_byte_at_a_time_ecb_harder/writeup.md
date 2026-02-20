@@ -14,6 +14,15 @@ A random prefix breaks simple block alignment. By finding where your controlled 
 - Compute the prefix length offset to align your controlled bytes.
 - Use the byte-at-a-time dictionary attack on the aligned blocks.
 
+## Detailed Walkthrough
+This is the harder version of byte-at-a-time ECB, where the oracle prepends a random-length prefix. The random prefix prevents easy alignment, so the first step is to detect the prefix length and the alignment offset.
+
+Once the prefix alignment is known, the same dictionary-based ECB attack can be applied to recover the unknown suffix.
+
+- Detect block size and confirm ECB mode.
+- Find the prefix length by searching for repeated blocks.
+- Align the controlled input and recover bytes one by one.
+
 ## Implementation Notes
 Scripts: byte_at_a_time_ecb_harder.py
 Data files: none

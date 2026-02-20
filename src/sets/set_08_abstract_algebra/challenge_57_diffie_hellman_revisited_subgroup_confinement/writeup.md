@@ -15,6 +15,15 @@ If the group has small subgroups, an attacker can send a small-order element h. 
 - Send h as the public key and brute force the MAC to recover x mod r.
 - Repeat for multiple r and combine residues with CRT to recover x.
 
+## Detailed Walkthrough
+Subgroup confinement attacks on Diffie-Hellman exploit small-order subgroups. If a peer accepts a public key in a small subgroup, the shared secret leaks information about the private exponent modulo the subgroup order.
+
+By repeating with different subgroups and combining results with CRT, the private key can be recovered.
+
+- Send public keys in small subgroups.
+- Recover the exponent modulo each subgroup order.
+- Combine results with the Chinese Remainder Theorem.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

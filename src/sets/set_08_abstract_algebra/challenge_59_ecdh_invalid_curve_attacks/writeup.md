@@ -15,6 +15,15 @@ Elliptic curves form groups with point addition and scalar multiplication. If a 
 - Find points on invalid curves with small subgroup orders and send them to the victim.
 - Use MAC brute force to recover the secret modulo small factors and combine with CRT.
 
+## Detailed Walkthrough
+Invalid-curve attacks on ECDH rely on the victim accepting points that do not lie on the intended curve. These points can be chosen to have small order, leaking the private key modulo that order.
+
+Repeated queries over different invalid curves allow reconstruction of the private key with CRT.
+
+- Send points on a curve with small subgroup order.
+- Observe the shared secret to recover bits of the key.
+- Repeat and combine results with CRT.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

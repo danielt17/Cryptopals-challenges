@@ -14,6 +14,15 @@ CBC-MAC is secure for fixed-length messages with a fixed IV. If the attacker can
 - For the fixed-IV variant, use message concatenation and length manipulation to forge a valid MAC.
 - Verify that the forged message validates under the MAC.
 
+## Detailed Walkthrough
+CBC-MAC is secure only for fixed-length messages with a fixed IV. If the IV is attacker-controlled or message length is variable without domain separation, forgeries are possible.
+
+This challenge shows two scenarios: one where the attacker controls the IV and can trivially forge, and one where the attacker uses structural weaknesses to craft a valid MAC for a modified message.
+
+- Observe CBC-MAC chaining and the effect of the IV.
+- Craft a message that preserves the MAC under modification.
+- Demonstrate the forgery for both variants.
+
 ## Implementation Notes
 Scripts: iv_control.py, no_iv_control.py
 Data files: none

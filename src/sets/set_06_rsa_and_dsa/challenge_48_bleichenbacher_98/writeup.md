@@ -14,6 +14,17 @@ This attack adapts the PKCS#1 v1.5 padding oracle to the TLS handshake. A MITM o
 - Interpose a MITM that queries a padding oracle to recover the premaster secret.
 - Use the recovered secret to derive session keys and decrypt messages.
 
+## Detailed Walkthrough
+## Set 7: Hashes
+
+This is a full Bleichenbacher 98 attack against an RSA-based TLS handshake. The attacker uses the padding oracle to recover the premaster secret, then derives the session keys.
+
+The implementation simulates the TLS key exchange and applies the same interval-narrowing attack as in the previous challenge, but in a more realistic protocol context.
+
+- Capture an RSA-encrypted premaster secret.
+- Query the padding oracle to narrow candidates.
+- Recover the premaster secret and derive session keys.
+
 ## Implementation Notes
 Scripts: server.py, attacker.py, client.py
 Data files: none

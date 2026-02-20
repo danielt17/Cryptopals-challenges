@@ -14,6 +14,15 @@ MD4 (and MD5) are Merkle-Damgard hashes and have the same length extension prope
 - Append correct padding for the unknown key length.
 - Continue hashing the extension to produce a forged MAC.
 
+## Detailed Walkthrough
+This extends the length-extension idea to MD4 and MD5. Both are Merkle-Damgard and allow continuation from an internal state if the padding and total length are known.
+
+The challenge includes implementations for MD4 and MD5 to demonstrate the attack across different hash functions.
+
+- Recreate padding based on the guessed key length.
+- Seed the hash state with the existing digest.
+- Hash the suffix and build a forged MAC.
+
 ## Implementation Notes
 Scripts: md4_length_extension.py, md5_length_extension.py
 Data files: none

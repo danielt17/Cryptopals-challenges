@@ -15,6 +15,15 @@ Montgomery curves allow a fast single-coordinate ladder. However, points on the 
 - Compute the twist order and find small-order points on the twist.
 - Use these points to recover key bits and apply Pollard's kangaroo for the remainder.
 
+## Detailed Walkthrough
+Single-coordinate ladders (such as Montgomery ladders) can be vulnerable if the implementation does not validate points. An attacker can supply points on an insecure twist and force computation in a small subgroup.
+
+The lesson is to validate curve membership and use proper group checks.
+
+- Identify a twist with small-order points.
+- Send a crafted point and observe the response.
+- Recover key material from subgroup confinement.
+
 ## Implementation Notes
 Scripts: none (writeup-only challenge in this repo)
 Data files: none

@@ -14,6 +14,17 @@ XOR is a linear, bitwise operation. When applied to equal-length buffers, each o
 - XOR each byte pair and build the output buffer.
 - Display the resulting hex string.
 
+## Detailed Walkthrough
+Implementation of fixed [xor](https://en.wikipedia.org/wiki/Exclusive_or) between two buffers.
+
+Fixed XOR highlights that XOR is bitwise addition modulo 2. When two equal-length buffers are XORed, each output byte is the XOR of the corresponding input bytes. XOR is reversible, so applying the same XOR twice recovers the original data.
+
+This is a building block for many stream ciphers and one-time pads. The implementation is simple, but correctness depends on matching buffer lengths and operating on raw bytes.
+
+- Ensure both inputs are the same length.
+- XOR byte-by-byte to produce the result.
+- Format the result as hex for display.
+
 ## Implementation Notes
 Scripts: fixed_xor.py
 Data files: none
@@ -21,3 +32,8 @@ Run: python scripts/run_challenge.py 2
 
 ## Verification
 The script prints a success message when the XOR matches the challenge target.
+
+Expected output:
+```text
+Success
+```
