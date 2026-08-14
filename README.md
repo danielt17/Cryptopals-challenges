@@ -10,7 +10,7 @@
 
 ## At a glance
 - 66 challenges tracked across 8 sets.
-- 54 challenges have a working implementation.
+- 55 challenges have a working implementation.
 - Per-challenge folders in `src/sets/` with scripts, data files, and `writeup.md`.
 - `scripts/run_challenge.py` runs single or multi-step challenges in order.
 - `scripts/verify_project.py` checks structure, data files, and syntax.
@@ -132,7 +132,7 @@ Legend: [x] implemented, [ ] not implemented. Video links appear when available.
 | 52 - Iterated hash function multicollisions | [cryptopals](https://cryptopals.com/sets/7/challenges/52) | [iterated_hash_multicollisions.py](src/sets/set_07_hashes/challenge_52_iterated_hash_multicollisions/iterated_hash_multicollisions.py) | [writeup](src/sets/set_07_hashes/challenge_52_iterated_hash_multicollisions/writeup.md) | - | [x] implemented |
 | 53 - Kelsey and Schneier's expandable messages | [cryptopals](https://cryptopals.com/sets/7/challenges/53) | [expandable_messages.py](src/sets/set_07_hashes/challenge_53_expandable_messages/expandable_messages.py) | [writeup](src/sets/set_07_hashes/challenge_53_expandable_messages/writeup.md) | - | [x] implemented |
 | 54 - Kelsey and Kohno's Nostradamus attack | [cryptopals](https://cryptopals.com/sets/7/challenges/54) | [nostradamus_attack.py](src/sets/set_07_hashes/challenge_54_nostradamus_attack/nostradamus_attack.py) | [writeup](src/sets/set_07_hashes/challenge_54_nostradamus_attack/writeup.md) | - | [x] implemented |
-| 55 - MD4 collisions | [cryptopals](https://cryptopals.com/sets/7/challenges/55) | not implemented | [writeup](src/sets/set_07_hashes/challenge_55_md4_collisions/writeup.md) | - | [ ] not implemented |
+| 55 - MD4 collisions | [cryptopals](https://cryptopals.com/sets/7/challenges/55) | [md4.py](src/sets/set_07_hashes/challenge_55_md4_collisions/md4.py)<br>[md4_collisions.py](src/sets/set_07_hashes/challenge_55_md4_collisions/md4_collisions.py) | [writeup](src/sets/set_07_hashes/challenge_55_md4_collisions/writeup.md) | - | [x] implemented |
 | 56 - RC4 single-byte biases | [cryptopals](https://cryptopals.com/sets/7/challenges/56) | not implemented | [writeup](src/sets/set_07_hashes/challenge_56_rc4_single_byte_biases/writeup.md) | - | [ ] not implemented |
 | 57 - Diffie-Hellman Revisited: Subgroup-Confinement Attacks | [cryptopals](https://toadstyle.org/cryptopals/513b590b41d19eff3a0aa028023349fd.txt) | not implemented | [writeup](src/sets/set_08_abstract_algebra/challenge_57_diffie_hellman_revisited_subgroup_confinement/writeup.md) | - | [ ] not implemented |
 | 58 - Pollard's Method for Catching Kangaroos | [cryptopals](https://toadstyle.org/cryptopals/3e17c7b35fcf491d08c989081ed18c9a.txt) | not implemented | [writeup](src/sets/set_08_abstract_algebra/challenge_58_pollards_method_catching_kangaroos/writeup.md) | - | [ ] not implemented |

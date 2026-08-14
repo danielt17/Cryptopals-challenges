@@ -1,4 +1,4 @@
-﻿[project]
+[project]
 name = "cryptopals-challenges"
 version = "0.1.0"
 description = "Refactored and organized solutions for the Cryptopals crypto challenges."

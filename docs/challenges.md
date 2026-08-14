@@ -93,7 +93,7 @@ Use `python scripts/run_challenge.py <num>` to run with the default sequence.
 | 52 | Iterated hash function multicollisions | src/sets/set_07_hashes/challenge_52_iterated_hash_multicollisions/iterated_hash_multicollisions.py | src/sets/set_07_hashes/challenge_52_iterated_hash_multicollisions/writeup.md | - | python scripts/run_challenge.py 52 |
 | 53 | Kelsey and Schneier's expandable messages | src/sets/set_07_hashes/challenge_53_expandable_messages/expandable_messages.py | src/sets/set_07_hashes/challenge_53_expandable_messages/writeup.md | - | python scripts/run_challenge.py 53 |
 | 54 | Kelsey and Kohno's Nostradamus attack | src/sets/set_07_hashes/challenge_54_nostradamus_attack/nostradamus_attack.py | src/sets/set_07_hashes/challenge_54_nostradamus_attack/writeup.md | - | python scripts/run_challenge.py 54 |
-| 55 | MD4 collisions | - | src/sets/set_07_hashes/challenge_55_md4_collisions/writeup.md | - | - |
+| 55 | MD4 collisions | src/sets/set_07_hashes/challenge_55_md4_collisions/md4.py, src/sets/set_07_hashes/challenge_55_md4_collisions/md4_collisions.py | src/sets/set_07_hashes/challenge_55_md4_collisions/writeup.md | - | python scripts/run_challenge.py 55 |
 | 56 | RC4 single-byte biases | - | src/sets/set_07_hashes/challenge_56_rc4_single_byte_biases/writeup.md | - | - |
 
 ## Set 8: Abstract Algebra

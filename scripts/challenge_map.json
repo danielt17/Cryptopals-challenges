@@ -1113,7 +1113,17 @@
       "title": "MD4 collisions",
       "slug": "md4_collisions",
       "link": "https://cryptopals.com/sets/7/challenges/55",
-      "scripts": [],
+      "scripts": [
+        {
+          "file": "md4.py",
+          "role": "utils",
+          "run": false
+        },
+        {
+          "file": "md4_collisions.py",
+          "run": true
+        }
+      ],
       "data_files": [],
       "run_sequence": null
     },
